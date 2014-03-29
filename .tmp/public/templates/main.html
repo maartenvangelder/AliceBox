@@ -1,0 +1,174 @@
+ <!-- Page content -->
+<div id="page-content" class="block" ng-controller="mainController" >
+    <!-- Blank Header -->
+    <div class="block-header">
+        <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
+        <a href="" class="header-title-link">
+            <h3>
+               Welcome {{User.name}} !!<br><small>Now, you can play your music every where.</small>
+            </h3>
+        </a>
+    </div>
+    <!-- END Blank Header -->
+    
+    <div class="row gutter30">
+    <!-- Search Block -->
+    <div class="col-sm-6">
+        <div class="block full">
+            <div class="block-title">
+                <div class="block-options pull-right">
+                    <div class="btn-group btn-group-sm">
+                        <a href="javascript:void(0)" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <div ng-show="Search.permission=='world'"><i class="glyphicon-globe" ></i> World <span class="caret"></span></div>
+                            <div ng-show="Search.permission=='me'"><i class="glyphicon-lock" ></i> Me <span class="caret"></span></div>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+<!--                            <li class="active"><a><i class="fa fa-check"></i>World</a></li>-->
+                            <!-- <li class="divider"></li> -->
+                            <li ng-click="changeSearchPermission('world')"><a>World</a></li>
+                            <!--<li><a>Friends</a></li>-->
+                            <li ng-click="changeSearchPermission('me')"><a>Me</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <h2><i class="fa fa-search"></i> Search</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="search-term" name="search-term" class="form-control" ng-model="Search.word" ng-change="searchSong( currentPlaylist.songs )" >
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <p class="divide" ></p>
+            <div>
+                <table id="general-table" class="table">
+                    <tbody>
+                        <tr ng-repeat="Song in SearchedSongs">
+                            <td class="text-center">
+                                <div class="btn-group btn-group-xs">
+                                    <a data-toggle="tooltip" title="Add to playlist" class="btn btn-default" ng-click="addSongsToPlaylist( Song )"><i class="glyphicon-disk_save"></i></a>
+                                </div>
+                            </td>                      
+                            <td><a popover-placement="top" popover="{{Song.album}}" popover-trigger="click" popover-title="{{Song.artist}}" >{{Song.title}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div> <!-- END block-full -->       
+    </div><!-- END Search block -->
+    
+    <div class="col-sm-6">
+        <div class="block full">
+            <!-- Block Title -->
+            <div class="block-title" >
+                <h2><i class="glyphicon-playlist"></i> My Playlist</h2>
+                <div class="block-options pull-right">
+                    <div class="btn-group btn-group-sm">
+                        <a  class="btn btn-success dropdown-toggle" data-toggle="dropdown">{{currentPlaylist.name}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu pull-right">
+                            <li ng-repeat="List in Playlists" ng-click="changeSelectPlaylist( List.id )" ><a>{{List.name}}</a></li>
+                            <li class="divider"></li>
+                            <li class="active"><a ng-click="addPlaylist()" ><i class="fa fa-plus"></i> New Playlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- END Block Title -->
+            
+            <!-- PLAYER -->
+            <!-- CONTROL BUTTONS -->
+            <div>
+                <button class="btn btn-success" ng-click="playPrev()"><div class="fa fa-fast-backward" ></div></button>
+                <button class="btn btn-info" ng-show="!playing" ng-click="play()"><div class="fa fa-play" ></div></button>
+                <button class="btn btn-warning" ng-show="playing" ng-click="pause()" ><div class="fa fa-pause"  ></div></button>
+                <button class="btn btn-success" ng-click="playNext()"><div class="fa fa-fast-forward" ></div></button>
+                <button class="btn btn-danger" ng-click="stop()"><div class="fa fa-stop" ></div></button>
+                <div class="btn-group btn-group-sm pull-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-toggle="tooltip" data-placement="left" title="{{currentPlaylist.playingMethod}}">
+                        <button class="btn btn-sm btn-default" ng-show="currentPlaylist.playingMethod == 'arrow-right'"><div class="halfling-arrow-right" ></div></button>
+                        <button class="btn btn-sm btn-default" ng-show="currentPlaylist.playingMethod == 'retweet'"><div class="halfling-retweet" ></div></button>
+                        <button class="btn btn-sm btn-default" ng-show="currentPlaylist.playingMethod == 'random'" ><div class="halfling-random" ></div></button>
+                        <button class="btn btn-sm btn-default" ng-show="currentPlaylist.playingMethod == 'repeat'"><div class="halfling-repeat" ></div></button>
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li class="btn btn-sm btn-default" ng-click="updatePlayMethod('arrow-right')"><div class="halfling-arrow-right" ></div></li> 
+                    <li class="btn btn-sm btn-default" ng-click="updatePlayMethod('retweet')"><div class="halfling-retweet" ></div></li> 
+                    <li class="btn btn-sm btn-default" ng-click="updatePlayMethod('random')"><div class="halfling-random" ></div></li> 
+                    <li class="btn btn-sm btn-default" ng-click="updatePlayMethod('repeat')"><div class="halfling-repeat" ></div></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- SLIDER -->
+            <div> 
+                <slider floor="0" ceiling="{{duration}}" step="1" precision="2" ng-model="progress" translate="currencyFormatting"></slider>
+            </div>
+            <!-- PLAYING INFO -->
+            <div class="text-left">
+                <div class="label label-default" ng-show="buffered > 0 && buffered < 100" >Loaded: {{buffered}}%</div>
+                <div class="label label-warning" >Time : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
+                <div class="label label-info" >Playing : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
+            </div>
+            <p></p>
+            
+            <!-- PLAYLIST -->
+            <div class="list-group">
+                <a class="list-group-item" ng-repeat="Song in currentPlaylist.songs" ng-class="isActive($index)">
+                    <span class="pull-right" ng-show="!Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-down"></div></span>
+                    <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
+                    <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist($index)" >Delete</div>
+                    <p class="list-group-item-text" ng-show="Song.showDetails" >Artist : {{Song.artist}}</p>
+                    <p class="list-group-item-text" ng-show="Song.showDetails" >Album : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
+                </a>
+            </div>
+            
+            <!-- END Block Content -->
+        </div>
+    </div>
+    </div>
+    <!-- END Blank Content -->
+</div>
+<!-- END Page Content -->
+<!-- LOADING MODAL -->
+<div id="loading_modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog modal-sm">
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">LOADING.....</h4>
+           </div>
+           <div class="modal-body text-center">
+               <div class="fa fa-gear fa-spin fa-4x"></div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- END LOADING MODAL -->
+<!-- LOADING MODAL -->
+<div id="preAddPlayListModel" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-text-input">Name : </label>
+                        <div class="col-md-5">
+                            <input type="text" id="example-text-input" name="playListName" ng-model="newPlaylist.name" class="form-control" placeholder="Playlist's name">
+                            <!--<span class="help-block">This is a help text</span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="addPlaylist()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END LOADING MODAL -->
