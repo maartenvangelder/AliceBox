@@ -62,7 +62,7 @@ module.exports = {
                     if( err )console.log( err );
 
                     //Write fiel
-                    client.writeFile( req.files.file.name , data , function(error, stat) {
+                    client.writeFile( req.files.file.name , data , function(error, status ) {
 
                         if(error) console.log(error);
 
@@ -78,8 +78,10 @@ module.exports = {
 //                            sails.log( "====> SONG's TITLE:" );
 //                            sails.log( "----" + tags.title + "---" );
                             
-                            if( !tags.title || typeof tags.title !== 'undefined' ) tags.title = req.files.file.name ;
-                            if( !tags.artist || typeof tags.artist !== 'undefined' ) tags.artist = req.session.user.name ;
+                            if( !tags.title || typeof tags.title === 'undefined' ) tags.title = req.files.file.name ;
+                            if( !tags.artist || typeof tags.artist === 'undefined' ) tags.artist = "Unknown" ;
+                            if( !tags.album || typeof tags.album === 'undefined' ) tags.album = "Unknown" ;
+                            if( !tags.year || typeof tags.year === 'undefined' ) tags.year = "Unknown" ;
                             
                             //SAVE SONG INFO TO DATABASE
                             Song.create( { userId : req.session.user.id , name : req.files.file.name , size : req.files.file.size , title: tags.title , album : tags.album  , artist : tags.artist , year : tags.year ,fileType : req.files.file.headers , url : url.url , permission : req.body.shareTo}, function( err , model ){
@@ -87,7 +89,9 @@ module.exports = {
                                     sails.log( "ERROR:" + err );
                                     sails.log( err ) 
                                 };
-                                sails.log( "---> CREATE SONG SUCCESS" + model );
+                                
+//                              sails.log( "---> CREATE SONG SUCCESS" + model );
+
                                 if( req.body.playlist ){
                                     if( Array.isArray(req.body.playlist) ){
                                         req.body.playlist.forEach( function( playlistId ){

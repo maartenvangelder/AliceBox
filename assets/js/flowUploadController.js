@@ -12,8 +12,10 @@ var maxListSongs = 20;
 
 var flowUploadPageController = angular.module('flowUploadPageController', ['ngResource','angularFileUpload']);
 
-flowUploadPageController.controller('flowUploadController', ['$scope', '$location' ,'$log', '$http' , '$fileUploader',
-  function($scope , $location , $log ,$http , $fileUploader ) {
+flowUploadPageController.controller('flowUploadController', ['$rootScope', '$scope', '$location' ,'$log', '$http' , '$fileUploader',
+  function($rootScope, $scope , $location , $log ,$http , $fileUploader ) {
+    
+    $rootScope.location = 'upload';
     
     //CHECK HAS DROPBOX ID
     $http.post('/isHasDropboxId', {} ).success(function(data, status, headers, config){

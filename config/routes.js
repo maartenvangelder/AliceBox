@@ -115,6 +115,13 @@ module.exports.routes = {
                     controller: 'Home',
                     action: 'getUserInfo'
                 },
+                
+                '/updateThemes':{
+                    controller: 'Home',
+                    action: 'updateThemes'
+                },
+                
+                
                 /************ UPLOAD CONTROLLER ACTION **********************/
                 'get /upload':{
                     controller: 'Upload',

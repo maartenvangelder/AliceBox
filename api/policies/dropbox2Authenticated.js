@@ -60,7 +60,7 @@ module.exports = function(req, res, next){
                      if( !users || users.length == 0 ){
 
                          sails.log( "=====> NO USER ");
-                         Member.create( { name :  user.displayName , dropBoxUserId : user.id , dropBoxToken: user.accessToken , memberAuthenType : "dropbox" , loginUser : user }, function( err , model ){
+                         Member.create( { name :  user.displayName , dropBoxUserId : user.id , dropBoxToken: user.accessToken , memberAuthenType : "dropbox" , loginUser : user , themeType : "default" }, function( err , model ){
                            if( err ){ 
                                sails.log( "ERROR:" );
                                sails.log( err ); 

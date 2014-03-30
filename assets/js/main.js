@@ -285,10 +285,8 @@ var webApp = function() {
         $('a', colorList).click(function(e){
             // Get theme name
             theme = $(this).data('theme');
-
             $('li', colorList).removeClass('active');
             $(this).parent('li').addClass('active');
-
             if (theme === 'default') {
                 if (themeLink.length) {
                     themeLink.remove();

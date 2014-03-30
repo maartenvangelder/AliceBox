@@ -63,7 +63,15 @@
                 <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
                 <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist($index)" >Delete</div>
                 <p class="list-group-item-text" ng-show="Song.showDetails" >Artist : {{Song.artist}}</p>
-                <p class="list-group-item-text" ng-show="Song.showDetails" >Album : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
+                <p class="list-group-item-text" ng-show="Song.showDetails" >Album : {{Song.album}} </p> 
+                <p class="list-group-item-text" ng-show="Song.showDetails" >
+                    Share to : <i ng-show="Song.permission=='world'" class="glyphicon-globe"></i>
+                               <i ng-show="Song.permission=='friend'" class="glyphicon-group"></i>
+                               <i ng-show="Song.permission=='me'" class="glyphicon-lock"></i>
+                </p>
+                <p class="list-group-item-text" ng-show="Song.showDetails"> Year : {{Song.year}} </p><i ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></i>
+                <p></p>
+                
             </a>
         </div>
         <!-- END Block Content -->

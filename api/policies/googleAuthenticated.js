@@ -31,7 +31,7 @@ module.exports = function(req, res, next){
             },
             function( users, callback){
                 if( !users || users.length == 0 ){
-                    Member.create( { name :  user.displayName , memberAuthenType : "google" , loginUser : user }, function( err , model ){
+                    Member.create( { name :  user.displayName , memberAuthenType : "google" , loginUser : user , themeType : "default" }, function( err , model ){
                       if( err ){ 
                           sails.log( "ERROR:" + err );
                           sails.log( model ) 

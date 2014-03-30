@@ -44,6 +44,13 @@
 
     <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
     <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="{{themes}}" >
+    
+<!--    <link rel="stylesheet" href="css/themes/amethyst.css" ng-show="" >
+    <link rel="stylesheet" href="css/themes/dragon.css" ng-show=" themes=='dragon' " >
+    <link rel="stylesheet" href="css/themes/emerald.css" ng-show=" themes=='emerald' " >
+    <link rel="stylesheet" href="css/themes/grass.css" ng-show=" themes=='grass' " >
+    <link rel="stylesheet" href="css/themes/river.css" ng-show=" themes=='river' " >-->
     
     <link rel="stylesheet" href="css/angular-slider.css">
     
@@ -88,14 +95,14 @@
                             <h2 class="sidebar-header">Welcome</h2>
                         </li>
                         <li>
-                            <a href="#" class=" active"><i class="fa fa-coffee"></i>Home</a>
+                            <a href="#" ng-class="{ active : location == 'home' }" ><i class="fa fa-coffee"></i>Home</a>
                         </li>
                         <li >
                             <h2 class="sidebar-header">Upload Songs</h2>
                         </li>
                         <% if(req.session.user.dropBoxUserId ) { %>
                         <li>
-                            <a href="#upload" ><i class="fa fa-dropbox"></i>To My Dropbox</a>
+                            <a href="#upload" ng-class="{ active : location == 'upload' }" ><i class="fa fa-dropbox"></i>To My Dropbox</a>
                         </li>
                         <% } else { %>
                         <li ng-show="!$root.isIPhone" >
@@ -109,7 +116,7 @@
                             <a href="#" class="menu-link"><i class="fa fa-headphones"></i>Listen</a>
                             <ul>
                                 <li>
-                                    <a href="#myAllSongs">All Songs</a>
+                                    <a href="#myAllSongs" ng-class="{ active : location == 'myAllSongs' }" >All Songs</a>
                                 </li>
                                 <li>
                                     <a href="#">Playlist</a>
@@ -138,32 +145,6 @@
                             <a href="/logout"><i class="fa fa-power-off"></i>Logout</a>
                         </li>
                         
-<!--                        <li>
-                            <a href="#" class="menu-link"><i class="fa fa-gift"></i>Icon Packs</a>
-                            <ul>
-                                <li>
-                                    <a href="page_icons_fontawesome.html">Font Awesome</a>
-                                </li>
-                                <li>
-                                    <a href="page_icons_glyphicons_pro.html">Glyphicons Pro</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h2 class="sidebar-header">Special</h2>
-                        </li>
-                        <li>
-                            <a href="page_special_timeline.html"><i class="fa fa-clock-o"></i>Timeline</a>
-                        </li>
-                        <li>
-                            <a href="page_special_user_profile.html"><i class="fa fa-pencil-square"></i>User Profile</a>
-                        </li>
-                        <li>
-                            <a href="page_special_message_center.html"><i class="fa fa-envelope-o"></i>Message Center</a>
-                        </li>
-                        <li>
-                            <a href="page_special_login.html"><i class="fa fa-power-off"></i>Login &amp; Register</a>
-                        </li>-->
                     </ul>
                     <!-- END Sidebar Navigation -->
                 </div>
@@ -193,23 +174,23 @@
                         <h2 class="sidebar-header">Color Themes</h2>
                         <!-- Change Color Theme functionality can be found in main.js - templateOptions() -->
                         <ul class="theme-colors clearfix">
-                            <li class="active">
-                                <a href="javascript:void(0)" class="themed-background-default themed-border-default" data-theme="default" data-toggle="tooltip" title="Default"></a>
+                            <li ng-class="{active : userInfo.themeType == 'default'}" >
+                                <a href="#" class="themed-background-default themed-border-default" data-theme="default" data-toggle="tooltip" title="Default" ng-click="mstUpdateTheme('default')" ></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="themed-background-river themed-border-river" data-theme="css/themes/river.css" data-toggle="tooltip" title="River"></a>
+                            <li ng-class="{active : userInfo.themeType == 'river'}">
+                                <a href="#" class="themed-background-river themed-border-river" data-theme="css/themes/river.css" data-toggle="tooltip" title="River" ng-click="mstUpdateTheme('river')" ></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="themed-background-amethyst themed-border-amethyst" data-theme="css/themes/amethyst.css" data-toggle="tooltip" title="Amethyst"></a>
+                            <li ng-class="{active : userInfo.themeType == 'amethyst'}" >
+                                <a href="#" class="themed-background-amethyst themed-border-amethyst" data-theme="css/themes/amethyst.css" data-toggle="tooltip" title="Amethyst" ng-click="mstUpdateTheme('amethyst')" ></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="themed-background-dragon themed-border-dragon" data-theme="css/themes/dragon.css" data-toggle="tooltip" title="Dragon"></a>
+                            <li ng-class="{active : userInfo.themeType == 'dragon'}" >
+                                <a href="#" class="themed-background-dragon themed-border-dragon" data-theme="css/themes/dragon.css" data-toggle="tooltip" title="Dragon" ng-click="mstUpdateTheme('dragon')" ></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="themed-background-emerald themed-border-emerald" data-theme="css/themes/emerald.css" data-toggle="tooltip" title="Emerald"></a>
+                            <li ng-class="{active : userInfo.themeType == 'emerald'}" >
+                                <a href="#" class="themed-background-emerald themed-border-emerald" data-theme="css/themes/emerald.css" data-toggle="tooltip" title="Emerald" ng-click="mstUpdateTheme('emerald')" ></a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="themed-background-grass themed-border-grass" data-theme="css/themes/grass.css" data-toggle="tooltip" title="Grass"></a>
+                            <li ng-class="{active : userInfo.themeType == 'grass'}">
+                                <a href="#" class="themed-background-grass themed-border-grass" data-theme="css/themes/grass.css" data-toggle="tooltip" title="Grass" ng-click="mstUpdateTheme('grass')" ></a>
                             </li>
                         </ul>
                     </div>
@@ -385,7 +366,6 @@
                 'fx-push-rotate'    push-rotate effect
             -->
             <div id="fx-container" class="fx-opacity">
-                
                 <!-- Angular View Content -->
                 <div ng-view></div>
 
@@ -438,10 +418,11 @@
         <script src="js/lib/angular/angular-file-upload.js"></script>
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
         
+        <script src="js/aliceBoxApp.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/flowUploadController.js"></script>
         <script src="js/myAllSongsController.js"></script>
-        <script src="js/aliceBoxApp.js"></script>
+        
         <script src="js/angular-adaptive-detection.js"></script>
     </body>
 </html>

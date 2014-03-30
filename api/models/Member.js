@@ -32,6 +32,12 @@ module.exports = {
             loginUser:{
               type: 'json',
               required : true
+            },
+            
+            /******PESONAL THEMES******/
+            themeType:{
+              type: "string",
+              required : false
             }
             
 	  }
