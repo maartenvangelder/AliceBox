@@ -130,7 +130,7 @@
                             </ul>
                         </li>
                         <li>
-                            <h2 class="sidebar-header">Special</h2>
+                            <h2 class="sidebar-header">Personal</h2>
                         </li>
                         <li>
                             <a href="page_special_timeline.html"><i class="fa fa-clock-o"></i>Timeline</a>
@@ -144,9 +144,33 @@
                         <li>
                             <a href="/logout"><i class="fa fa-power-off"></i>Logout</a>
                         </li>
-                        
                     </ul>
                     <!-- END Sidebar Navigation -->
+                    <!-- Color Themes -->
+                    <div class="sidebar-section">
+                        <h2 class="sidebar-header">Change Color Themes</h2>
+<!--                         Change Color Theme functionality can be found in main.js - templateOptions() -->
+                        <ul class="theme-colors clearfix">
+                            <li ng-class="{active : userInfo.themeType == 'default'}" >
+                                <a href="#" class="themed-background-default themed-border-default" data-theme="default" data-toggle="tooltip" title="Default" ng-click="mstUpdateTheme('default')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'river'}">
+                                <a href="#" class="themed-background-river themed-border-river" data-theme="css/themes/river.css" data-toggle="tooltip" title="River" ng-click="mstUpdateTheme('river')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'amethyst'}" >
+                                <a href="#" class="themed-background-amethyst themed-border-amethyst" data-theme="css/themes/amethyst.css" data-toggle="tooltip" title="Amethyst" ng-click="mstUpdateTheme('amethyst')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'dragon'}" >
+                                <a href="#" class="themed-background-dragon themed-border-dragon" data-theme="css/themes/dragon.css" data-toggle="tooltip" title="Dragon" ng-click="mstUpdateTheme('dragon')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'emerald'}" >
+                                <a href="#" class="themed-background-emerald themed-border-emerald" data-theme="css/themes/emerald.css" data-toggle="tooltip" title="Emerald" ng-click="mstUpdateTheme('emerald')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'grass'}">
+                                <a href="#" class="themed-background-grass themed-border-grass" data-theme="css/themes/grass.css" data-toggle="tooltip" title="Grass" ng-click="mstUpdateTheme('grass')" ></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- END Wrapper for scrolling functionality -->
             </div>
@@ -169,10 +193,10 @@
 
                 <!-- Wrapper for scrolling functionality -->
                 <div class="sidebar-right-scroll">
-                    <!-- Color Themes -->
+<!--                     Color Themes 
                     <div class="sidebar-section">
                         <h2 class="sidebar-header">Color Themes</h2>
-                        <!-- Change Color Theme functionality can be found in main.js - templateOptions() -->
+                         Change Color Theme functionality can be found in main.js - templateOptions() 
                         <ul class="theme-colors clearfix">
                             <li ng-class="{active : userInfo.themeType == 'default'}" >
                                 <a href="#" class="themed-background-default themed-border-default" data-theme="default" data-toggle="tooltip" title="Default" ng-click="mstUpdateTheme('default')" ></a>
@@ -193,10 +217,10 @@
                                 <a href="#" class="themed-background-grass themed-border-grass" data-theme="css/themes/grass.css" data-toggle="tooltip" title="Grass" ng-click="mstUpdateTheme('grass')" ></a>
                             </li>
                         </ul>
-                    </div>
+                    </div>-->
                     <!-- END Color Themes -->
 
-                    <!-- User Menu -->
+                    <!-- User Menu
                     <ul class="sidebar-nav">
                         <li>
                             <h2 class="sidebar-header">Explore</h2>
@@ -217,8 +241,21 @@
                             <a href="page_special_login.html"><i class="fa fa-power-off"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- END User Menu -->
-
+                    END User Menu -->
+                    
+                    <!-- Messages -->
+                    <div class="sidebar-section">
+                        <h2 class="sidebar-header">Messages</h2>
+                        <div class="alert alert-info">
+                            <small><a href="page_special_user_profile.html">Claire</a>, 2 minutes ago</small><br>
+                            Hi John, I just wanted to let you know that.. <a href="page_special_message_center.html">more</a>
+                        </div>
+                        <div class="alert alert-info">
+                            <small><a href="page_special_user_profile.html">Michael</a>, 5 minutes ago</small><br>
+                            The project is moving along just fine and we.. <a href="page_special_message_center.html">more</a>
+                        </div>
+                    </div>
+                    
                     <!-- Notifications -->
                     <div class="sidebar-section">
                         <h2 class="sidebar-header">Notifications</h2>
@@ -239,19 +276,28 @@
                         </div>
                     </div>
                     <!-- END Notifications -->
-
-                    <!-- Messages -->
+                    
+                    <!-- Advertisment -->
                     <div class="sidebar-section">
-                        <h2 class="sidebar-header">Messages</h2>
-                        <div class="alert alert-info">
-                            <small><a href="page_special_user_profile.html">Claire</a>, 2 minutes ago</small><br>
-                            Hi John, I just wanted to let you know that.. <a href="page_special_message_center.html">more</a>
+                        <h2 class="sidebar-header">For advertisement</h2>
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <small><em>2 hours ago</em></small><br>
+                            PHP version updated successfully on <a href="javascript:void(0)">Server #5</a>
                         </div>
-                        <div class="alert alert-info">
-                            <small><a href="page_special_user_profile.html">Michael</a>, 5 minutes ago</small><br>
-                            The project is moving along just fine and we.. <a href="page_special_message_center.html">more</a>
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <small><em>3 hours ago</em></small><br>
+                            <a href="javascript:void(0)">Game Server</a> crashed but restored!
+                        </div>
+                        <div class="alert alert-warning alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <small><em>5 hours ago</em></small><br>
+                            <a href="javascript:void(0)">FTP Server</a> went down for maintenance!
                         </div>
                     </div>
+                    <!-- END Notifications -->
+                    
                     <!-- END Messages -->
                 </div>
                 <!-- END Wrapper for scrolling functionality -->
@@ -273,7 +319,7 @@
             <header class="navbar navbar-default navbar-fixed-top">
                 <!-- Right Header Navigation -->
                 <ul class="nav header-nav pull-right">
-                    <li class="dropdown">
+<!--                    <li class="dropdown">
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-cogs"></i>
                         </a>
@@ -327,8 +373,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" id="sidebar-right-toggle">
+                        <a href="#" id="sidebar-right-toggle">
                             <strong>5</strong> <i class="fa fa-user"></i>
+                        </a>
+                    </li>-->
+                    <li>
+                        <a href="#" id="sidebar-right-toggle">
+                            <strong>5</strong> <i class="fa fa-bullhorn"></i>
                         </a>
                     </li>
                 </ul>
@@ -337,7 +388,7 @@
                 <!-- Left Header Navigation -->
                 <ul class="nav header-nav pull-left">
                     <li>
-                        <a href="javascript:void(0)" id="sidebar-left-toggle">
+                        <a href="#" id="sidebar-left-toggle">
                             <i class="fa fa-bars"></i>
                         </a>
                     </li>

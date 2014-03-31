@@ -36,14 +36,37 @@ module.exports = {
    
    
    addSongsToPlaylist: function ( req , res ){
+       
+//       sails.log(req.body.songsToPlayList.userId);
+//       sails.log(req.session.user.id );
+       //Update shareWith this user
+       
+       if( req.body.songsToPlayList.userId != req.session.user.id ){
+           sails.log("=======> shareWith");
+           Song.findOne( { id : req.body.songsToPlayList.id }  )
+               .exec( function( err, song ){
+                   
+                   if(err){ sails.log(err); }
+                   
+                   var userInfo = { userId : req.session.user.id , name : req.session.user.name };
+                   song.shareWith.push( userInfo );
+                   
+                   song.save( function( err, rs ){
+                       if(err){ sails.log(err); }
+                       sails.log(rs); 
+                   });
+           }); 
+       }
+       
+       //Add To playlist
        Playlist.findOne( { id : req.body.playlistId } )
                .exec( function( err, playlist ){
                 playlist.songs.push( req.body.songsToPlayList );
                    playlist.save( function( err, rs ){
-                       sails.log(rs);
                        res.json( rs );
                    });
        }); //End Update Songs
+       
    },
    
    removeASongFromPlaylist: function ( req , res ){

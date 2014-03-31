@@ -92,6 +92,7 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
     };
     
     $scope.addSongsToPlaylist = function( songsToPlayList ){
+        
         //Check number of song
         if( $scope.currentPlaylist.songs.length >= maxListSongs ){
            aliceBootbox.dialog( "Warning, Can not add more than " + maxListSongs + " songs!!" 

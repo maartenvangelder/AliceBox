@@ -21,10 +21,10 @@ module.exports = {
     
     flowUpload: function (req,res)
     {   
-        sails.log("====> flowUpload");
-        sails.log( req.body );
-        sails.log("====> ALL");
-        sails.log( req.files );
+//        sails.log("====> flowUpload");
+//        sails.log( req.body );
+//        sails.log("====> ALL");
+//        sails.log( req.files );
         
         // Server-side applications use both the API key and secret.
         var client = new Dropbox.Client({
@@ -76,15 +76,31 @@ module.exports = {
                             
 //                            tags.title = ( tags.title );
 //                            sails.log( "====> SONG's TITLE:" );
-//                            sails.log( "----" + tags.title + "---" );
                             
-                            if( !tags.title || typeof tags.title === 'undefined' ) tags.title = req.files.file.name ;
-                            if( !tags.artist || typeof tags.artist === 'undefined' ) tags.artist = "Unknown" ;
-                            if( !tags.album || typeof tags.album === 'undefined' ) tags.album = "Unknown" ;
-                            if( !tags.year || typeof tags.year === 'undefined' ) tags.year = "Unknown" ;
+                            //TODO -> This bad code to remove null unicode \u0000
+                            if( tags.title ){
+                                var arrayStr = tags.title.split( "\u0000");
+                                var strTitle = '';
+                                arrayStr.forEach( function(item){
+                                    strTitle += item;
+                                });
+                                if( arrayStr.length > 0 ){
+                                    tags.title = strTitle;
+                                }    
+                            }
+                            sails.log( tags.title );
+                            
+                            
+                            if( !tags.title || typeof tags.title == 'undefined' || tags.title.trim() == ''  ) tags.title = req.files.file.name ;
+                            if( !tags.artist || typeof tags.artist == 'undefined' || tags.artist.trim() == "" ) tags.artist = "Unknown" ;
+                            if( !tags.album || typeof tags.album == 'undefined' || tags.album.trim() == "" ) tags.album = "Unknown" ;
+                            if( !tags.year || typeof tags.year == 'undefined' || tags.year.trim() == "" ) tags.year = "Unknown" ;
                             
                             //SAVE SONG INFO TO DATABASE
-                            Song.create( { userId : req.session.user.id , name : req.files.file.name , size : req.files.file.size , title: tags.title , album : tags.album  , artist : tags.artist , year : tags.year ,fileType : req.files.file.headers , url : url.url , permission : req.body.shareTo}, function( err , model ){
+                            Song.create( { userId : req.session.user.id , name : req.files.file.name , 
+                                           size : req.files.file.size , title: tags.title , album : tags.album  ,
+                                           artist : tags.artist , year : tags.year ,fileType : req.files.file.headers , 
+                                           url : url.url , permission : req.body.shareTo , shareWith : [] }, function( err , model ){
                                 if( err ){ 
                                     sails.log( "ERROR:" + err );
                                     sails.log( err ) 
