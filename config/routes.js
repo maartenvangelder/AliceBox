@@ -166,7 +166,12 @@ module.exports.routes = {
                 '/getMyAllSongs' : {
                     controller: 'MyAllSongs',
                     action: 'getMyAllSongs'
-                }                
+                },
+                /******* MYALLSONGS CONTROLLER ACTIONS ****************/
+                '/searchSongAdvance' : {
+                    controller: 'MyPlaylists',
+                    action: 'searchSongAdvance'
+                }
                 
                                
                 

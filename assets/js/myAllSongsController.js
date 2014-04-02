@@ -1,12 +1,7 @@
 'use strict';
-var maxListSongs = 20;
 
 /* Controllers */
 
-/**
- *
- * TODO: Bug on update playlist, the current playlist not update in player
- */
 /* App Module */
 
 var myAllSongsController = angular.module('myAllSongsController', ['ngResource']);
