@@ -1,34 +1,45 @@
 'use strict';
 
-/* Controllers */
+var myArtistController = angular.module('myArtistController', ['ngResource']);
 
-/* App Module */
+myArtistController.controller('myArtistController', ['$rootScope', '$scope', '$location' ,'$log', '$http', 'player' , 'aliceBootbox', 
+    function($rootScope , $scope , $location , $log ,$http , player , aliceBootbox ) {
+    $rootScope.location = 'myArtist';
 
-var myAllSongsController = angular.module('myAllSongsController', ['ngResource']);
 
-myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope', '$location' ,'$log', '$http', 'player' , 'aliceBootbox', 
-  function($rootScope , $scope , $location , $log ,$http , player , aliceBootbox ) {
-  
-    $rootScope.location = 'myAllSongs';
-    
-    /************ Default loading data ***************/
-    $http.post('/getMyAllSongs', {} ).success(function(data, status, headers, config){
-       $scope.currentPlaylist = {};
-       $scope.currentPlaylist.songs = data;
-       $scope.currentPlaylist.playingMethod = "arrow-right";
-       /****INIT PLAYER*******/
-       player.init( $scope );
+    /************ Default load playlist data ***************/
+    $http.post('/getMyArtist', {} ).success(function(data, status, headers, config){
+        $scope.myArtists = data;
+        if( data && data.length > 0 ){
+            $scope.currentArtist = data[0];
+            //get default songs
+            $scope.getSongByArtist( $scope.currentArtist );
+        }
     });
-  
-  
+
+    $scope.selectArtist = function( artist ){
+        $scope.currentArtist = artist;
+        $scope.getSongByArtist( artist );
+    }
+
 
     /******* SCOPE FUNCTIONS *********************/
     $scope.updatePlayMethod = function( playingMethod ){
         if( playingMethod !== $scope.currentPlaylist.playingMethod ){
             $scope.currentPlaylist.playingMethod = playingMethod;
         }
-    }
+    };
     
+    //GET SONG
+    $scope.getSongByArtist = function( artist ){
+        $http.post('/getSongByArtist', artist ).success(function(data, status, headers, config){
+            $scope.currentPlaylist = {};
+            $scope.currentPlaylist.songs = data;
+            $scope.currentPlaylist.playingMethod = "arrow-right";
+            /****INIT PLAYER*******/
+            player.init( $scope );
+        });
+    };
  
     /********************************************
      * MUST NEED WHEN USE PLAYER CONTROL
@@ -103,6 +114,5 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
         }
     }
     /*********************END ADD PLAYER***************************/
- 
+      
 }]);
-

@@ -68,8 +68,8 @@ module.exports = {
     SERVER_HOST : {
       NAME : "alicebox.com",
       //IP : 'http://54.213.237.201:1338'
-      //IP : 'https://192.168.0.11:1337'
-      IP : 'https://10.10.7.122:1337'
+      IP : 'https://192.168.0.11:1337'
+      //IP : 'https://10.10.7.122:1337'
     },
     
     //DROPBOX

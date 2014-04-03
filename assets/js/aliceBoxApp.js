@@ -4,7 +4,7 @@
 
 var aliceBoxApp = angular.module('aliceBoxApp', [
   'ngRoute',
-  'mainPageController','flowUploadPageController','myAllSongsController' , 'myPlaylistController'
+  'mainPageController','flowUploadPageController','myAllSongsController' , 'myPlaylistController' , 'myAlbumController' , 'myArtistController'
 ]).run( function( $rootScope, $location, $http ,$window ) {
     $rootScope.location = '';
     
@@ -61,6 +61,14 @@ aliceBoxApp.config(['$routeProvider',
       .when('/myPlaylist', {
         templateUrl : '/templates/myPlaylist.html',
         controller  : 'myPlaylistController'
+      })
+      .when('/myAlbum', {
+        templateUrl : '/templates/myAlbum.html',
+        controller  : 'myAlbumController'
+      })
+      .when('/myArtist', {
+        templateUrl : '/templates/myArtist.html',
+        controller  : 'myArtistController'
       })
       .otherwise({
         redirectTo: '/home'

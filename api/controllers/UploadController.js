@@ -88,6 +88,27 @@ module.exports = {
                                     tags.title = strTitle;
                                 }    
                             }
+                            if( tags.artist ){
+                                var arrayStr = tags.artist.split( "\u0000");
+                                var strTitle = '';
+                                arrayStr.forEach( function(item){
+                                    strTitle += item;
+                                });
+                                if( arrayStr.length > 0 ){
+                                    tags.artist = strTitle;
+                                }    
+                            }
+                            if( tags.album ){
+                                var arrayStr = tags.album.split( "\u0000");
+                                var strTitle = '';
+                                arrayStr.forEach( function(item){
+                                    strTitle += item;
+                                });
+                                if( arrayStr.length > 0 ){
+                                    tags.album = strTitle;
+                                }    
+                            }
+                            
                             sails.log( tags.title );
                             
                             

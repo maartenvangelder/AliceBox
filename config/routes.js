@@ -162,16 +162,40 @@ module.exports.routes = {
                     controller: 'Playlist',
                     action: 'changeSelectPlaylist'
                 },
+                
                 /******* MYALLSONGS CONTROLLER ACTIONS ****************/
                 '/getMyAllSongs' : {
                     controller: 'MyAllSongs',
                     action: 'getMyAllSongs'
                 },
-                /******* MYALLSONGS CONTROLLER ACTIONS ****************/
+                
+                /******* MY_PLAYLIST_SONGS CONTROLLER ACTIONS ****************/
                 '/searchSongAdvance' : {
                     controller: 'MyPlaylists',
                     action: 'searchSongAdvance'
+                },
+                
+                /******* MY_ALBUM_SONGS CONTROLLER ACTIONS ****************/
+                '/getMyAlbums' : {
+                    controller: 'MyAlbums',
+                    action: 'getMyAlbums'
+                },
+                '/getSongByAlbum' : {
+                    controller: 'MyAlbums',
+                    action: 'getSongByAlbum'
+                },
+                
+                /******* MY_ARTIST_SONGS CONTROLLER ACTIONS ****************/
+                '/getMyArtist' : {
+                    controller: 'MyArtist',
+                    action: 'getMyArtist'
+                },
+                '/getSongByArtist' : {
+                    controller: 'MyArtist',
+                    action: 'getSongByArtist'
                 }
+                
+                
                 
                                
                 

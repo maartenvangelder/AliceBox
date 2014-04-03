@@ -59,6 +59,12 @@ module.exports.policies = {
         MyPlaylistsController: {
             '*': 'authenticated'
         },
+        MyAlbumsController: {
+            '*': 'authenticated'
+        },
+        MyArtistController: {
+            '*': 'authenticated'
+        },
         MemberController: {
             '*': 'authenticated'
         }

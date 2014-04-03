@@ -1,34 +1,45 @@
 'use strict';
 
-/* Controllers */
+var myAlbumController = angular.module('myAlbumController', ['ngResource']);
 
-/* App Module */
+myAlbumController.controller('myAlbumController', ['$rootScope', '$scope', '$location' ,'$log', '$http', 'player' , 'aliceBootbox', 
+    function($rootScope , $scope , $location , $log ,$http , player , aliceBootbox ) {
+    $rootScope.location = 'myAlbum';
 
-var myAllSongsController = angular.module('myAllSongsController', ['ngResource']);
 
-myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope', '$location' ,'$log', '$http', 'player' , 'aliceBootbox', 
-  function($rootScope , $scope , $location , $log ,$http , player , aliceBootbox ) {
-  
-    $rootScope.location = 'myAllSongs';
-    
-    /************ Default loading data ***************/
-    $http.post('/getMyAllSongs', {} ).success(function(data, status, headers, config){
-       $scope.currentPlaylist = {};
-       $scope.currentPlaylist.songs = data;
-       $scope.currentPlaylist.playingMethod = "arrow-right";
-       /****INIT PLAYER*******/
-       player.init( $scope );
+    /************ Default load playlist data ***************/
+    $http.post('/getMyAlbums', {} ).success(function(data, status, headers, config){
+        $scope.myAlbums = data;
+        if( data && data.length > 0 ){
+            $scope.currentAlbum = data[0];
+            //get default songs
+            $scope.getSongByAlbum( $scope.currentAlbum );
+        }
     });
-  
-  
+
+    $scope.selectAlbum = function( album ){
+        $scope.currentAlbum = album;
+        $scope.getSongByAlbum( album );
+    }
+
 
     /******* SCOPE FUNCTIONS *********************/
     $scope.updatePlayMethod = function( playingMethod ){
         if( playingMethod !== $scope.currentPlaylist.playingMethod ){
             $scope.currentPlaylist.playingMethod = playingMethod;
         }
-    }
+    };
     
+    //GET SONG
+    $scope.getSongByAlbum = function( album ){
+        $http.post('/getSongByAlbum', { album : album.album } ).success(function(data, status, headers, config){
+            $scope.currentPlaylist = {};
+            $scope.currentPlaylist.songs = data;
+            $scope.currentPlaylist.playingMethod = "arrow-right";
+            /****INIT PLAYER*******/
+            player.init( $scope );
+        });
+    };
  
     /********************************************
      * MUST NEED WHEN USE PLAYER CONTROL
@@ -103,6 +114,5 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
         }
     }
     /*********************END ADD PLAYER***************************/
- 
+      
 }]);
-
