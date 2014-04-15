@@ -3,10 +3,8 @@
 /* App Module */
 
 var aliceBoxApp = angular.module('aliceBoxApp', [
-  'ngRoute',
-  'mainPageController','flowUploadPageController','myAllSongsController' , 
-  'myPlaylistController' , 'myAlbumController' , 'myArtistController' , 
-  'myProfileController'
+  'ngRoute', 'pascalprecht.translate',
+  'mainPageController','flowUploadPageController','myAllSongsController' , 'myPlaylistController' , 'myAlbumController' , 'myArtistController' ,  'myProfileController'
 ]).run( function( $rootScope, $location, $http ,$window ) {
     $rootScope.location = '';
     
@@ -46,6 +44,7 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
 
 aliceBoxApp.config(['$routeProvider',
   function($routeProvider) {
+   
     $routeProvider.
       when('/home', {
         templateUrl: '/templates/main.html',
