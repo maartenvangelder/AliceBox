@@ -136,7 +136,7 @@
                             <a href="page_special_timeline.html"><i class="fa fa-clock-o"></i>Timeline</a>
                         </li>
                         <li>
-                            <a href="page_special_user_profile.html"><i class="fa fa-pencil-square"></i>User Profile</a>
+                            <a href="#myProfile" ng-class="{ active : location == 'myProfile' }" ><i class="fa fa-pencil-square"></i>User Profile</a>
                         </li>
                         <li>
                             <a href="page_special_message_center.html"><i class="fa fa-envelope-o"></i>Message Center</a>
@@ -396,7 +396,7 @@
                 <!-- END Left Header Navigation -->
 
                 <!-- Header Brand -->
-                <a href="#" class="navbar-brand glyphicon-music">
+                <a class="navbar-brand glyphicon-music">
                     <span>AliceBox</span>
                 </a>
                 <!-- END Header Brand -->
@@ -476,6 +476,7 @@
         <script src="js/myPlaylistController.js"></script>
         <script src="js/myAlbumController.js"></script>
         <script src="js/myArtistController.js"></script>
+        <script src="js/myProfileController.js"></script>
         <script src="js/angular-adaptive-detection.js"></script>
     </body>
 </html>

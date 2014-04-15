@@ -4,7 +4,9 @@
 
 var aliceBoxApp = angular.module('aliceBoxApp', [
   'ngRoute',
-  'mainPageController','flowUploadPageController','myAllSongsController' , 'myPlaylistController' , 'myAlbumController' , 'myArtistController'
+  'mainPageController','flowUploadPageController','myAllSongsController' , 
+  'myPlaylistController' , 'myAlbumController' , 'myArtistController' , 
+  'myProfileController'
 ]).run( function( $rootScope, $location, $http ,$window ) {
     $rootScope.location = '';
     
@@ -69,6 +71,10 @@ aliceBoxApp.config(['$routeProvider',
       .when('/myArtist', {
         templateUrl : '/templates/myArtist.html',
         controller  : 'myArtistController'
+      })
+      .when('/myProfile', {
+        templateUrl : '/templates/myProfile.html',
+        controller  : 'myProfileController'
       })
       .otherwise({
         redirectTo: '/home'
@@ -297,7 +303,7 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
               player.currentScope.error( "The audio playback was aborted due to a corruption problem or because your browser did not support." );
               break;
             case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:              
-              player.currentScope.error( "Either because the server or network failed or format not support. Try remove song form playlist, then reupload it to your playlist." );
+              player.currentScope.error( "Either because the server or network failed or format not support." );
               break;
             default:
               player.currentScope.error( "An unknown error occurred." );
