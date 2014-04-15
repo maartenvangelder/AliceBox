@@ -23,6 +23,10 @@ module.exports = {
               type: 'string'  
             },
             
+            dropBoxQuota : {
+              type: "json"  
+            },
+            
             memberAuthenType:{
               type: "string",
               required : true

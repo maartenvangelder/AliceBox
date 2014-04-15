@@ -23,6 +23,7 @@ module.exports = function(req, res, next){
                     users[0].dropBoxUserId = req.session.user.dropBoxUserId = user.id;
                     users[0].dropBoxToken = user.accessToken;
                     users[0].loginUser.accessToken = req.session.user.accessToken  = user.accessToken;
+                    users[0].dropBoxQuota = user._json.quota_info;
                     users[0].loginUser.provider = req.session.user.provider = "dropbox";
 
                     users[0].save( function( err, model ){
@@ -44,7 +45,10 @@ module.exports = function(req, res, next){
                                          failureRedirect: '/login' } , function( err, user, info ){
 
         if (user) {
-
+             
+             sails.log("===> dropbox info");
+             sails.log(user._json.quota_info);
+             
              async.waterfall([
                  function(callback){
                      Member.find()
@@ -60,7 +64,10 @@ module.exports = function(req, res, next){
                      if( !users || users.length == 0 ){
 
                          sails.log( "=====> NO USER ");
-                         Member.create( { name :  user.displayName , dropBoxUserId : user.id , dropBoxToken: user.accessToken , memberAuthenType : "dropbox" , loginUser : user , themeType : "default" }, function( err , model ){
+                         Member.create( { name :  user.displayName , dropBoxUserId : user.id , 
+                                          dropBoxToken: user.accessToken , dropBoxQuota : user._json.quota_info ,
+                                          memberAuthenType : "dropbox" ,  loginUser : user , themeType : "default" } , 
+                                      function( err , model ){
                            if( err ){ 
                                sails.log( "ERROR:" );
                                sails.log( err ); 
@@ -72,7 +79,7 @@ module.exports = function(req, res, next){
                      }else{
                          sails.log( "=====> HAVE USER ");
                          sails.log( users );
-                         Member.update( { "dropBoxUserId" : user.id } , { dropBoxToken: user.accessToken } ,
+                         Member.update( { "dropBoxUserId" : user.id } , { dropBoxToken: user.accessToken , dropBoxQuota : user._json.quota_info } ,
                               function( err, model ){
 
                               if( err ){ 
