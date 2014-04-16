@@ -10,19 +10,11 @@ var maxListPlaylist = 10;
  * TODO: Bug on update playlist, the current playlist not update in player
  */
 
-var mainPageController = angular.module('mainPageController', ['localization', 'uiSlider', 'ngResource', 'ui.bootstrap', 'adaptive.detection', 'ngTouch']);
+var mainPageController = angular.module('mainPageController', ['uiSlider', 'ngResource', 'ui.bootstrap', 'adaptive.detection', 'ngTouch']);
 
 
-mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log', '$http' ,'player', '$detection', 'aliceBootbox', 'localize',
-  function($rootScope, $scope, $log ,$http , player , $detection , aliceBootbox, localize ) { 
-    
-    $scope.setEnglishLanguage = function() {
-        localize.setLanguage('ja-JP');
-    };
-
-    $scope.setPigLatinLanguage = function() {
-        localize.setLanguage('es-es');
-    };
+mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log', '$http' ,'player', '$detection', 'aliceBootbox',
+  function($rootScope, $scope, $log ,$http , player , $detection , aliceBootbox ) { 
     
     $rootScope.location = 'home';
     

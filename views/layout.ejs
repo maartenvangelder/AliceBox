@@ -186,8 +186,16 @@
             <div class="sidebar-content">
                 <!-- User Info -->
                 <div class="user-info">
-                    <div class="user-details"><a href="page_special_user_profile.html">pixelcave</a><br><em>Web Designer</em></div>
-                    <img src="img/template/avatar.png" alt="Avatar">
+                    <div class="user-details">
+                        <div data-i18n="_Language_"></div>
+                        <img src="img/flag/United-States.png" alt="Us" ng-click="setLanguage('en-US')">
+<!--                    <img src="img/flag/France.png" alt="vn" ng-click="setLanguage('vi-VN')">
+                        <img src="img/flag/Germany.png" alt="vn" ng-click="setLanguage('vi-VN')">
+                        <img src="img/flag/South-Korea.png" alt="vn" ng-click="setLanguage('vi-VN')">-->
+                        <img src="img/flag/Vietnam.png" alt="vn" ng-click="setLanguage('vi-VN')">
+                        <img src="img/flag/Japan.png" alt="jp" ng-click="setLanguage('ja-JP')" >
+                    </div>
+                    <i class="fa fa-flag fa-2x"></i>
                 </div>
                 <!-- END User Info -->
 
@@ -245,7 +253,7 @@
                     
                     <!-- Messages -->
                     <div class="sidebar-section">
-                        <h2 class="sidebar-header">Messages</h2>
+                        <h2 class="sidebar-header"><div data-i18n="_Messages_"></div></h2>
                         <div class="alert alert-info">
                             <small><a href="page_special_user_profile.html">Claire</a>, 2 minutes ago</small><br>
                             Hi John, I just wanted to let you know that.. <a href="page_special_message_center.html">more</a>
@@ -461,7 +469,6 @@
         
         <!-- Angular Resource -->
         <script src="js/lib/angular/angular.js"></script>
-        <script src="js/lib/angular/angular-translate.js"></script>
         <script src="js/lib/angular/angular-route.js"></script>
         <script src="js/lib/angular/angular-slider.js"></script>
         <script src="js/lib/angular/angular-resource.js"></script>

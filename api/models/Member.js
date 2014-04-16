@@ -38,10 +38,14 @@ module.exports = {
               required : true
             },
             
-            /******PESONAL THEMES******/
+            /****** PESONALITY******/
             themeType:{
               type: "string",
               required : false
+            },
+            
+            myLocale:{
+              type: "string"
             }
             
 	  }

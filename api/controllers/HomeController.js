@@ -70,6 +70,20 @@ module.exports = {
                 res.json( model );
             });
         });
+    },
+    
+    updateLocale : function( req, res ){
+        Member.find().where( { id :  req.session.user.id } ).exec( function( err, users ){
+            users[0].myLocale = req.body.myLocale ;
+            users[0].save( function( err, model ){
+                        if( err ){ 
+                            sails.log( "ERROR:" + err );
+                        };
+                sails.log( "====> Update theme : " + model );
+                req.session.user = model;
+                res.json( model );
+            });
+        });
     }
 };
 

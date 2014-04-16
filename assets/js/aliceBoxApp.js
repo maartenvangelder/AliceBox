@@ -3,13 +3,19 @@
 /* App Module */
 
 var aliceBoxApp = angular.module('aliceBoxApp', [
-  'ngRoute',
+  'ngRoute', 'localization',
   'mainPageController','flowUploadPageController','myAllSongsController' , 'myPlaylistController' , 'myAlbumController' , 'myArtistController' ,  'myProfileController'
-]).run( function( $rootScope, $location, $http ,$window ) {
+]).run( function( $rootScope, $location, $http ,$window , localize ) {
     $rootScope.location = '';
     
     $http.post('/getUserInfo', {} ).success(function( user , status, headers, config){
         $rootScope.userInfo = user; 
+        
+        //SET LOCALE
+        if( user.myLocale ){
+            localize.setLanguage( user.myLocale );
+        }
+        //SET THEME
         switch ( $rootScope.userInfo.themeType ){
             case "default":
                 $rootScope.themes = 'css/themes.css';
@@ -40,6 +46,14 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
         });
     }
     
+    /**** LANGUAGE ******/
+    $rootScope.setLanguage = function( language ) {
+        localize.setLanguage( language );
+        $http.post('/updateLocale', { myLocale : language } ).success(function( user , status, headers, config){
+            $rootScope.userInfo = user;
+        });
+    };
+   
 });
 
 aliceBoxApp.config(['$routeProvider',

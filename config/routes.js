@@ -120,7 +120,10 @@ module.exports.routes = {
                     controller: 'Home',
                     action: 'updateThemes'
                 },
-                
+                '/updateLocale':{
+                    controller: 'Home',
+                    action: 'updateLocale'
+                },
                 
                 /************ UPLOAD CONTROLLER ACTION **********************/
                 'get /upload':{
