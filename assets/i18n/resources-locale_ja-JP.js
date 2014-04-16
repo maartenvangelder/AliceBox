@@ -1,7 +1,7 @@
 [
     {
         "key":"_Greeting_",
-        "value":"こんにちは",
+        "value":"\u3053\u3093\u306b\u3061\u306f",
         "description":"Home page greeting text"
     },
     {
