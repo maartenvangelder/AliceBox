@@ -63,6 +63,41 @@
         "key":"_Album_",
         "value":"Album",
         "description":"Album"
+    },
+    {
+        "key":"_Personal_",
+        "value":"Personal",
+        "description":"Personal"
+    },
+    {
+        "key":"_Timeline_",
+        "value":"Timeline",
+        "description":"Timeline"
+    },
+    {
+        "key":"_User_Profile_",
+        "value":"User Profile",
+        "description":"User Profile"
+    },
+    {
+        "key":"_Message_Center_",
+        "value":"Message Center",
+        "description":"_Message_Center_"
+    },
+    {
+        "key":"_Logout_",
+        "value":"Logout",
+        "description":"Logout"
+    },
+    {
+        "key":"_Change_Color_Themes_",
+        "value":"Change Color Themes",
+        "description":"Change Color Themes"
+    },
+    {
+        "key":"Notifications",
+        "value":"Notifications",
+        "description":"Notifications"
     }
     
     
