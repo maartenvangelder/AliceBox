@@ -5,7 +5,7 @@
         <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
         <a href="" class="header-title-link">
             <h3>
-               Welcome {{User.name}} !!<br><small>Now, you can play your music every where.</small>
+                <m data-i18n="_Welcome_"></m> {{User.name}} !!<br><small data-i18n="_Now_you_can_play_your_music_every_where_"></small>
             </h3>
         </a>
     </div>
@@ -25,17 +25,17 @@
                 <div class="block-options pull-right">
                     <div class="btn-group btn-group-sm">
                         <a href="javascript:void(0)" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            <div ng-show="Search.permission=='world'"><i class="glyphicon-globe" ></i> World <span class="caret"></span></div>
-                            <div ng-show="Search.permission=='me'"><i class="glyphicon-lock" ></i> Me <span class="caret"></span></div>
+                            <div ng-show="Search.permission=='world'"><i class="glyphicon-globe" ></i> <b data-i18n="_World_" ></b> <span class="caret"></span></div>
+                            <div ng-show="Search.permission=='me'"><i class="glyphicon-lock" ></i> <b data-i18n="_Me_" ></b> <span class="caret"></span></div>
                         </a>
                         <ul class="dropdown-menu pull-right">
-                            <li ng-click="changeSearchPermission('world')"><a>World</a></li>
+                            <li ng-click="changeSearchPermission('world')"><a data-i18n="_World_"></a></li>
                             <!--<li><a>Friends</a></li>-->
-                            <li ng-click="changeSearchPermission('me')"><a>Me</a></li>
+                            <li ng-click="changeSearchPermission('me')"><a data-i18n="_Me_"></a></li>
                         </ul>
                     </div>
                 </div>
-                <h2><i class="fa fa-search"></i> Search Songs</h2>
+                <h2><i class="fa fa-search"></i> <b data-i18n="_Search_Songs_" ></b></h2>
             </div>
             <div class="input-group">
                 <input type="text" id="search-term" name="search-term" class="form-control" ng-model="Search.word" ng-change="searchSong( currentPlaylist.songs )" >
@@ -66,14 +66,14 @@
         <div class="block full">
             <!-- Block Title -->
             <div class="block-title" >
-                <h2><i class="glyphicon-playlist"></i> My Playlist</h2>
+                <h2><i class="glyphicon-playlist"></i> <b data-i18n="_My_Playlist_" ></b></h2>
                 <div class="block-options pull-right">
                     <div class="btn-group btn-group-sm">
                         <a  class="btn btn-success dropdown-toggle" data-toggle="dropdown">{{currentPlaylist.name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right">
                             <li ng-repeat="List in Playlists" ng-click="changeSelectPlaylist( List.id )" ><a>{{List.name}}</a></li>
                             <li class="divider"></li>
-                            <li class="active"><a ng-click="addPlaylist()" ><i class="fa fa-plus"></i> New Playlist</a></li>
+                            <li class="active"><a ng-click="addPlaylist()" ><i class="fa fa-plus"></i> <b data-i18n="_New_Playlist_" ></b></a></li>
                         </ul>
                     </div>
                 </div>
@@ -110,9 +110,9 @@
             </div>
             <!-- PLAYING INFO -->
             <div class="text-left">
-                <div class="label label-default" ng-show="buffered > 0 && buffered < 100" >Loaded: {{buffered}}%</div>
-                <div class="label label-warning" >Time : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
-                <div class="label label-info" >Playing : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
+                <div class="label label-default" ng-show="buffered > 0 && buffered < 100" ><m data-i18n="_Loaded_"></m>: {{buffered}}%</div>
+                <div class="label label-warning" ><m data-i18n="_Time_"></m> : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
+                <div class="label label-info" ><m data-i18n="_Playing_"></m> : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
             </div>
             <p></p>
             
@@ -122,8 +122,8 @@
                     <span class="pull-right" ng-show="!Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-down"></div></span>
                     <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
                     <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist($index)" >Delete</div>
-                    <p class="list-group-item-text" ng-show="Song.showDetails" >Artist : {{Song.artist}}</p>
-                    <p class="list-group-item-text" ng-show="Song.showDetails" >Album : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
+                    <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Artist_"></m> : {{Song.artist}}</p>
+                <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Album_"></m> : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
                 </a>
             </div>
             

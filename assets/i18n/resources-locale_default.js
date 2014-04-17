@@ -95,13 +95,59 @@
         "description":"Change Color Themes"
     },
     {
-        "key":"Notifications",
+        "key":"_Notifications_",
         "value":"Notifications",
         "description":"Notifications"
+    },
+    
+    
+    
+    
+    {
+        "key":"_Now_you_can_play_your_music_every_where_",
+        "value":"Now, you can play your music every where.",
+        "description":"welcome title home page"
+    },
+    {
+        "key":"_World_",
+        "value":"World",
+        "description":"World"
+    },
+    {
+        "key":"_Me_",
+        "value":"Me",
+        "description":"Me"
+    },
+    {
+        "key":"_Search_Songs_",
+        "value":"Search Songs",
+        "description":"Search Songs"
+    },
+    {
+        "key":"_My_Playlist_",
+        "value":"My Playlist",
+        "description":"My Playlist"
+    },
+    {
+        "key":"_New_Playlist_",
+        "value":"New Playlist",
+        "description":"New Playlist"
+    },
+    {
+        "key":"_Time_",
+        "value":"Time",
+        "description":"Time"
+    },
+    {
+        "key":"_Loaded_",
+        "value":"Loaded",
+        "description":"Loaded"
+    },
+    {
+        "key":"_Playing_",
+        "value":"Playing",
+        "description":"Playing"
     }
-    
-    ////////////////
-    
     
     
 ]
