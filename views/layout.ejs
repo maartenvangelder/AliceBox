@@ -92,40 +92,40 @@
                     <!-- Sidebar Navigation -->
                     <ul class="sidebar-nav">
                         <li>
-                            <h2 class="sidebar-header">Welcome</h2>
+                            <h2 class="sidebar-header"><div data-i18n="_Welcome_"></div></h2>
                         </li>
                         <li>
-                            <a href="#" ng-class="{ active : location == 'home' }" ><i class="fa fa-coffee"></i>Home</a>
+                            <a href="#" ng-class="{ active : location == 'home' }" ><i class="fa fa-coffee"></i><div data-i18n="_Home_"></div></a>
                         </li>
                         <li >
-                            <h2 class="sidebar-header">Upload Songs</h2>
+                            <h2 class="sidebar-header"><div data-i18n="_Upload_Songs_"></div></h2>
                         </li>
                         <% if(req.session.user.dropBoxUserId ) { %>
                         <li>
-                            <a href="#upload" ng-class="{ active : location == 'upload' }" ><i class="fa fa-dropbox"></i>To My Dropbox</a>
+                            <a href="#upload" ng-class="{ active : location == 'upload' }" ><i class="fa fa-dropbox"></i><div data-i18n="_To_My_Dropbox_"></div></a>
                         </li>
                         <% } else { %>
                         <li ng-show="!$root.isIPhone" >
-                            <a href="/reLoginDropBox" ><i class="fa fa-external-link"></i>Login To Dropbox</a>
+                            <a href="/reLoginDropBox" ><i class="fa fa-external-link"></i><div data-i18n="_Login_To_Dropbox_"></div></a>
                         </li>
                         <% } %>
                         <li>
-                            <h2 class="sidebar-header">My Music</h2>
+                            <h2 class="sidebar-header"><div data-i18n="_My_Music_"></div></h2>
                         </li>
                         <li>
-                            <a href="#" class="menu-link"><i class="fa fa-headphones"></i>Listen</a>
+                            <a href="#" class="menu-link"><i class="fa fa-headphones"></i><div data-i18n="_Listen_"></div></a>
                             <ul>
                                 <li>
-                                    <a href="#myAllSongs" ng-class="{ active : location == 'myAllSongs' }" >All Songs</a>
+                                    <a href="#myAllSongs" ng-class="{ active : location == 'myAllSongs' }" ><div data-i18n="_All_Songs_"></div></a>
                                 </li>
                                 <li>
-                                    <a href="#myPlaylist" ng-class="{ active : location == 'myPlaylist' }" >Playlist</a>
+                                    <a href="#myPlaylist" ng-class="{ active : location == 'myPlaylist' }" ><div data-i18n="_Playlist_"></div></a>
                                 </li>
                                 <li>
-                                    <a href="#myArtist" ng-class="{ active : location == 'myArtist' }" >Artist</a>
+                                    <a href="#myArtist" ng-class="{ active : location == 'myArtist' }" ><div data-i18n="_Artist_"></div></a>
                                 </li>
                                 <li>
-                                    <a href="#myAlbum" ng-class="{ active : location == 'myAlbum' }">Album</a>
+                                    <a href="#myAlbum" ng-class="{ active : location == 'myAlbum' }"><div data-i18n="_Album_"></div></a>
                                 </li>
                             </ul>
                         </li>
