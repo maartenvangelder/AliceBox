@@ -146,9 +146,125 @@
         "key":"_Playing_",
         "value":"Playing",
         "description":"Playing"
+    },
+    
+    
+    {
+        "key":"_******UPLOAD_SONGS********_",
+        "value":"UPLOAD SONGS",
+        "description":"UPLOAD SONGS"
+    },
+    {
+        "key":"_Upload_Songs_",
+        "value":"Upload Songs",
+        "description":"Upload Songs"
+    },
+    {
+        "key":"_Save_your_songs_to_your_Dropbox._",
+        "value":"Save your songs to your Dropbox.",
+        "description":"Save your songs to your Dropbox."
+    },
+    {
+        "key":"_Select_your_songs_",
+        "value":"Select your songs : ( up to 20 per playlist )",
+        "description":"Select your songs : ( up to 20 per playlist )"
+    },
+    {
+        "key":"_Playlist_",
+        "value":"Playlist",
+        "description":"Playlist"
+    },
+    {
+        "key":"_Share_to_",
+        "value":"Share to",
+        "description":"Share to"
+    },
+    {
+        "key":"_List_Songs_",
+        "value":"List Songs",
+        "description":"List Songs"
+    },
+    {
+        "key":"_Total_",
+        "value":"Total",
+        "description":"Total"
+    },
+    {
+        "key":"_Files_",
+        "value":"Files",
+        "description":"Files"
+    },
+    {
+        "key":"_File Name_",
+        "value":"File Name",
+        "description":"File Name"
+    },
+    {
+        "key":"_Size_",
+        "value":"Size",
+        "description":"Size"
+    },
+    {
+        "key":"_Progress_",
+        "value":"Progress",
+        "description":"Progress"
+    },
+    {
+        "key":"_Status_",
+        "value":"Status",
+        "description":"Status"
+    },
+    {
+        "key":"_Actions_",
+        "value":"Actions",
+        "description":"Actions"
+    },
+    {
+        "key":"_Upload_Process_",
+        "value":"Upload Process",
+        "description":"Upload Process"
+    },
+    {
+        "key":"_Remove_",
+        "value":"Remove",
+        "description":"Remove"
+    },
+    {
+        "key":"_Cancel_",
+        "value":"Cancel",
+        "description":"Cancel"
+    },
+    {
+        "key":"_Upload_",
+        "value":"Upload",
+        "description":"Upload"
     }
     
-    
+    ,{
+        "key":"_******MY_ALL_SONGS********_",
+        "value":"MY ALL SONGS",
+        "description":"MY ALL SONGS"
+    },
+    {
+        "key":"_My_Uploaded_Songs_",
+        "value":"My Uploaded Songs",
+        "description":"My Uploaded Songs"
+    },
+    {
+        "key":"_Play_your_songs_uploaded_on_your_dropbox_",
+        "value":"Play your songs uploaded on your dropbox.",
+        "description":"Play your songs uploaded on your dropbox."
+    },
+    {
+        "key":"_My_Songs_",
+        "value":"My Songs",
+        "description":"My Songs"
+    },
+    {
+        "key":"_Year_",
+        "value":"Year",
+        "description":"Year"
+    }
     
     
 ]

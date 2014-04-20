@@ -146,7 +146,125 @@
         "key":"_Playing_",
         "value":"\u6b4c\u66f2",
         "description":"Playing"
+    },
+    
+    
+    {
+        "key":"_******UPLOAD_SONGS********_",
+        "value":"UPLOAD SONGS",
+        "description":"UPLOAD SONGS"
+    },
+    {
+        "key":"_Upload_Songs_",
+        "value":"\u66f2\u3092\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9",
+        "description":"Upload Songs"
+    },
+    {
+        "key":"_Save_your_songs_to_your_Dropbox._",
+        "value":"\u3042\u306a\u305f\u306e\u66f2\u3092\u0044\u0072\u006f\u0070\u0062\u006f\u0078\u306b\u4fdd\u5b58",
+        "description":"Save your songs to your Dropbox."
+    },
+    {
+        "key":"_Select_your_songs_",
+        "value":"\u3042\u306a\u305f\u306e\u66f2\u3092\u9078\u629e \uff1a\uff08\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8\u3054\u3068\u306b\u0032\u0030\u500b\u307e\u3067\uff09",
+        "description":"Select your songs : ( up to 20 per playlist )"
+    },
+    {
+        "key":"_Playlist_",
+        "value":"\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8",
+        "description":"Playlist"
+    },
+    {
+        "key":"_Share_to_",
+        "value":"\u5171\u6709\u3078",
+        "description":"Share to"
+    },
+    {
+        "key":"_List_Songs_",
+        "value":"\u66f2\u30ea\u30b9\u30c8",
+        "description":"List Songs"
+    },
+    {
+        "key":"_Total_",
+        "value":"\u7dcf\u6570",
+        "description":"Total"
+    },
+    {
+        "key":"_Files_",
+        "value":"\u30d5\u30a1\u30a4\u30eb",
+        "description":"Files"
+    },
+    {
+        "key":"_File Name_",
+        "value":"\u30d5\u30a1\u30a4\u30eb\u540d",
+        "description":"File Name"
+    },
+    {
+        "key":"_Size_",
+        "value":"\u30b5\u30a4\u30ba",
+        "description":"Size"
+    },
+    {
+        "key":"_Progress_",
+        "value":"\u9032\u6357",
+        "description":"Progress"
+    },
+    {
+        "key":"_Status_",
+        "value":"\u30b9\u30c6\u30fc\u30bf\u30b9",
+        "description":"Status"
+    },
+    {
+        "key":"_Actions_",
+        "value":"\u30a2\u30af\u30b7\u30e7\u30f3",
+        "description":"Actions"
+    },
+    {
+        "key":"_Upload_Process_",
+        "value":"\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u4e2d",
+        "description":"Upload Process"
+    },
+    {
+        "key":"_Remove_",
+        "value":"\u524a\u9664",
+        "description":"Remove"
+    },
+    {
+        "key":"_Cancel_",
+        "value":"\u30ad\u30e3\u30f3\u30bb\u30eb",
+        "description":"Cancel"
+    },
+    {
+        "key":"_Upload_",
+        "value":"\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9",
+        "description":"Upload"
     }
     
+    
+    ,{
+        "key":"_******MY_ALL_SONGS********_",
+        "value":"MY ALL SONGS",
+        "description":"MY ALL SONGS"
+    },
+    {
+        "key":"_My_Uploaded_Songs_",
+        "value":"\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3057\u305f\u66f2",
+        "description":"My Uploaded Songs"
+    },
+    {
+        "key":"_Play_your_songs_uploaded_on_your_dropbox_",
+        "value":"\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3055\u308c\u305f\u66f2\u3092\u30d7\u30ec\u30fc",
+        "description":"Play your songs uploaded on your dropbox."
+    },
+    {
+        "key":"_My_Songs_",
+        "value":"\u79c1\u306e\u6b4c",
+        "description":"My Songs"
+    },
+    {
+        "key":"_Year_",
+        "value":"\u5e74",
+        "description":"Year"
+    }
     
 ]

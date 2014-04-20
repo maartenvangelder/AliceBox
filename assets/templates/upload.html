@@ -5,57 +5,57 @@
         <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
         <a href="" class="header-title-link">
             <h1>
-                <i class="fa fa-cloud-upload animation-expandUp"></i>Upload Songs<br><small>Save your songs to your Dropbox.</small>
+                <i class="fa fa-cloud-upload animation-expandUp"></i><m data-i18n="_Upload_Songs_"></m><br><small data-i18n="_Save_your_songs_to_your_Dropbox._"></small>
             </h1>
         </a>
     </div>
-    <ul class="breadcrumb breadcrumb-top">
+<!--    <ul class="breadcrumb breadcrumb-top">
         <li><i class="fa fa-file-o"></i></li>
         <li>Home</li>
         <li><a href="">Upload Songs</a></li>
-    </ul>
+    </ul>-->
     <!-- END Blank Header -->                      
     <!-- Blank Content -->
     <!-- START UPLOAD FORM -->
     <div>
         <div class="form-horizontal">
             <div class="form-group">
-                <label class="control-label" for="example-text-input">Select your songs : ( up to 20 per playlist )</label>
+                <label class="control-label" for="example-text-input"><b data-i18n="_Select_your_songs_"></b></label>
                 <div>
                     <input ng-file-select type="file" class="btn-default"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label" for="example-multiple-select">Playlist :</label>
+                <label class="control-label" for="example-multiple-select"><b data-i18n="_Playlist_"></b> :</label>
                 <div>
                     <select ng-model="playlistId" class="form-control" size="3" ng-options="p.id as p.name for p in playlists" multiple >
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label" for="example-select">Share to:</label>
+                <label class="control-label" for="example-select"><b data-i18n="_Share_to_"></b>:</label>
                 <div>
                     <select class="form-control" size="1" ng-model="defaultPer" ng-options="c.name as c.value for c in permissions">
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label" for="example-select">List Songs:</label>
+                <label class="control-label" for="example-select"><b data-i18n="_List_Songs_"></b>:</label>
                 <div>
                     <div class="block full">
                         <div class="block-title">
-                            <div class="block-options pull-right">Total : {{ uploader.queue.length }}</div>
-                            <h2><i class="fa fa-tasks"></i> Files</h2>
+                            <div class="block-options pull-right"><b data-i18n="_Total_"></b> : {{ uploader.queue.length }}</div>
+                            <h2><i class="fa fa-tasks"></i> <b data-i18n="_Files_"></b></h2>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>File Name</th>
-                                        <th ng-show="uploader.isHTML5">Size</th>
-                                        <th ng-show="uploader.isHTML5">Progress</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th><div data-i18n="_File_Name_"></div></th>
+                                        <th ng-show="uploader.isHTML5"><div data-i18n="_Size_"></div></th>
+                                        <th ng-show="uploader.isHTML5"><div data-i18n="_Progress_"></div></th>
+                                        <th><div data-i18n="_Status_"></div></th>
+                                        <th><div data-i18n="_Actions_"></div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +77,7 @@
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                                                <span class="glyphicon-remove"></span> Remove
+                                                <span class="glyphicon-remove"></span> <m data-i18n="_Remove_"></m>
                                             </button>
                                         </td>
                 <!--                        <td>
@@ -98,7 +98,7 @@
                         <div class="divider">
                             <div >
                                 <p>
-                                    Upload Process:
+                                    <m data-i18n="_Upload_Process_"></m>:
                                     <div class="progress progress-striped active" style="">
                                         <div class="progress-bar progress-bar-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
                                     </div>
@@ -115,13 +115,13 @@
     <!-- END UPLOAD FROM -->
     <div>
         <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-            <span class="glyphicon-upload"></span> Upload 
+            <span class="glyphicon-upload"></span> <b data-i18n="_Upload_"></b> 
         </button>
         <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-            <span class="glyphicon-ban"></span> Cancel 
+            <span class="glyphicon-ban"></span> <b data-i18n="_Cancel_"></b>
         </button>
         <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-            <span class="glyphicon-remove"></span> Remove 
+            <span class="glyphicon-remove"></span> <b data-i18n="_Remove_"></b>
         </button>
     </div>
     
