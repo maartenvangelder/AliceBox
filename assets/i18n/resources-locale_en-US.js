@@ -266,5 +266,112 @@
         "description":"Year"
     }
     
+    ,{
+        "key":"_******MY_ALL_ALBUM********_",
+        "value":"MY ALL ALBUM",
+        "description":"MY ALL ALBUM"
+    },
+    {
+        "key":"_My_Album_",
+        "value":"My Album",
+        "description":"My Album"
+    },
+    {
+        "key":"_Play_your_album._",
+        "value":"Play your album.",
+        "description":"Play your album."
+    },
+    {
+        "key":"_My_Albums_",
+        "value":"My Albums",
+        "description":"My Albums"
+    },
+    {
+        "key":"_Name_",
+        "value":"Name",
+        "description":"Name"
+    }
+    
+    ,{
+        "key":"_******MY_ALL_ARTIST********_",
+        "value":"MY ALL ARTIST",
+        "description":"MY ALL ARTIST"
+    },
+    {
+        "key":"_My_Artist_",
+        "value":"My Artist",
+        "description":"My Artist"
+    },
+    {
+        "key":"_Play_your_artist's_song._",
+        "value":"Play your artist's song.",
+        "description":"Play your artist's song."
+    },
+    {
+        "key":"_Artist_Name",
+        "value":"Artist Name",
+        "description":"Artist Name"
+    }
+    
+    ,{
+        "key":"_******MY_ALL_ARTIST********_",
+        "value":"MY ALL ARTIST",
+        "description":"MY ALL ARTIST"
+    },
+    {
+        "key":"_Play_your_songs_in_your_playlists_",
+        "value":"Play your songs in your playlists",
+        "description":"Play your songs in your playlists"
+    },
+    {
+        "key":"_Add_",
+        "value":"Add",
+        "description":"Add"
+    },
+    {
+        "key":"_Action_",
+        "value":"Action",
+        "description":"Action"
+    },
+    {
+        "key":"_Search_",
+        "value":"Search",
+        "description":"Search"
+    },
+    {
+        "key":"_Delete_",
+        "value":"Delete",
+        "description":"Delete"
+    },
+    {
+        "key":"_Search_Songs_To_Playlist_",
+        "value":"Search Songs To Playlist",
+        "description":"Search Songs To Playlist"
+    },
+    {
+        "key":"_Song_",
+        "value":"Song",
+        "description":"Song"
+    },
+    {
+        "key":"_Close_",
+        "value":"Close",
+        "description":"Close"
+    },
+    {
+        "key":"_Add_Playlist_",
+        "value":"Add Playlist",
+        "description":"Add Playlist"
+    },
+    {
+        "key":"_Save_",
+        "value":"Save",
+        "description":"Save"
+    },
+    {
+        "key":"_LOADING_",
+        "value":"LOADING",
+        "description":"LOADING"
+    }
     
 ]

@@ -145,7 +145,7 @@
     },
     {
         "key":"_Playing_",
-        "value":"\u0110\u0061\u006e\u0067 \u0063\u0068\u01a1\u0069 \u0063\u0061 \u006b\u0068\u00fa\u0063",
+        "value":"\u0043\u0061 \u006b\u0068\u00fa\u0063",
         "description":"Playing"
     },
     
@@ -262,4 +262,113 @@
         "description":"Year"
     }
     
+    
+    ,{
+        "key":"_******MY_ALL_ALBUM********_",
+        "value":"MY ALL ALBUM",
+        "description":"MY ALL ALBUM"
+    },
+    {
+        "key":"_My_Album_",
+        "value":"\u0041\u006c\u0062\u0075\u006d \u0063\u1ee7\u0061 \u0074\u00f4\u0069",
+        "description":"My Album"
+    },
+    {
+        "key":"_Play_your_album._",
+        "value":"\u0043\u0068\u01a1\u0069 \u0041\u006c\u0062\u0075\u006d \u0063\u1ee7\u0061 \u0062\u1ea1\u006e",
+        "description":"Play your album."
+    },
+    {
+        "key":"_My_Albums_",
+        "value":"\u0041\u006c\u0062\u0075\u006d \u0063\u1ee7\u0061 \u0074\u00f4\u0069",
+        "description":"My Albums"
+    },
+    {
+        "key":"_Name_",
+        "value":"\u0054\u00ea\u006e \u0061\u006c\u0062\u0075\u006d",
+        "description":"Name"
+    }
+    
+    ,{
+        "key":"_******MY_ALL_ARTIST********_",
+        "value":"MY ALL ARTIST",
+        "description":"MY ALL ARTIST"
+    },
+    {
+        "key":"_My_Artist_",
+        "value":"\u0043\u0061 \u0073\u0129\u002f\u004e\u0068\u00f3\u006d \u006e\u0068\u1ea1\u0063 \u0063\u1ee7\u0061 \u0074\u00f4\u0069",
+        "description":"My Artist"
+    },
+    {
+        "key":"_Play_your_artist's_song._",
+        "value":"\u0043\u0068\u01a1\u0069 \u006e\u0068\u1ea1\u0063 \u0063\u1ee7\u0061 \u0063\u00e1\u0063 \u0063\u0061 \u0073\u0129\u002f\u006e\u0068\u00f3\u006d \u006e\u0068\u1ea1\u0063 \u0063\u1ee7\u0061 \u0062\u1ea1\u006e",
+        "description":"Play your artist's song."
+    },
+    {
+        "key":"_Artist_Name",
+        "value":"\u0054\u00ea\u006e \u0063\u0061 \u0073\u0129\u002f\u006e\u0068\u00f3\u006d \u006e\u0068\u1ea1\u0063",
+        "description":"Artist Name"
+    }
+    
+    
+    ,{
+        "key":"_******MY_ALL_ARTIST********_",
+        "value":"MY ALL ARTIST",
+        "description":"MY ALL ARTIST"
+    },
+    {
+        "key":"_Play_your_songs_in_your_playlists_",
+        "value":"\u0043\u0068\u01a1\u0069 \u0063\u00e1\u0063 \u0063\u0061 \u006b\u0068\u00fa\u0063 \u0074\u0072\u006f\u006e\u0067 \u0064\u0061\u006e\u0068 \u0073\u00e1\u0063\u0068 \u006e\u0068\u1ea1\u0063",
+        "description":"Play your songs in your playlists"
+    },
+    {
+        "key":"_Add_",
+        "value":"\u0054\u0068\u00ea\u006d",
+        "description":"Add"
+    },
+    {
+        "key":"_Action_",
+        "value":"\u0054\u0068\u0061\u006f \u0074\u00e1\u0063",
+        "description":"Action"
+    },
+    {
+        "key":"_Search_",
+        "value":"\u0054\u00ec\u006d \u006b\u0069\u1ebf\u006d",
+        "description":"Search"
+    },
+    {
+        "key":"_Delete_",
+        "value":"\u0058\u00f3\u0061",
+        "description":"Delete"
+    },
+    {
+        "key":"_Search_Songs_To_Playlist_",
+        "value":"\u0054\u00ec\u006d \u0063\u0061 \u006b\u0068\u00fa\u0063 \u0063\u0068\u006f \u0064\u0061\u006e\u0068 \u0073\u00e1\u0063\u0068 \u006e\u00e0\u0079",
+        "description":"Search Songs To Playlist"
+    },
+    {
+        "key":"_Song_",
+        "value":"\u0043\u0061 \u006b\u0068\u00fa\u0063",
+        "description":"Song"
+    },
+    {
+        "key":"_Close_",
+        "value":"\u0110\u00f3\u006e\u0067",
+        "description":"Close"
+    },
+    {
+        "key":"_Add_Playlist_",
+        "value":"\u0054\u0068\u00ea\u006d \u0064\u0061\u006e\u0068 \u0073\u00e1\u0063\u0068 \u006e\u0068\u1ea1\u0063",
+        "description":"Add Playlist"
+    },
+    {
+        "key":"_Save_",
+        "value":"\u004c\u01b0\u0075",
+        "description":"Save"
+    },
+    {
+        "key":"_LOADING_",
+        "value":"\u0110\u0061\u006e\u0067 \u0074\u1ea3\u0069",
+        "description":"LOADING"
+    }
 ]

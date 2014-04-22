@@ -44,7 +44,7 @@
                 </span>
             </div>
             <p></p>
-            <div>
+            <div class="table-responsive">
                 <table id="general-table" class="table">
                     <tbody>
                         <tr ng-repeat="Song in SearchedSongs">
@@ -117,7 +117,7 @@
             <p></p>
             
             <!-- PLAYLIST -->
-            <div class="list-group">
+            <div class="list-group table-responsive">
                 <a class="list-group-item" ng-repeat="Song in currentPlaylist.songs" ng-class="isActive($index)">
                     <span class="pull-right" ng-show="!Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-down"></div></span>
                     <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
@@ -140,7 +140,7 @@
        <div class="modal-content">
            <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">LOADING.....</h4>
+               <h4 class="modal-title"><b data-i18n="_LOADING_"></b>.....</h4>
            </div>
            <div class="modal-body text-center">
                <div class="fa fa-gear fa-spin fa-4x"></div>
@@ -155,12 +155,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal Title</h4>
+                <h4 class="modal-title"><b data-i18n="_Add_Playlist_" ></b></h4>
             </div>
             <div class="modal-body">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="example-text-input">Name : </label>
+                        <label class="col-md-3 control-label" for="example-text-input"><b data-i18n="_Name_" ></b> : </label>
                         <div class="col-md-5">
                             <input type="text" id="example-text-input" name="playListName" ng-model="newPlaylist.name" class="form-control" placeholder="Playlist's name">
                             <!--<span class="help-block">This is a help text</span>-->
@@ -169,8 +169,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="addPlaylist()">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><b data-i18n="_Close_" ></b></button>
+                <button type="button" class="btn btn-primary" ng-click="addPlaylist()"><b data-i18n="_Save_" ></b></button>
             </div>
         </div>
     </div>

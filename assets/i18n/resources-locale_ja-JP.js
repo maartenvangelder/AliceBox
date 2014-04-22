@@ -124,7 +124,7 @@
     },
     {
         "key":"_My_Playlist_",
-        "value":"\u79c1\u306e\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8",
+        "value":"\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8",
         "description":"My Playlist"
     },
     {
@@ -265,6 +265,114 @@
         "key":"_Year_",
         "value":"\u5e74",
         "description":"Year"
+    }
+    
+    ,{
+        "key":"_******MY_ALL_ALBUM********_",
+        "value":"MY ALL ALBUM",
+        "description":"MY ALL ALBUM"
+    },
+    {
+        "key":"_My_Album_",
+        "value":"\u30de\u30a4\u30a2\u30eb\u30d0\u30e0",
+        "description":"My Album"
+    },
+    {
+        "key":"_Play_your_album._",
+        "value":"\u79c1\u306e\u30a2\u30eb\u30d0\u30e0\u3092\u518d\u751f",
+        "description":"Play your album."
+    },
+    {
+        "key":"_My_Albums_",
+        "value":"\u30de\u30a4\u30a2\u30eb\u30d0\u30e0",
+        "description":"My Albums"
+    },
+    {
+        "key":"_Name_",
+        "value":"\u30a2\u30eb\u30d0\u30e0\u540d",
+        "description":"Name"
+    }
+    
+    ,{
+        "key":"_******MY_ALL_ARTIST********_",
+        "value":"MY ALL ARTIST",
+        "description":"MY ALL ARTIST"
+    },
+    {
+        "key":"_My_Artist_",
+        "value":"\u79c1\u306e\u30a2\u30fc\u30c6\u30a3\u30b9\u30c8",
+        "description":"My Artist"
+    },
+    {
+        "key":"_Play_your_artist's_song._",
+        "value":"\u30de\u30a4\u30a2\u30fc\u30c6\u30a3\u30b9\u30c8\u306e\u66f2\u3092\u30d7\u30e9\u30a4",
+        "description":"Play your artist's song."
+    },
+    {
+        "key":"_Artist_Name",
+        "value":"\u30a2\u30fc\u30c6\u30a3\u30b9\u30c8\u540d",
+        "description":"Artist Name"
+    }
+    
+    ,{
+        "key":"_******MY_ALL_ARTIST********_",
+        "value":"MY ALL ARTIST",
+        "description":"MY ALL ARTIST"
+    },
+    {
+        "key":"_Play_your_songs_in_your_playlists_",
+        "value":"\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8\u306e\u66f2\u3092\u805e\u304f",
+        "description":"Play your songs in your playlists"
+    },
+    {
+        "key":"_Add_",
+        "value":"\u8ffd\u52a0",
+        "description":"Add"
+    },
+    {
+        "key":"_Action_",
+        "value":"\u30a2\u30af\u30b7\u30e7\u30f3",
+        "description":"Action"
+    },
+    {
+        "key":"_Search_",
+        "value":"\u691c\u7d22",
+        "description":"Search"
+    },
+    {
+        "key":"_Delete_",
+        "value":"\u524a\u9664",
+        "description":"Delete"
+    },
+    {
+        "key":"_Search_Songs_To_Playlist_",
+        "value":"\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8\u306e\u66f2\u3092\u691c\u7d22",
+        "description":"Search Songs To Playlist"
+    },
+    {
+        "key":"_Song_",
+        "value":"\u6b4c\u66f2",
+        "description":"Song"
+    },
+    {
+        "key":"_Close_",
+        "value":"\u30af\u30ed\u30fc\u30ba",
+        "description":"Close"
+    },
+    {
+        "key":"_Add_Playlist_",
+        "value":"\u30d7\u30ec\u30a4\u30ea\u30b9\u30c8\u3092\u8ffd\u52a0",
+        "description":"Add Playlist"
+    },
+    {
+        "key":"_Save_",
+        "value":"\u4fdd\u5b58",
+        "description":"Save"
+    },
+    {
+        "key":"_LOADING_",
+        "value":"\u30ed\u30fc\u30c9\u4e2d",
+        "description":"LOADING"
     }
     
 ]

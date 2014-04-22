@@ -5,7 +5,7 @@
         <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
         <a href="" class="header-title-link">
             <h1>
-                <i class="fa fa-th-list animation-expandUp"></i>My Playlist <br><small>Play your songs in your playlists.</small>
+                <i class="fa fa-th-list animation-expandUp"></i><m data-i18n="_My_Playlist_"></m> <br><small data-i18n="_Play_your_songs_in_your_playlists_">.</small>
             </h1>
         </a>
     </div>
@@ -15,16 +15,16 @@
     <!-- Block -->
     <div class="block">
         <!-- Block Title -->
-        <div class="block-title"><h2>My Playlist</h2> 
-            <div class="block-options pull-right"><a class="btn btn-primary" ng-click="addPlaylist()" ><i class="fa fa-plus"></i> Add</a></div></div>
+        <div class="block-title"><h2><b data-i18n="_My_Playlist_"></b></h2> 
+            <div class="block-options pull-right"><a class="btn btn-primary" ng-click="addPlaylist()" ><i class="fa fa-plus"></i> <b data-i18n="_Add_" >Add</b></a></div></div>
         <!-- END Block Title -->
         <!-- Block Content -->
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                    <th>Name</th>
-                    <th>Action</th>
-                    <th>Search</th>
+                    <th><div data-i18n="_Name_" ></div></th>
+                    <th><div data-i18n="_Action_" ></div></th>
+                    <th><div data-i18n="_Search_" ></div></th>
                 </thead>
                 <tbody>
                     <tr ng-repeat="playlist in myPlaylists" ng-class="{warning : currentPlaylist.id == playlist.id}" >
@@ -86,9 +86,9 @@
         </div>
         <!-- PLAYING INFO -->
         <div class="text-left">
-            <div class="label label-default" ng-show="buffered > 0 && buffered < 100" >Loaded: {{buffered}}%</div>
-            <div class="label label-warning" >Time : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
-            <div class="label label-info" >Playing : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
+            <div class="label label-default" ng-show="buffered > 0 && buffered < 100" ><m data-i18n="_Loaded_"></m>: {{buffered}}%</div>
+            <div class="label label-warning" ><m data-i18n="_Time_"></m> : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
+            <div class="label label-info" ><m data-i18n="_Playing_"></m> : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
         </div>
         <p></p>
 
@@ -97,9 +97,9 @@
             <a class="list-group-item" ng-repeat="Song in currentPlaylist.songs" ng-class="isActive($index)">
                 <span class="pull-right" ng-show="!Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-down"></div></span>
                 <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
-                <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist($index)" >Delete</div>
-                <p class="list-group-item-text" ng-show="Song.showDetails" >Artist : {{Song.artist}}</p>
-                <p class="list-group-item-text" ng-show="Song.showDetails" >Album : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
+                <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist($index)" ><m data-i18n="_Delete_"></m></div>
+                <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Artist_"></m> : {{Song.artist}}</p>
+                <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Album_"></m> : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
             </a>
         </div>
 
@@ -114,26 +114,26 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="glyphicon-search"></i> Search Songs To Playlist</h4>
+                    <h4 class="modal-title"><i class="glyphicon-search"></i> <b data-i18n="_Search_Songs_To_Playlist_"></b></h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="songName">Song : </label>
+                            <label class="col-md-3 control-label" for="songName"><b data-i18n="_Song_"></b> : </label>
                             <div class="col-md-5">
                                 <input type="text" id="songName" name="songName" ng-change="searchSong()" ng-model="searchParam.songName" class="form-control" placeholder="Song's name">
                                 <!--<span class="help-block">This is a help text</span>-->
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="albumName">Album : </label>
+                            <label class="col-md-3 control-label" for="albumName"><b data-i18n="_Album_"></b> : </label>
                             <div class="col-md-5">
                                 <input type="text" id="albumName" name="albumName" ng-change="searchSong()" ng-model="searchParam.albumName" class="form-control" placeholder="Album's name">
                                 <!--<span class="help-block">This is a help text</span>-->
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="artistName">Artist : </label>
+                            <label class="col-md-3 control-label" for="artistName"><b data-i18n="_Artist_"></b> : </label>
                             <div class="col-md-5">
                                 <input type="text" id="artistName" name="artistName" ng-change="searchSong()" ng-model="searchParam.artistName" class="form-control" placeholder="Artist's name">
                                 <!--<span class="help-block">This is a help text</span>-->
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><b data-i18n="_Close_"></b></button>
                     <!--<button type="button" class="btn btn-primary" ng-click="searchSong()">Search</button>-->
                 </div>
             </div>
@@ -170,7 +170,7 @@
        <div class="modal-content">
            <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">LOADING.....</h4>
+               <h4 class="modal-title"><b data-i18n="_LOADING_"></b>.....</h4>
            </div>
            <div class="modal-body text-center">
                <div class="fa fa-gear fa-spin fa-4x"></div>
@@ -183,12 +183,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Add Playlist</h4>
+                <h4 class="modal-title"><b data-i18n="_Add_Playlist_" ></b></h4>
             </div>
             <div class="modal-body">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="example-text-input">Name : </label>
+                        <label class="col-md-3 control-label" for="example-text-input"><b data-i18n="_Name_" ></b> : </label>
                         <div class="col-md-5">
                             <input type="text" id="example-text-input" name="playListName" ng-model="newPlaylist.name" class="form-control" placeholder="Playlist's name">
                             <!--<span class="help-block">This is a help text</span>-->
@@ -197,8 +197,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="addPlaylist()">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><b data-i18n="_Close_" ></b></button>
+                <button type="button" class="btn btn-primary" ng-click="addPlaylist()"><b data-i18n="_Save_" ></b></button>
             </div>
         </div>
     </div>

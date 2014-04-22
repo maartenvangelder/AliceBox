@@ -5,7 +5,7 @@
         <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
         <a href="" class="header-title-link">
             <h1>
-                <i class="glyphicon-albums animation-expandUp"></i>My Artist <br><small>Play your artist's song.</small>
+                <i class="glyphicon-albums animation-expandUp"></i><m data-i18n="_My_Artist_"></m> <br><small data-i18n="_Play_your_artist's_song._"></small>
             </h1>
         </a>
     </div>
@@ -16,7 +16,7 @@
     <div class="block">
         <!-- Block Title -->
         <div class="block-title">
-            <h2>My Artist</h2> 
+            <h2><b data-i18n="_My_Artist_"></b></h2> 
             <!--<div class="block-options pull-right"><a class="btn btn-primary" ng-click="addPlaylist()" ><i class="fa fa-plus"></i> Add</a></div>-->
         </div>
         <!-- END Block Title -->
@@ -24,7 +24,7 @@
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                    <th>Name</th>
+                    <th><div data-i18n="_Artist_Name"></div></th>
                 </thead>
                 <tbody>
                     <!--<tr ng-repeat="playlist in myPlaylists" ng-class="{warning : currentPlaylist.id == playlist.id}" >-->
@@ -44,7 +44,7 @@
     <!-- Block -->
     <div class="block">
         <!-- Block Title -->
-        <div class="block-title"><h2>My Songs</h2></div>
+        <div class="block-title"><h2><b data-i18n="_My_Songs_"></b></h2></div>
         <!-- END Block Title -->
 
         <!-- Block Content -->
@@ -78,9 +78,9 @@
         </div>
         <!-- PLAYING INFO -->
         <div class="text-left">
-            <div class="label label-default" ng-show="buffered > 0 && buffered < 100" >Loaded: {{buffered}}%</div>
-            <div class="label label-warning" >Time : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
-            <div class="label label-info" >Playing : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
+            <div class="label label-default" ng-show="buffered > 0 && buffered < 100" ><m data-i18n="_Loaded_"></m>: {{buffered}}%</div>
+            <div class="label label-warning" ><m data-i18n="_Time_"></m> : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
+            <div class="label label-info" ><m data-i18n="_Playing_"></m> : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
         </div>
         <p></p>
         
@@ -91,14 +91,14 @@
                 <span class="pull-right" ng-show="!Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-down"></div></span>
                 <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
                 <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist($index)" >Delete</div>
-                <p class="list-group-item-text" ng-show="Song.showDetails" >Artist : {{Song.artist}}</p>
-                <p class="list-group-item-text" ng-show="Song.showDetails" >Album : {{Song.album}} </p> 
+                <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Artist_"></m> : {{Song.artist}}</p>
+                <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Album_"></m> : {{Song.album}} </p> 
                 <p class="list-group-item-text" ng-show="Song.showDetails" >
-                    Share to : <i ng-show="Song.permission=='world'" class="glyphicon-globe"></i>
+                    <m data-i18n="_Share_to_"></m> : <i ng-show="Song.permission=='world'" class="glyphicon-globe"></i>
                                <i ng-show="Song.permission=='friend'" class="glyphicon-group"></i>
                                <i ng-show="Song.permission=='me'" class="glyphicon-lock"></i>
                 </p>
-                <p class="list-group-item-text" ng-show="Song.showDetails"> Year : {{Song.year}} </p><i ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></i>
+                <p class="list-group-item-text" ng-show="Song.showDetails"><m data-i18n="_Year_"></m> : {{Song.year}} </p><i ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></i>
                 <p></p>
                 
             </a>
@@ -115,7 +115,7 @@
        <div class="modal-content">
            <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-               <h4 class="modal-title">LOADING.....</h4>
+               <h4 class="modal-title"><b data-i18n="_LOADING_"></b>.....</h4>
            </div>
            <div class="modal-body text-center">
                <div class="fa fa-gear fa-spin fa-4x"></div>
