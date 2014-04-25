@@ -37,7 +37,7 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
               });
             }
         });
-    }
+    };
     
     $scope.changeSelectPlaylist = function( changedPlaylistId ){
         if( changedPlaylistId != $scope.currentPlaylist.id ){
@@ -46,7 +46,7 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
                    player.updatePlaylist( data );
             });
         }
-    }
+    };
     
     $scope.updatePlayMethod = function( playingMethod ){
         if( playingMethod !== $scope.currentPlaylist.playingMethod ){
@@ -76,7 +76,23 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
         $http.post('/searchSongAdvance', $scope.searchParam ).success(function(data, status, headers, config){
            $scope.searchedSongs = data;
         });
-    }
+    };
+    
+    $scope.editPlaylist = function(){
+        alert("ddd");
+        bootbox.prompt("What is your name?", function(result) {                
+            if (result === null) {                                             
+              Example.show("Prompt dismissed");                              
+            } else {
+              Example.show("Hi <b>"+result+"</b>");                          
+            }
+          });
+    };
+    
+    
+    
+    
+    
     /********************************************
      * MUST NEED WHEN USE PLAYER CONTROL
      ********************************************/
