@@ -78,15 +78,13 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
         });
     };
     
-    $scope.editPlaylist = function(){
-        alert("ddd");
-        bootbox.prompt("What is your name?", function(result) {                
-            if (result === null) {                                             
-              Example.show("Prompt dismissed");                              
-            } else {
-              Example.show("Hi <b>"+result+"</b>");                          
-            }
-          });
+    $scope.goEditPlaylist = function( playlist ){
+        $scope.editPlaylist = playlist;
+        $('#updatePlayListModel').modal("show");
+    };
+    
+    $scope.updatePlaylist = function(){
+        alert($scope.editPlaylist.name);
     };
     
     

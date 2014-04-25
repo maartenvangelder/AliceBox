@@ -31,7 +31,7 @@
                         <td ng-click="changeSelectPlaylist( playlist.id )">{{playlist.name}}</td>
                         <td>
                             <div class="btn-group btn-group-xs">
-                                <div class="btn btn-default" data-toggle="tooltip" title="Edit" ><i class="fa fa-pencil" ng-click="editPlaylist()" ></i></div>
+                                <div class="btn btn-default" ng-click="goEditPlaylist( playlist )" ><i class="fa fa-pencil" ></i></div>
                                 <div class="btn btn-default" data-toggle="tooltip" title="Add Songs"><i class="fa fa-times"></i></div>
                             </div>
                         </td>
@@ -162,8 +162,9 @@
             </div>
         </div>
     </div>
-</div>
 <!-- END Page Content -->
+
+
 <!-- LOADING MODAL -->
 <div id="loading_modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
    <div class="modal-dialog modal-sm">
@@ -203,4 +204,30 @@
         </div>
     </div>
 </div>
+<div id="updatePlayListModel" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><b data-i18n="_Update_Playlist_" ></b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="example-text-input"><b data-i18n="_Name_" ></b> : </label>
+                        <div class="col-md-5">
+                            <input type="text" id="example-text-input" name="playListName" ng-model="editPlaylist.name" class="form-control" placeholder="Playlist's name">
+                            <!--<span class="help-block">This is a help text</span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><b data-i18n="_Close_" ></b></button>
+                <button type="button" class="btn btn-primary" ng-click="updatePlaylist()"><b data-i18n="_Save_" ></b></button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- END LOADING MODAL -->
+</div>
