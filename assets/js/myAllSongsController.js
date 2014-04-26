@@ -10,6 +10,7 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
   function($rootScope , $scope , $location , $log ,$http , player , aliceBootbox ) {
   
     $rootScope.location = 'myAllSongs';
+    $scope.permissions = [ {name:'world', value:'World'}, {name:'friend', value:'Friend'}, {name:'me', value:'Private'} ];
     
     /************ Default loading data ***************/
     $http.post('/getMyAllSongs', {} ).success(function(data, status, headers, config){
@@ -29,6 +30,19 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
         }
     }
     
+    $scope.goUpdateMySong = function( song ){
+        $scope.editSong = song;
+        $('#updateMySong').modal('show');
+    }
+    
+    $scope.updateMySong = function(){
+        $http.post('/updateMySong', { song : $scope.editSong } ).success(function(data, status, headers, config){
+             $http.post('/getMyAllSongs', {} ).success(function(songs, status, headers, config){
+                $scope.currentPlaylist.songs = songs;
+             });
+        });
+        $('#updateMySong').modal('hide');
+    }
  
     /********************************************
      * MUST NEED WHEN USE PLAYER CONTROL

@@ -70,14 +70,62 @@
                                <i ng-show="Song.permission=='me'" class="glyphicon-lock"></i>
                 </p>
                 <p class="list-group-item-text" ng-show="Song.showDetails"> <m data-i18n="_Year_"></m> : {{Song.year}} </p><i ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></i>
-                <p></p>
-                
+                <p><i class="fa fa-edit" ng-show="Song.userId==userInfo.id" ng-click="goUpdateMySong( Song )" ></i></p>
             </a>
         </div>
         <!-- END Block Content -->
     </div>
     <!-- END Block -->
     
+    
+    <!-- Search Songs -->
+    <div id="updateMySong" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><i class="glyphicon-search"></i> <b data-i18n="_Search_Songs_To_Playlist_"></b></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="songTitle"><b data-i18n="_Song_Title_"></b> : </label>
+                            <div class="col-md-5">
+                                <input type="text" id="songTitle" name="songTitle" ng-model="editSong.title" class="form-control" placeholder="Song's titlt">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="artist"><b data-i18n="_Artist_"></b> : </label>
+                            <div class="col-md-5">
+                                <input type="text" id="artist" name="artist" ng-model="editSong.artist" class="form-control" placeholder="Artist">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="album"><b data-i18n="_Album_"></b> : </label>
+                            <div class="col-md-5">
+                                <input type="text" id="artist" name="album" ng-model="editSong.album" class="form-control" placeholder="Album">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="album"><b data-i18n="_Share_to_"></b> <i class="glyphicon-lock" ng-show="editSong.permission=='me'"></i><i class="glyphicon-globe" ng-show="editSong.permission=='world'"></i> : </label>
+                            <div class="col-md-5">
+                                <select class="form-control col-sm-1" size="1" ng-model="editSong.permission" ng-options="c.name as c.value for c in permissions">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" >
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><b data-i18n="_Close_"></b></button>
+                    <button type="button" class="btn btn-primary" ng-click="updateMySong()" ><b data-i18n="_Save_"></b></button>
+                    <!--<button type="button" class="btn btn-primary" ng-click="searchSong()">Search</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- END Page Content -->
 <!-- LOADING MODAL -->

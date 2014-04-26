@@ -117,6 +117,10 @@ module.exports = {
                             if( !tags.album || typeof tags.album == 'undefined' || tags.album.trim() == "" ) tags.album = "Unknown" ;
                             if( !tags.year || typeof tags.year == 'undefined' || tags.year.trim() == "" ) tags.year = "Unknown" ;
                             
+                            //Replace unnecessary text
+                            tags.title = tags.title.replace(/\_/g,' ');
+                            tags.title = tags.title.replace(/\.mp3/g,' ');
+                            
                             //SAVE SONG INFO TO DATABASE
                             Song.create( { userId : req.session.user.id , name : req.files.file.name , 
                                            size : req.files.file.size , title: tags.title , album : tags.album  ,

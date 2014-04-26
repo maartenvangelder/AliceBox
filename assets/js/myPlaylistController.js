@@ -84,10 +84,21 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
     };
     
     $scope.updatePlaylist = function(){
-        alert($scope.editPlaylist.name);
+        if( $scope.editPlaylist && $scope.editPlaylist.id ){
+            $http.post('/updateMyPlaylist', { editedPlaylist : $scope.editPlaylist } ).success(function(data, status, headers, config){
+                $scope.editPlaylist = data;
+                if(status == 200){
+                    $('#updatePlayListModel').modal("hide");
+                }
+            });
+        }
     };
     
-    
+    $scope.removePlaylist = function( playlist, index ){
+        $http.post('/removePlaylist', { removePlaylist : playlist } ).success(function(data, status, headers, config){
+            $scope.myPlaylists.splice( index , 1 );
+        });
+    };
     
     
     

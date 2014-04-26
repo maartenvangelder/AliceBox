@@ -171,11 +171,24 @@ module.exports.routes = {
                     controller: 'MyAllSongs',
                     action: 'getMyAllSongs'
                 },
+                '/updateMySong' : {
+                    controller: 'MyAllSongs',
+                    action: 'updateMySong'
+                },
+                
                 
                 /******* MY_PLAYLIST_SONGS CONTROLLER ACTIONS ****************/
                 '/searchSongAdvance' : {
                     controller: 'MyPlaylists',
                     action: 'searchSongAdvance'
+                },
+                '/updateMyPlaylist' : {
+                    controller: 'MyPlaylists',
+                    action: 'updateMyPlaylist'
+                },
+                '/removePlaylist' : {
+                    controller: 'MyPlaylists',
+                    action: 'removePlaylist'
                 },
                 
                 /******* MY_ALBUM_SONGS CONTROLLER ACTIONS ****************/

@@ -56,7 +56,9 @@ flowUploadPageController.controller('flowUploadController', ['$rootScope', '$sco
     $scope.countSongs = maxListSongs - $scope.uploader.queue.length ;
 
     //Prepare Default Permission
-    $scope.permissions = [ {name:'world', value:'World'}, {name:'friend', value:'Friend'}, {name:'me', value:'Private'} ];
+    $scope.permissions = [ {name:'world', value:'World'}, 
+//                           {name:'friend', value:'Friend'}, 
+                           {name:'me', value:'Private'} ];
     $scope.defaultPer = $scope.permissions[0].name;
     
     

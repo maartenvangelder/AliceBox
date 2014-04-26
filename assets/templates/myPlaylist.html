@@ -32,7 +32,7 @@
                         <td>
                             <div class="btn-group btn-group-xs">
                                 <div class="btn btn-default" ng-click="goEditPlaylist( playlist )" ><i class="fa fa-pencil" ></i></div>
-                                <div class="btn btn-default" data-toggle="tooltip" title="Add Songs"><i class="fa fa-times"></i></div>
+                                <div class="btn btn-default" ng-click="removePlaylist( playlist, $index )" ng-show="currentPlaylist.id!=playlist.id" ><i class="fa fa-times"></i></div>
                             </div>
                         </td>
                         <td>
