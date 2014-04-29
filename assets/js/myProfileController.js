@@ -1,6 +1,6 @@
 'use strict';
 
-var myProfileController = angular.module('myProfileController', ['ngResource']);
+var myProfileController = angular.module('myProfileController', ['tc.chartjs'] );
 
 myProfileController.controller('myProfileController', ['$rootScope', '$scope', '$location' ,'$log', '$http', 'player' , 'aliceBootbox', 
   function($rootScope , $scope , $location , $log ,$http , player , aliceBootbox ) {
@@ -10,5 +10,9 @@ myProfileController.controller('myProfileController', ['$rootScope', '$scope', '
         $scope.User = data;
     });
     
+    $scope.myData = [
+        { value : 20, color : "#F7464A" },
+        { value : 80, color : "#E2EAE9" }
+    ];
     
 }]);
