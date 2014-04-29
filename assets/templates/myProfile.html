@@ -75,10 +75,10 @@
 
         <!-- Actions Content -->
         <div class="row">
-            <div class="col-xs-2">
-                Used : 80% <p></p>
-                Leave : 20% <p></p>
-                Total : 20GB
+            <div class="col-xs-3">
+                Used: {{normal | number:2 }}%<p></p>
+                Leave: {{left | number:2 }}%<p></p>
+                Total: {{dropBoxQuota | number:2 }}GB
             </div>
             <div class="col-xs4">
                 <canvas tc-chartjs-doughnut chart-data="myData" chart-options="myOptions" width="150" height="150"></canvas>
