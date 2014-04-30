@@ -65,6 +65,9 @@ module.exports.policies = {
         MyArtistController: {
             '*': 'authenticated'
         },
+        MyProfileController: {
+            '*': 'authenticated'
+        },
         MemberController: {
             '*': 'authenticated'
         }

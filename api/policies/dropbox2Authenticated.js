@@ -52,7 +52,7 @@ module.exports = function(req, res, next){
              async.waterfall([
                  function(callback){
                      Member.find()
-                         .where( { dropBoxUserId : user.id } )
+                         .where( { dropBoxUserId : user.id , memberAuthenType : "dropbox" } )
                          .exec( function( err, users ){
                              if( err ){ console.log(err); }
                              callback(null, users);

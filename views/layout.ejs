@@ -85,6 +85,32 @@
 <!--                <form action="page_ready_search_results.html" method="post" class="sidebar-search">
                     <input type="text" id="sidebar-search-term" name="sidebar-search-term" placeholder="Search..">
                 </form>-->
+                <div class="sidebar-search">
+                    <div class="sidebar-section">
+                        <!--<h2 class="sidebar-header"><div data-i18n="_Change_Color_Themes_"></div></h2>-->
+<!--                         Change Color Theme functionality can be found in main.js - templateOptions() -->
+                        <ul class="theme-colors clearfix">
+                            <li ng-class="{active : userInfo.themeType == 'default'}" >
+                                <a href="#" class="themed-background-default themed-border-default" data-theme="default" data-toggle="tooltip" data-placement="bottom" title="Default" ng-click="mstUpdateTheme('default')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'river'}">
+                                <a href="#" class="themed-background-river themed-border-river" data-theme="css/themes/river.css" data-toggle="tooltip" data-placement="bottom" title="River" ng-click="mstUpdateTheme('river')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'amethyst'}" >
+                                <a href="#" class="themed-background-amethyst themed-border-amethyst" data-theme="css/themes/amethyst.css" data-toggle="tooltip" data-placement="bottom" title="Amethyst" ng-click="mstUpdateTheme('amethyst')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'dragon'}" >
+                                <a href="#" class="themed-background-dragon themed-border-dragon" data-theme="css/themes/dragon.css" data-toggle="tooltip" data-placement="bottom" title="Dragon" ng-click="mstUpdateTheme('dragon')" ></a>
+                            </li>
+                            <li ng-class="{active : userInfo.themeType == 'emerald'}" >
+                                <a href="#" class="themed-background-emerald themed-border-emerald" data-theme="css/themes/emerald.css" data-toggle="tooltip" data-placement="bottom" title="Emerald" ng-click="mstUpdateTheme('emerald')" ></a>
+                            </li>
+<!--                            <li ng-class="{active : userInfo.themeType == 'grass'}">
+                                <a href="#" class="themed-background-grass themed-border-grass" data-theme="css/themes/grass.css" data-toggle="tooltip" title="Grass" ng-click="mstUpdateTheme('grass')" ></a>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
                 <!-- END Search Form -->
 
                 <!-- Wrapper for scrolling functionality -->
@@ -147,30 +173,7 @@
                     </ul>
                     <!-- END Sidebar Navigation -->
                     <!-- Color Themes -->
-                    <div class="sidebar-section">
-                        <h2 class="sidebar-header"><div data-i18n="_Change_Color_Themes_"></div></h2>
-<!--                         Change Color Theme functionality can be found in main.js - templateOptions() -->
-                        <ul class="theme-colors clearfix">
-                            <li ng-class="{active : userInfo.themeType == 'default'}" >
-                                <a href="#" class="themed-background-default themed-border-default" data-theme="default" data-toggle="tooltip" title="Default" ng-click="mstUpdateTheme('default')" ></a>
-                            </li>
-                            <li ng-class="{active : userInfo.themeType == 'river'}">
-                                <a href="#" class="themed-background-river themed-border-river" data-theme="css/themes/river.css" data-toggle="tooltip" title="River" ng-click="mstUpdateTheme('river')" ></a>
-                            </li>
-                            <li ng-class="{active : userInfo.themeType == 'amethyst'}" >
-                                <a href="#" class="themed-background-amethyst themed-border-amethyst" data-theme="css/themes/amethyst.css" data-toggle="tooltip" title="Amethyst" ng-click="mstUpdateTheme('amethyst')" ></a>
-                            </li>
-                            <li ng-class="{active : userInfo.themeType == 'dragon'}" >
-                                <a href="#" class="themed-background-dragon themed-border-dragon" data-theme="css/themes/dragon.css" data-toggle="tooltip" title="Dragon" ng-click="mstUpdateTheme('dragon')" ></a>
-                            </li>
-                            <li ng-class="{active : userInfo.themeType == 'emerald'}" >
-                                <a href="#" class="themed-background-emerald themed-border-emerald" data-theme="css/themes/emerald.css" data-toggle="tooltip" title="Emerald" ng-click="mstUpdateTheme('emerald')" ></a>
-                            </li>
-                            <li ng-class="{active : userInfo.themeType == 'grass'}">
-                                <a href="#" class="themed-background-grass themed-border-grass" data-theme="css/themes/grass.css" data-toggle="tooltip" title="Grass" ng-click="mstUpdateTheme('grass')" ></a>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </div>
                 <!-- END Wrapper for scrolling functionality -->
             </div>

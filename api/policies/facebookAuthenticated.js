@@ -23,7 +23,7 @@ module.exports = function(req, res, next){
       async.waterfall([
             function(callback){
                 Member.find()
-                    .where( { "loginUser.username" : user.username } )
+                    .where( { "loginUser.username" : user.username , memberAuthenType : "facebook" } )
                     .exec( function( err, users ){
                         if( err ){ console.log(err); }
                         callback(null, users);
@@ -31,7 +31,7 @@ module.exports = function(req, res, next){
             },
             function( users, callback){
                 if( !users || users.length == 0 ){
-                    Member.create( { name :  user.name , memberAuthenType : "facebook" , loginUser : user , themeType : "default" }, function( err , model ){
+                    Member.create( { name :  user.displayName , memberAuthenType : "facebook" , loginUser : user , themeType : "default" }, function( err , model ){
                       if( err ){ 
                           sails.log( "ERROR:" + err );
                           sails.log( model ) 

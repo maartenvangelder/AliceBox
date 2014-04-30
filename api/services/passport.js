@@ -71,8 +71,8 @@ passport.use(new DropboxOAuth2Strategy({
  * On Production need update the url for facebook app
  **/
 passport.use(new FacebookStrategy({
-    clientID: "1434399070110229",
-    clientSecret: "90de139a9165521ff69b7e14a74dc263" ,
+    clientID: "626761510746336",
+    clientSecret: "6ea8b441ad506a231421eaffc1d1955d" ,
     callbackURL: SERVER_HOST +'/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done) {

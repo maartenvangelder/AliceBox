@@ -14,8 +14,7 @@ var mainPageController = angular.module('mainPageController', ['uiSlider', 'ngRe
 
 
 mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log', '$http' ,'player', '$detection', 'aliceBootbox',
-  function($rootScope, $scope, $log ,$http , player , $detection , aliceBootbox ) { 
-    
+  function($rootScope, $scope, $log ,$http , player , $detection , aliceBootbox ) {
     $rootScope.location = 'home';
     
     /********************************************

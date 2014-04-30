@@ -22,7 +22,19 @@ myProfileController.controller('myProfileController', ['$rootScope', '$scope', '
         }
     });
     
+    $http.post('/countMySongs', {} ).success(function(cnt, status, headers, config){
+        $scope.countSongs = cnt;
+    });
     
-   
+    $http.post('/countMyAlbum', {} ).success(function(cnt, status, headers, config){
+        $scope.countAlbum = cnt;
+    });
+    $http.post('/countMyPlaylist', {} ).success(function(cnt, status, headers, config){
+        $scope.countMyPlaylist = cnt;
+    });
+    $http.post('/countMyArtist', {} ).success(function(cnt, status, headers, config){
+        $scope.countMyArtist = cnt;
+    });
+    
     
 }]);

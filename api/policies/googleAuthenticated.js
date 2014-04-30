@@ -10,6 +10,7 @@ module.exports = function(req, res, next){
     return next();
    }
    
+   sails.log("=========Authenticated Google");
    passport.authenticate('google', { successRedirect: '/',
                                     failureRedirect: '/login' } , function( err, user, info ){
                                     

@@ -209,7 +209,29 @@ module.exports.routes = {
                 '/getSongByArtist' : {
                     controller: 'MyArtist',
                     action: 'getSongByArtist'
+                },
+                
+                /******* MY_PROFILE CONTROLLER ACTIONS ****************/
+                '/countMySongs' : {
+                    controller: 'MyProfile',
+                    action: 'countMySongs'
+                },
+                
+                '/countMyAlbum' : {
+                    controller: 'MyProfile',
+                    action: 'countMyAlbum'
+                },
+                
+                '/countMyArtist' : {
+                    controller: 'MyProfile',
+                    action: 'countMyArtist'
+                },
+                
+                '/countMyPlaylist' : {
+                    controller: 'MyProfile',
+                    action: 'countMyPlaylist'
                 }
+                
                 
                 
                 

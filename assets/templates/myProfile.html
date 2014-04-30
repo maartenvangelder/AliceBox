@@ -6,7 +6,7 @@
             <!-- Photo and Name -->
             <div class="col-sm-4">
                 <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
-                <a href="" class="header-title-link">
+                <a class="header-title-link" >
                     <!--<img src="img/template/avatar2.jpg" alt="Avatar" class="profile-photo animation-expandUp img-circle">--> 
                     <h1 class="profile-name">
                         <i class="fa social-google_plus animation-expandUp" ng-show="User.memberAuthenType == 'google'"></i>
@@ -28,13 +28,13 @@
                         <!-- Inner Grid 1 -->
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="page_comp_charts.html" class="header-link">
-                                    <h1 class="animation-pullDown">75<br><small>Song</small></h1>
+                                <a href="#myAllSongs" class="header-link">
+                                    <h1 class="animation-pullDown">{{countSongs}}<br><small>Songs</small></h1>
                                 </a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="page_comp_charts.html" class="header-link">
-                                    <h1 class="animation-pullDown">$795<br><small>Playlist</small></h1>
+                                <a href="#myPlaylist" class="header-link">
+                                    <h1 class="animation-pullDown">{{countMyPlaylist}}<br><small>Playlist</small></h1>
                                 </a>
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                         <!-- Inner Grid 2 -->
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="page_special_timeline.html" class="header-link">
-                                    <h1 class="animation-pullDown">7<br><small>Album</small></h1>
+                                <a href="#myAlbum" class="header-link">
+                                    <h1 class="animation-pullDown">{{countAlbum}}<br><small>Albums</small></h1>
                                 </a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="page_special_message_center.html" class="header-link">
-                                    <h1 class="animation-pullDown">5<br><small>Artist</small></h1>
+                                <a href="#myArtist" class="header-link">
+                                    <h1 class="animation-pullDown">{{countMyArtist}}<br><small>Artist</small></h1>
                                 </a>
                             </div>
                         </div>
@@ -75,9 +75,9 @@
 
         <!-- Actions Content -->
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 Used: {{normal | number:2 }}%<p></p>
-                Leave: {{left | number:2 }}%<p></p>
+                Remaining: {{left | number:2 }}%<p></p>
                 Total: {{dropBoxQuota | number:2 }}GB
             </div>
             <div class="col-xs4">
