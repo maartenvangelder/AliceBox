@@ -69,7 +69,9 @@
     <div class="block">
         <!-- Actions Title -->
         <div class="block-title">
-            <h2><i class="fa social-dropbox"></i> My Dropbox</h2>
+            <h2>
+                <i class="fa social-dropbox"></i> My Dropbox 
+            </h2>
         </div>
         <!-- END Actions Title -->
 
@@ -81,7 +83,8 @@
                 Total: {{dropBoxQuota | number:2 }}GB
             </div>
             <div class="col-xs4">
-                <canvas tc-chartjs-doughnut chart-data="myData" chart-options="myOptions" width="150" height="150"></canvas>
+                <canvas ng-show="User.dropBoxUserId > 0" tc-chartjs-doughnut chart-data="myData" chart-options="myOptions" width="150" height="150"></canvas>
+                <a href="/reLoginDropBox" ng-show="!User.dropBoxUserId || User.dropBoxUserId == '' " class="btn btn-lg btn-primary animation-pulse"><i class="fa social-dropbox"></i> Login To DropBox</a>
             </div>
         </div>
         <!-- END Actions Content -->

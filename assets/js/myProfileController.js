@@ -8,7 +8,7 @@ myProfileController.controller('myProfileController', ['$rootScope', '$scope', '
     $rootScope.location = 'myProfile';
     $http.post('/getUserInfo', {} ).success(function(data, status, headers, config){
         $scope.User = data;
-        if($scope.User.dropBoxQuota ){
+        if($scope.User.dropBoxQuota && $scope.User.dropBoxQuota.quota ){
             $scope.dropBoxQuota = ( $scope.User.dropBoxQuota.quota )/ 1073741824;
             $scope.normal = ( $scope.User.dropBoxQuota.normal / $scope.User.dropBoxQuota.quota ) * 100;
             $scope.left = ( ( $scope.User.dropBoxQuota.quota - $scope.User.dropBoxQuota.normal ) / $scope.User.dropBoxQuota.quota) * 100;
