@@ -198,6 +198,7 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
     $scope.playThisSong = function( index ){
         if( player.currentSongIndex != index ){
             player.playAt(index);
+            $scope.playing = player.playing;
         }
     }
     

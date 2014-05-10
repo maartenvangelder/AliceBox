@@ -21,7 +21,7 @@ module.exports = function(req, res, next){
       async.waterfall([
             function(callback){
                 Member.find()
-                    .where( { "loginUser.emails.value" : user.emails[0].value } )
+                    .where( { "loginUser.emails.value" : user.emails[0].value , memberAuthenType : "yahoo" } )
                     .exec( function( err, users ){
                         if( err ){ console.log(err); }
                         callback(null, users);

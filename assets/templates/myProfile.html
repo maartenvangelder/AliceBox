@@ -84,7 +84,7 @@
             </div>
             <div class="col-xs4">
                 <canvas ng-show="User.dropBoxUserId > 0" tc-chartjs-doughnut chart-data="myData" chart-options="myOptions" width="150" height="150"></canvas>
-                <a href="/reLoginDropBox" ng-show="!User.dropBoxUserId || User.dropBoxUserId == '' " class="btn btn-lg btn-primary animation-pulse"><i class="fa social-dropbox"></i> Login To DropBox</a>
+                <a href="/reLoginDropBox" ng-hide="User.dropBoxUserId > 0" class="btn btn-primary animation-pulse"><i class="fa social-dropbox"></i> Login To DropBox</a>
             </div>
         </div>
         <!-- END Actions Content -->

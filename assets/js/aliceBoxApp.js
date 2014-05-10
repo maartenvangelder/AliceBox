@@ -223,6 +223,7 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         playAt: function( index ){
             player.currentSong = player.playlist.songs[ index ];
             player.currentSongIndex = index;
+            player.playing = true;
             player.play();
         },
 
