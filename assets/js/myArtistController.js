@@ -111,6 +111,8 @@ myArtistController.controller('myArtistController', ['$rootScope', '$scope', '$l
     $scope.playThisSong = function( index ){
         if( player.currentSongIndex != index ){
             player.playAt(index);
+            $scope.playing = player.playing;
+            $scope.progress = player.currentTime();
         }
     }
     /*********************END ADD PLAYER***************************/

@@ -199,6 +199,7 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
         if( player.currentSongIndex != index ){
             player.playAt(index);
             $scope.playing = player.playing;
+            $scope.progress = player.currentTime();
         }
     }
     
