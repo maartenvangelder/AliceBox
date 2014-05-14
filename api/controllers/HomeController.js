@@ -32,9 +32,11 @@ module.exports = {
     searchSong: function (req,res)
     {
         var songIds = [];
-        req.body.songs.forEach( function( song ){
-            songIds.push( song.id );
-        } );
+        if( req.body.songs ){
+            req.body.songs.forEach( function( song ){
+                songIds.push( song.id );
+            } );
+        }
         
         if(req.body.word != ""){
             Song.find( { title : { contains : req.body.word.trim() } , permission : { contains: req.body.permission } } ).limit(25).done( function( err, songs ){

@@ -1,4 +1,4 @@
-
+var async = require("async");
 /**
  * Playlist Controller
  */
@@ -29,9 +29,24 @@ module.exports = {
                .where({ userId : req.session.user.id })
                .sort({ createdAt: 'asc' })
                .exec( function( err, rs ){ 
-                        if(err){ sails.log(err); }
-                        res.json( rs );
-       });//End Find
+                      if(err){ sails.log(err); }
+                      var count = rs.length;
+                      async.each( rs , function( item , callback) {
+                      	  Song.find( { id : item.songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       item.songs = songs;
+                                    }
+                          count--;
+                          if( count == 0 ){
+                            callback();
+                          }
+                          });
+                          
+                        }, function(err){
+                           res.json( rs );
+                        });
+                      
+                    });//End Find
    },
    
    
@@ -53,7 +68,7 @@ module.exports = {
                    
                    song.save( function( err, rs ){
                        if(err){ sails.log(err); }
-                       sails.log(rs); 
+//                       sails.log(rs); 
                    });
            }); 
        }
@@ -61,9 +76,15 @@ module.exports = {
        //Add To playlist
        Playlist.findOne( { id : req.body.playlistId } )
                .exec( function( err, playlist ){
-                playlist.songs.push( req.body.songsToPlayList );
+//                playlist.songs.push( req.body.songsToPlayList );
+                   playlist.songs.push( req.body.songsToPlayList.id );
                    playlist.save( function( err, rs ){
-                       res.json( rs );
+                       Song.find( { id : rs.songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       rs.songs = songs;
+                                    }
+                                    res.json( rs );
+                                });
                    });
        }); //End Update Songs
        
@@ -77,7 +98,12 @@ module.exports = {
                 playlist.songs.splice(req.body.songIndex,1);
                 
                 playlist.save( function( err, rs ){
-                    res.json( rs );
+                    Song.find( { id : rs.songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       rs.songs = songs;
+                                    }
+                                    res.json( rs );
+                    });
                 });
        }); //End Update Songs
    },
@@ -86,7 +112,13 @@ module.exports = {
        Playlist.update( { id : req.body.playlistId } , { playingMethod : req.body.playingMethod } 
                         , function( err, rs ){
                             if( err ){ sails.log( err ); }
-                            res.json( rs[0] );
+                            Song.find( { id : rs[0].songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       rs[0].songs = songs;
+                                    }
+                                    res.json( rs[0] );
+                            });
+                            
        });
    },
    
@@ -94,7 +126,13 @@ module.exports = {
        Playlist.update( { id : req.body.playlistId } , { isSelected : false } , function( err, rs ){ //Update old to false
                             if( err ){ sails.log( err ); }
                             Playlist.update( { id : req.body.changedPlaylistId }, { isSelected : true } , function( err, rs ){ //Update new to true
-                                res.json( rs[0] );
+//                                sails.log(rs[0]);
+                                Song.find( { id : rs[0].songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       rs[0].songs = songs;
+                                    }
+                                    res.json( rs[0] );
+                                });
                        } );
        });
    }

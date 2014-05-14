@@ -15,7 +15,12 @@ module.exports = {
             Playlist.findOne( { id : req.body.editedPlaylist.id }).done( function( err, playlist ){
                 playlist.name = req.body.editedPlaylist.name;
                 playlist.save();
-                res.json( playlist );
+                Song.find( { id : playlist.songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       playlist.songs = songs;
+                                    }
+                                    res.json( playlist );
+                          });
             });
         }
     },

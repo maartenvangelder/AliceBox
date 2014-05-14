@@ -31,9 +31,11 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
         //Find the currentPlaylist
         data.forEach( function( playlist ){ 
             if( playlist.isSelected ){
-                $scope.currentPlaylist = playlist ;
-                /****INIT PLAYER*******/
-                player.init( $scope );
+                $http.post('/changeSelectPlaylist', { playlistId : playlist.id , changedPlaylistId : playlist.id } ).success(function(data, status, headers, config){
+                    $scope.currentPlaylist = data;
+                    /****INIT PLAYER*******/
+                    player.init( $scope );
+                });
             }
         });
     });
@@ -85,16 +87,15 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
                    player.updatePlaylist( data );
             });
         }
-    }
+    };
     
     $scope.selectPlaylist = function( playlist ){
         $scope.currentPlayList = playlist ;
     };
     
     $scope.addSongsToPlaylist = function( songsToPlayList ){
-        
         //Check number of song
-        if( $scope.currentPlaylist.songs.length >= maxListSongs ){
+        if($scope.currentPlaylist && $scope.currentPlaylist.songs.length >= maxListSongs ){
            aliceBootbox.dialog( "Warning, Can not add more than " + maxListSongs + " songs!!" 
                                 , "Have too much song in this playlist." );           
            return;
