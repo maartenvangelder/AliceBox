@@ -44,7 +44,7 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
             $rootScope.userInfo = user;
             $window.location.reload();
         });
-    }
+    };
     
     /**** LANGUAGE ******/
     $rootScope.setLanguage = function( language ) {
@@ -235,7 +235,10 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         },
         
         buffered: function(){
-            return parseInt( (audio.buffered.end(0)/audio.duration) * 100 );
+            if( audio.buffered.end(0) && audio.duration >= 0 ){
+                return parseInt( (audio.buffered.end(0)/audio.duration) * 100 );
+            }
+            return 0;
         }
     };
 

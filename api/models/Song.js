@@ -1,5 +1,5 @@
 /**
- * Playlist
+ * Song
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -8,56 +8,56 @@
 
 module.exports = {
 
-	attributes: {
-            
+        attributes: {
+
             userId: {
-	      type : 'string',
+              type : 'string',
               required : true
-	    },
-                    
-	    name: {
-	      type : 'string',
-	      required: true
-	    },
-            
+            },
+
+            name: {
+              type : 'string',
+              required: true
+            },
+
             size: {
-	      type : 'string',
-	      required: true
-	    },
-            
-            
-	    title: {
-	      type: 'string'
-	    },
-            
+              type : 'string',
+              required: true
+            },
+
+
+            title: {
+              type: 'string'
+            },
+
             album: {
-	      type: 'string'
-	    },
-                    
+              type: 'string'
+            },
+
             artist: {
-	      type: 'string'
-	    },
-                    
+              type: 'string'
+            },
+
             year: {
-	      type: 'string'
-	    },
-                    
+              type: 'string'
+            },
+
             fileType: {
-	      type: 'string'
-	    },
-            
+              type: 'string'
+            },
+
             url:{
               type: 'string',
               required: true
             },
             permission: {
-	      type: 'string'
-	    },
-            
+              type: 'string'
+            },
+
             shareWith: {
                type: 'array'
             }
-                    
-	  }
+
+          }
 
 };
