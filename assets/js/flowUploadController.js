@@ -25,7 +25,7 @@ flowUploadPageController.controller('flowUploadController', ['$rootScope', '$sco
         }
     });
     
-    $scope.test = "HELLO";
+//    $scope.test = "HELLO";
     
     $http.post('/getPlaylist', {} ).success(function(data, status, headers, config){
         $scope.playlists = data;

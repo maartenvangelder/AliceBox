@@ -30,23 +30,8 @@ module.exports = {
                .sort({ createdAt: 'asc' })
                .exec( function( err, rs ){ 
                       if(err){ sails.log(err); }
-                      var count = rs.length;
-                      async.each( rs , function( item , callback) {
-                      	  Song.find( { id : item.songs } , function( err, songs ){
-                                    if( songs && songs.length > 0){
-                                       item.songs = songs;
-                                    }
-                          count--;
-                          if( count == 0 ){
-                            callback();
-                          }
-                          });
-                          
-                        }, function(err){
-                           res.json( rs );
-                        });
-                      
-                    });//End Find
+                      res.json( rs );
+               });//End Find
    },
    
    
@@ -93,9 +78,9 @@ module.exports = {
    removeASongFromPlaylist: function ( req , res ){
        Playlist.findOne( { id : req.body.playlistId } )
                .exec( function( err, playlist ){
-                
+                var index = playlist.songs.indexOf( req.body.songId );
                 //Remove the song on
-                playlist.songs.splice(req.body.songIndex,1);
+                playlist.songs.splice( index ,1);
                 
                 playlist.save( function( err, rs ){
                     Song.find( { id : rs.songs } , function( err, songs ){
@@ -135,6 +120,18 @@ module.exports = {
                                 });
                        } );
        });
+   },
+   
+   getSelectPlaylist: function ( req , res ){
+       Playlist.find().where( { id : req.body.playlistId } ).exec( function( err, rs ){ 
+                      if(err){ sails.log(err); }
+                      Song.find( { id : rs[0].songs } , function( err, songs ){
+                                    if( songs && songs.length > 0){
+                                       rs[0].songs = songs;
+                                    }
+                                    res.json( rs[0] );
+                                });
+               });//End Find
    }
    
 };

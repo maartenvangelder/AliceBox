@@ -26,12 +26,11 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
      * Get All Playlist when page on load
      */
     $http.post('/getPlaylist', {} ).success(function(data, status, headers, config){
-        
         $scope.Playlists = data;
         //Find the currentPlaylist
         data.forEach( function( playlist ){ 
             if( playlist.isSelected ){
-                $http.post('/changeSelectPlaylist', { playlistId : playlist.id , changedPlaylistId : playlist.id } ).success(function(data, status, headers, config){
+                $http.post('/getSelectPlaylist', { playlistId : playlist.id } ).success(function(data, status, headers, config){
                     $scope.currentPlaylist = data;
                     /****INIT PLAYER*******/
                     player.init( $scope );
@@ -110,9 +109,9 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
         });
     };
     
-    $scope.removeASongFromPlaylist = function( songIndex ){
+    $scope.removeASongFromPlaylist = function( songId ){
         $('#loading_modal').modal('show');
-        $http.post('/removeASongFromPlaylist', { songIndex : songIndex , playlistId : $scope.currentPlaylist.id } )
+        $http.post('/removeASongFromPlaylist', { songId : songId , playlistId : $scope.currentPlaylist.id } )
              .success(function(data, status, headers, config){
                     $scope.currentPlaylist = data;
                     player.init( $scope );

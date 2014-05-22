@@ -165,6 +165,11 @@ module.exports.routes = {
                     controller: 'Playlist',
                     action: 'changeSelectPlaylist'
                 },
+                        
+                '/getSelectPlaylist' : {
+                    controller: 'Playlist',
+                    action: 'getSelectPlaylist'
+                },
                 
                 /******* MYALLSONGS CONTROLLER ACTIONS ****************/
                 '/getMyAllSongs' : {

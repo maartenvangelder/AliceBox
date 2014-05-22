@@ -15,9 +15,12 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
         //Find the currentPlaylist
         data.forEach( function( playlist ){ 
             if( playlist.isSelected ){
-                $scope.currentPlaylist = playlist ;
-                /****INIT PLAYER*******/
-                player.init( $scope );
+                $http.post('/getSelectPlaylist', { playlistId : playlist.id } ).success(function(data, status, headers, config){
+                    $scope.currentPlaylist = data;
+                    /****INIT PLAYER*******/
+                    player.init( $scope );
+                });
+                
             }
         });
     });
@@ -68,7 +71,25 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
     
     $scope.openSearchModal = function( playlistId ){
 //        $scope.searchParam.playlistId = playlistId;
+        $scope.openWithPlaylistId = playlistId;
         $('#searchSongModal').modal("show");
+    };
+    
+    $scope.addSongsToPlaylist = function( songsToPlayList ){
+        //Check number of song
+        if($scope.currentPlaylist && $scope.currentPlaylist.songs.length >= maxListSongs ){
+           aliceBootbox.dialog( "Warning, Can not add more than " + maxListSongs + " songs!!" 
+                                , "Have too much song in this playlist." );           
+           return;
+        }
+        
+        $('#loading_modal').modal('show');
+        $http.post('/addSongsToPlaylist', { songsToPlayList : songsToPlayList, playlistId : $scope.openWithPlaylistId  } )
+             .success(function(data, status, headers, config){
+                    $scope.currentPlaylist = data;
+                    player.init( $scope );
+                    $('#loading_modal').modal('hide');
+        });
     };
     
     //NEED BEST VALIDATIONs
@@ -100,7 +121,15 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
         });
     };
     
-    
+    $scope.removeASongFromPlaylist = function( songId ){
+        $('#loading_modal').modal('show');
+        $http.post('/removeASongFromPlaylist', { songId : songId , playlistId : $scope.currentPlaylist.id } )
+             .success(function(data, status, headers, config){
+                    $scope.currentPlaylist = data;
+                    player.init( $scope );
+                    $('#loading_modal').modal('hide');
+        });
+    };
     
     /********************************************
      * MUST NEED WHEN USE PLAYER CONTROL
