@@ -16,7 +16,8 @@ module.exports = {
 	    },
 	
 	    dropBoxUserId: {
-	      type: 'integer'
+	      type: 'integer',
+              index: true
 	    },
             
             dropBoxToken: {
@@ -35,7 +36,8 @@ module.exports = {
             //Login User
             loginUser:{
               type: 'json',
-              required : true
+              required : true,
+              index : true
             },
             
             /****** PESONALITY******/

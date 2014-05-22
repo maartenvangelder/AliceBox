@@ -52,11 +52,7 @@ module.exports = {
                     sails.log("=====> TAGS ERROR :");
                     sails.log( err );
                 }
-                // tags now contains your ID3 tags
-//                sails.log( "====> FILE TAGS:" );
-//                sails.log( tags );
-//                sails.log( "------> FILE" );
-//                sails.log(req.files.file);
+             
                 
                 fs.readFile( req.files.file.path , function read( err, data ){
                     if( err )console.log( err );
@@ -71,11 +67,6 @@ module.exports = {
                         client.makeUrl( req.files.file.name , { downloadHack : true, longUrl : true }, function( err, url ){
                             if(err) console.log(err);
                             
-//                            sails.log( "====> FILE URL:" );
-//                            sails.log( url );
-                            
-//                            tags.title = ( tags.title );
-//                            sails.log( "====> SONG's TITLE:" );
                             
                             //TODO -> This bad code to remove null unicode \u0000
                             if( tags.title ){
@@ -138,7 +129,7 @@ module.exports = {
                                         req.body.playlist.forEach( function( playlistId ){
                                             Playlist.findOne( { id : playlistId } )
                                                     .exec( function( err, playlist ){
-                                                     playlist.songs.push( model );
+                                                     playlist.songs.push( model.id );
                                                         playlist.save( function( err, rs ){
                                                             
                                                         });
@@ -148,7 +139,7 @@ module.exports = {
                                     else{
                                         Playlist.findOne( { id : req.body.playlist } )
                                                 .exec( function( err, playlist ){
-                                                 playlist.songs.push( model );
+                                                 playlist.songs.push( model.id );
                                                     playlist.save( function( err, rs ){
 
                                                     });

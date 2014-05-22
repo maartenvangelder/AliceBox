@@ -12,7 +12,8 @@ module.exports = {
             
             songId: {
 	      type : 'string',
-              required : true
+              required : true,
+              index : true
 	    },
                     
 	    listenCnt: {

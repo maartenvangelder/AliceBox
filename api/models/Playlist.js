@@ -16,11 +16,13 @@ module.exports = {
 	    },
 	
 	    userId: {
-	      type: 'string'
+	      type: 'string',
+              index : true
 	    },
             
             songs:{
-              type: 'array'
+              type: 'array',
+              index : true
             },
             
             playingMethod:{

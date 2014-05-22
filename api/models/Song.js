@@ -12,12 +12,14 @@ module.exports = {
 
             userId: {
               type : 'string',
-              required : true
+              required : true,
+              index: true
             },
 
             name: {
               type : 'string',
-              required: true
+              required: true,
+              index : true
             },
 
             size: {
@@ -27,15 +29,18 @@ module.exports = {
 
 
             title: {
-              type: 'string'
+              type: 'string',
+              index : true
             },
 
             album: {
-              type: 'string'
+              type: 'string',
+              index : true
             },
 
             artist: {
-              type: 'string'
+              type: 'string',
+              index : true
             },
 
             year: {
