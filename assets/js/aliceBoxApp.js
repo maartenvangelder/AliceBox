@@ -130,7 +130,10 @@ aliceBoxApp.factory('audio', ['$document', function($document) {
   return audio;
 }]);
 
-aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio , $rootScope) {
+aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $document, $rootScope) {
+    
+    var audio = $document[0].createElement('audio');
+    
     var player = {
         playing: false,
         current: null,
@@ -235,6 +238,7 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         },
         
         buffered: function(){
+            console.log( audio.buffered );
             if( audio.buffered.end(0) && audio.duration >= 0 ){
                 return parseInt( (audio.buffered.end(0)/audio.duration) * 100 );
             }
