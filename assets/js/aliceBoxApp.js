@@ -133,6 +133,8 @@ aliceBoxApp.factory('audio', ['$document', function($document) {
 aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $document, $rootScope) {
     
     var audio = $document[0].createElement('audio');
+    var audioList = [];
+    
     
     var player = {
         playing: false,
@@ -146,7 +148,12 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         playlist: null,
         currentScope: null,
 
-        init: function( scope ) {
+        init: function( scope , songNumber ) {
+            audioList = [];
+            for( var i = 0; i < songNumber; i++ ){
+                var songObj = $document[0].createElement('audio');
+                audioList.push( songObj );
+            }
             
             player.currentScope = scope;
             player.playlist = scope.currentPlaylist;
@@ -165,10 +172,19 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
         
         play: function() {
-            if( !audio.src || audio.src != player.currentSong.url){
-                
-                audio.src = player.currentSong.url ;
+            audio.pause();
+            audio = audioList[player.currentSongIndex];
+            player.addAudioEvent(audio);
+            
+//            if( !audioList[player.currentSongIndex].src || audioList[player.currentSongIndex].src != player.currentSong.url){
+            if( !audioList[player.currentSongIndex].src ){
+                audio.src = player.currentSong.url;                
             }
+            
+//            if( !audio.src || audio.src != player.currentSong.url){
+//                
+//                audio.src = player.currentSong.url ;
+//            }
             
             audio.play(); // Start playback of the url
             player.playing = true
@@ -243,94 +259,101 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                 return parseInt( (audio.buffered.end(0)/audio.duration) * 100 );
             }
             return 0;
+        },
+        
+        addAudioEvent : function( audio ){
+          audio.addEventListener('timeupdate', function(evt) {
+                $rootScope.$apply(function() {            
+                    player.currentScope.progress = player.currentTime();
+                    if( player.currentScope.duration <= 0 ){
+                        player.currentScope.duration = player.currentDuration();
+                        player.currentScope.currentSong = player.currentSong;
+                        player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
+                    }
+                });
+            });
+
+            audio.addEventListener('loadstart', function() {
+                $rootScope.$apply( function(){
+                    player.currentScope.wait( true );
+                }
+                );
+            });
+
+            audio.addEventListener('progress', function() {
+                $rootScope.$apply( function(){
+                    player.currentScope.buffered = player.buffered();
+                }
+                );
+            });
+
+            audio.addEventListener('canplay', function() {
+                $rootScope.$apply( function(){
+                    player.currentScope.wait( false );
+                    player.currentScope.duration = player.currentDuration();
+                    player.currentScope.currentSong = player.currentSong;
+                    player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
+                });
+            });
+
+            audio.addEventListener('ended', function() {
+
+                audioList[player.currentSongIndex] = audio ;
+
+                $rootScope.$apply(function(){ 
+                    switch( player.playlist.playingMethod ){
+                        case "arrow-right":                        
+                            player.playNext();
+                            break;
+                        case "retweet":
+                            if( player.currentSongIndex + 1 == player.playlist.songs.length ){
+                                player.currentSongIndex = 0;
+                                player.currentSong = player.playlist.songs[0];
+                                player.play();
+                            }
+                            else{
+                                player.playNext();
+                            }
+                            break;
+                        case "random" :
+                            var randomIndex = Math.floor( Math.random() * player.playlist.songs.length );
+                            player.currentSongIndex = randomIndex;
+                            player.currentSong = player.playlist.songs[ randomIndex ];
+                            player.play();
+                            break;
+                        case "repeat" :
+                            player.play();
+                            break;
+                    }
+
+                });
+            });
+
+            //ERROR Handler
+            audio.addEventListener('error', function(e) {
+                 switch (e.target.error.code) {
+                    case e.target.error.MEDIA_ERR_ABORTED:
+                      player.currentScope.error( "You aborted the audio playback." );
+                      break;
+                    case e.target.error.MEDIA_ERR_NETWORK:
+                      player.currentScope.error( "A network error caused the audio download to fail." );
+                      break;
+                    case e.target.error.MEDIA_ERR_DECODE:
+                      player.currentScope.error( "The audio playback was aborted due to a corruption problem or because your browser did not support." );
+                      break;
+                    case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:              
+                      player.currentScope.error( "Either because the server or network failed or format not support." );
+                      break;
+                    default:
+                      player.currentScope.error( "An unknown error occurred." );
+                      break;
+                 }
+            });
+  
         }
+        
     };
 
-    audio.addEventListener('timeupdate', function(evt) {
-        $rootScope.$apply(function() {            
-            player.currentScope.progress = player.currentTime();
-            if( player.currentScope.duration <= 0 ){
-                player.currentScope.duration = player.currentDuration();
-                player.currentScope.currentSong = player.currentSong;
-                player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
-            }
-        });
-    });
-    
-    audio.addEventListener('loadstart', function() {
-        $rootScope.$apply( function(){
-            player.currentScope.wait( true );
-        }
-        );
-    });
-    
-    audio.addEventListener('progress', function() {
-        $rootScope.$apply( function(){
-            player.currentScope.buffered = player.buffered();
-        }
-        );
-    });
-    
-    audio.addEventListener('canplay', function() {
-        $rootScope.$apply( function(){
-            player.currentScope.wait( false );
-            player.currentScope.duration = player.currentDuration();
-            player.currentScope.currentSong = player.currentSong;
-            player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
-        });
-    });
-    
-    audio.addEventListener('ended', function() {
-        
-        $rootScope.$apply(function(){ 
-            switch( player.playlist.playingMethod ){
-                case "arrow-right":                        
-                    player.playNext();
-                    break;
-                case "retweet":
-                    if( player.currentSongIndex + 1 == player.playlist.songs.length ){
-                        player.currentSongIndex = 0;
-                        player.currentSong = player.playlist.songs[0];
-                        player.play();
-                    }
-                    else{
-                        player.playNext();
-                    }
-                    break;
-                case "random" :
-                    var randomIndex = Math.floor( Math.random() * player.playlist.songs.length );
-                    player.currentSongIndex = randomIndex;
-                    player.currentSong = player.playlist.songs[ randomIndex ];
-                    player.play();
-                    break;
-                case "repeat" :
-                    player.play();
-                    break;
-            }
-                
-        });
-    });
-
-    //ERROR Handler
-    audio.addEventListener('error', function(e) {
-         switch (e.target.error.code) {
-            case e.target.error.MEDIA_ERR_ABORTED:
-              player.currentScope.error( "You aborted the audio playback." );
-              break;
-            case e.target.error.MEDIA_ERR_NETWORK:
-              player.currentScope.error( "A network error caused the audio download to fail." );
-              break;
-            case e.target.error.MEDIA_ERR_DECODE:
-              player.currentScope.error( "The audio playback was aborted due to a corruption problem or because your browser did not support." );
-              break;
-            case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:              
-              player.currentScope.error( "Either because the server or network failed or format not support." );
-              break;
-            default:
-              player.currentScope.error( "An unknown error occurred." );
-              break;
-         }
-    });
     
     return player;
 }]);

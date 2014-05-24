@@ -33,7 +33,7 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
                 $http.post('/getSelectPlaylist', { playlistId : playlist.id } ).success(function(data, status, headers, config){
                     $scope.currentPlaylist = data;
                     /****INIT PLAYER*******/
-                    player.init( $scope );
+                    player.init( $scope , $scope.currentPlaylist.songs.length );
                 });
             }
         });
