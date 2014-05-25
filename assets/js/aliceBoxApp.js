@@ -132,8 +132,7 @@ aliceBoxApp.factory('audio', ['$document', function($document) {
 
 aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $document, $rootScope) {
     
-    var audio = $document[0].createElement('audio');
-    var audioList = [];
+//    var audio = $document[0].createElement('audio');
     
     
     var player = {
@@ -144,15 +143,17 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         ready: false,
         progress:0,
         duration:0,
+        audioList : [],
         
         playlist: null,
         currentScope: null,
 
         init: function( scope , songNumber ) {
-            audioList = [];
+            player.audioList = [];
             for( var i = 0; i < songNumber; i++ ){
                 var songObj = $document[0].createElement('audio');
-                audioList.push( songObj );
+                player.audioList.push( songObj );
+                player.addAudioEvent( songObj );
             }
             
             player.currentScope = scope;
@@ -172,13 +173,12 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
         
         play: function() {
-            audio.pause();
-            audio = audioList[player.currentSongIndex];
-            player.addAudioEvent(audio);
+//            audio.pause();
+//            audio = player.audioList[player.currentSongIndex];
+            var currentAudio = player.audioList[player.currentSongIndex];
             
-//            if( !audioList[player.currentSongIndex].src || audioList[player.currentSongIndex].src != player.currentSong.url){
-            if( !audioList[player.currentSongIndex].src ){
-                audio.src = player.currentSong.url;                
+            if( !player.audioList[player.currentSongIndex].src || player.audioList[player.currentSongIndex].src != player.currentSong.url){
+                player.audioList[player.currentSongIndex].src = player.currentSong.url;                
             }
             
 //            if( !audio.src || audio.src != player.currentSong.url){
@@ -186,25 +186,25 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
 //                audio.src = player.currentSong.url ;
 //            }
             
-            audio.play(); // Start playback of the url
+            currentAudio.play(); // Start playback of the url
             player.playing = true
 
         },
 
         stop: function() {
             if (player.playing) {
-                audio.pause(); // stop playback
+                player.audioList[player.currentSongIndex].pause(); // stop playback
                 // Clear the state of the player
                 player.playing = false;
                 player.ready = false;
-                audio.src = player.currentSong.url;
+                player.audioList[player.currentSongIndex].src = player.currentSong.url;
                 player.current = null;
             }
         },
 
         pause: function() {
             if (player.playing) {
-                audio.pause(); // stop playback
+                player.audioList[player.currentSongIndex].pause(); // stop playback
                 // Clear the state of the player
                 player.ready = player.playing = false;
                 player.current = null;
@@ -212,6 +212,7 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
 
         playNext: function(){
+
            if( player.playlist.songs[ player.currentSongIndex +1 ] ){
                var newCurrentSongIndex = player.currentSongIndex +1 ;
                player.currentSong = player.playlist.songs[ newCurrentSongIndex ];
@@ -240,6 +241,7 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
         
         playAt: function( index ){
+            player.stop();
             player.currentSong = player.playlist.songs[ index ];
             player.currentSongIndex = index;
             player.playing = true;
@@ -247,22 +249,22 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
 
         currentTime: function() {
-            return audio.currentTime;
+            return player.audioList[player.currentSongIndex].currentTime;
         },
         currentDuration: function() {
-            return parseInt(audio.duration);
+            return parseInt(player.audioList[player.currentSongIndex].duration);
         },
         
         buffered: function(){
-            console.log( audio.buffered );
-            if( audio.buffered.end(0) && audio.duration >= 0 ){
-                return parseInt( (audio.buffered.end(0)/audio.duration) * 100 );
+            console.log( player.audioList[player.currentSongIndex].buffered );
+            if( player.audioList[player.currentSongIndex].buffered.end(0) && player.audioList[player.currentSongIndex].duration >= 0 ){
+                return parseInt( (player.audioList[player.currentSongIndex].buffered.end(0)/player.audioList[player.currentSongIndex].duration) * 100 );
             }
             return 0;
         },
         
-        addAudioEvent : function( audio ){
-          audio.addEventListener('timeupdate', function(evt) {
+        addAudioEvent : function( audioItem ){
+            audioItem.addEventListener('timeupdate', function(evt) {
                 $rootScope.$apply(function() {            
                     player.currentScope.progress = player.currentTime();
                     if( player.currentScope.duration <= 0 ){
@@ -273,21 +275,21 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                 });
             });
 
-            audio.addEventListener('loadstart', function() {
+            audioItem.addEventListener('loadstart', function() {
                 $rootScope.$apply( function(){
                     player.currentScope.wait( true );
                 }
                 );
             });
 
-            audio.addEventListener('progress', function() {
+            audioItem.addEventListener('progress', function() {
                 $rootScope.$apply( function(){
                     player.currentScope.buffered = player.buffered();
                 }
                 );
             });
 
-            audio.addEventListener('canplay', function() {
+            audioItem.addEventListener('canplay', function() {
                 $rootScope.$apply( function(){
                     player.currentScope.wait( false );
                     player.currentScope.duration = player.currentDuration();
@@ -296,9 +298,9 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                 });
             });
 
-            audio.addEventListener('ended', function() {
-
-                audioList[player.currentSongIndex] = audio ;
+            audioItem.addEventListener('ended', function() {
+                console.log("ENDED" + audioItem.src);
+//                audioList[player.currentSongIndex] = audio ;
 
                 $rootScope.$apply(function(){ 
                     switch( player.playlist.playingMethod ){
@@ -310,9 +312,14 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                                 player.currentSongIndex = 0;
                                 player.currentSong = player.playlist.songs[0];
                                 player.play();
+                                console.log("Second");
+                                console.log( player.currentSongIndex );
                             }
                             else{
                                 player.playNext();
+                                console.log("First");
+                                console.log( player.currentSongIndex );
+                                
                             }
                             break;
                         case "random" :
@@ -330,7 +337,7 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
             });
 
             //ERROR Handler
-            audio.addEventListener('error', function(e) {
+            audioItem.addEventListener('error', function(e) {
                  switch (e.target.error.code) {
                     case e.target.error.MEDIA_ERR_ABORTED:
                       player.currentScope.error( "You aborted the audio playback." );
