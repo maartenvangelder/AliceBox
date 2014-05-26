@@ -151,7 +151,7 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
             for( var i = 0; i < songNumber; i++ ){
                 var songObj = $document[0].createElement('audio');
                 player.audioList.push( songObj );
-                player.addAudioEvent( songObj );
+//                player.addAudioEvent( songObj );
             }
             
             player.currentScope = scope;
@@ -175,8 +175,10 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
 //            audio = player.audioList[player.currentSongIndex];
             //var currentAudio = player.audioList[player.currentSongIndex];
             
-            if( !player.audioList[player.currentSongIndex].src || player.audioList[player.currentSongIndex].src != player.currentSong.url){
+            if( !player.audioList[player.currentSongIndex].src ){
+
                 player.audioList[player.currentSongIndex].src = player.currentSong.url;
+                player.addAudioEvent( player.audioList[player.currentSongIndex] );
 //                currentAudio.src = player.audioList[player.currentSongIndex].src;    
             }
             
@@ -184,7 +186,8 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
 //                
 //                audio.src = player.currentSong.url ;
 //            }
-            
+            alert("play");            
+            alert(player.audioList[player.currentSongIndex].src);
             player.audioList[player.currentSongIndex].play(); // Start playback of the url
             player.playing = true
 
@@ -211,18 +214,19 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
 
         playNext: function(){
+//           player.stop();
            if( player.playlist.songs[ player.currentSongIndex +1 ] ){
-               player.stop();
-               var newCurrentSongIndex = player.currentSongIndex +1 ;
-               player.currentSong = player.playlist.songs[ newCurrentSongIndex ];
-               player.currentSongIndex = newCurrentSongIndex;
-               player.play();
-               player.currentScope.currentSong = player.currentSong;
-               player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
+               
+               player.playAt( player.currentSongIndex +1 );
+//               var newCurrentSongIndex = player.currentSongIndex +1 ;
+//               player.currentSong = player.playlist.songs[ newCurrentSongIndex ];
+//               player.currentSongIndex = newCurrentSongIndex;
+//               player.playing = true;
+//               player.play();
+//               player.currentScope.currentSong = player.currentSong;
+//               player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
            }
-           else{
-               player.stop();
-           }
+           
         },
 
         playPrev: function(){
@@ -293,30 +297,41 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
             });
 
             audioItem.addEventListener('loadstart', function() {
-                $rootScope.$apply( function(){
+//                  alert( "loadstart" );
+                  
+//                $rootScope.$apply( function(){
                     player.currentScope.wait( true );
-                }
-                );
+//                }
+//                );
             });
+            
 
             audioItem.addEventListener('progress', function() {
-                $rootScope.$apply( function(){
+//                $rootScope.$apply( function(){
                     player.currentScope.buffered = player.buffered();
-                }
-                );
+//                });
             });
 
             audioItem.addEventListener('canplay', function() {
-                $rootScope.$apply( function(){
+//                $rootScope.$apply( function(){
                     player.currentScope.wait( false );
                     player.currentScope.duration = player.currentDuration();
                     player.currentScope.currentSong = player.currentSong;
                     player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
-                });
+//                });
+            });
+            
+            audioItem.addEventListener('canplaythrough', function() {
+//                $rootScope.$apply( function(){
+                    player.currentScope.wait( false );
+                    player.currentScope.duration = player.currentDuration();
+                    player.currentScope.currentSong = player.currentSong;
+                    player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
+//                });
             });
 
             audioItem.addEventListener('ended', function() {
-                $rootScope.$apply(function(){ 
+//                $rootScope.$apply(function(){ 
                     switch( player.playlist.playingMethod ){
                         case "arrow-right":                        
                             player.playNext();
@@ -347,7 +362,7 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                             break;
                     }
 
-                });
+//                });
             });
 
             //ERROR Handler
