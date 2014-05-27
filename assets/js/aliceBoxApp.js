@@ -163,7 +163,6 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         
         play: function() {
             if( !audio.src || audio.src != player.currentSong.url){
-                
                 audio.src = player.currentSong.url ;
             }
             
@@ -228,7 +227,13 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         },
 
         currentTime: function() {
-            return audio.currentTime;
+            player.currentScope.currentSong = player.currentSong;
+            player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
+            if( audio.currentTime && audio.currentTime > 0 ){
+                return audio.currentTime;
+            }else{
+                return 0 ;
+            }
         },
         currentDuration: function() {
             return parseInt(audio.duration);
