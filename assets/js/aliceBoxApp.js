@@ -147,12 +147,6 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         currentScope: null,
 
         init: function( scope , songNumber ) {
-            player.audioList = [];
-            for( var i = 0; i < songNumber; i++ ){
-                var songObj = $document[0].createElement('audio');
-                player.audioList.push( songObj );
-//                player.addAudioEvent( songObj );
-            }
             
             player.currentScope = scope;
             player.playlist = scope.currentPlaylist;
@@ -163,6 +157,14 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                 player.currentSongIndex = 0;
             }
 
+			player.audioList = [];
+            for( var i = 0; i < songNumber; i++ ){
+                var songObj = $document[0].createElement('audio');
+//           		songObj.src = player.playlist.songs[i].url;
+           		songObj = player.addAudioEvent( songObj );
+                player.audioList.push( songObj );
+            }
+            
         },
         
         updatePlaylist: function( playlist ){
@@ -175,18 +177,22 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
 //            audio = player.audioList[player.currentSongIndex];
             //var currentAudio = player.audioList[player.currentSongIndex];
             
-            if( !player.audioList[player.currentSongIndex].src ){
+//            if( !player.audioList[player.currentSongIndex].src ){
 
-                player.audioList[player.currentSongIndex].src = player.currentSong.url;
-                player.addAudioEvent( player.audioList[player.currentSongIndex] );
+ //               player.audioList[player.currentSongIndex].src = player.currentSong.url;
+ //               player.addAudioEvent( player.audioList[player.currentSongIndex] );
 //                currentAudio.src = player.audioList[player.currentSongIndex].src;    
-            }
+ //           }
             
 //            if( !audio.src || audio.src != player.currentSong.url){
 //                
 //                audio.src = player.currentSong.url ;
 //            }
-            alert("play");            
+            alert("play");
+            if( player.audioList[player.currentSongIndex].src != player.currentSong.url ){
+            	alert("add new src");
+            	player.audioList[player.currentSongIndex].src = player.currentSong.url;
+            }
             alert(player.audioList[player.currentSongIndex].src);
             player.audioList[player.currentSongIndex].play(); // Start playback of the url
             player.playing = true
@@ -195,6 +201,7 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
 
         stop: function() {
             if (player.playing) {
+            	alert("stop");
                 player.audioList[player.currentSongIndex].pause(); // stop playback
                 // Clear the state of the player
                 player.playing = false;
@@ -214,9 +221,9 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
 
         playNext: function(){
-//           player.stop();
+           player.stop();
            if( player.playlist.songs[ player.currentSongIndex +1 ] ){
-               
+               alert("playNext");
                player.playAt( player.currentSongIndex +1 );
 //               var newCurrentSongIndex = player.currentSongIndex +1 ;
 //               player.currentSong = player.playlist.songs[ newCurrentSongIndex ];
@@ -273,14 +280,11 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
         },
         
         buffered: function(){
-            
-            try{
-                if(  player.audioList[player.currentSongIndex].duration >= 0 ){
+            if(  player.audioList[player.currentSongIndex].duration >= 0 ){
                     return parseInt( (player.audioList[player.currentSongIndex].buffered.end(0)/player.audioList[player.currentSongIndex].duration) * 100 );
                 }
-            }
-            catch( error ){
-                return 0;
+            else{
+            	return 0;
             }
         },
         
@@ -297,31 +301,28 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
             });
 
             audioItem.addEventListener('loadstart', function() {
-//                  alert( "loadstart" );
+                  alert( "loadstart" );
                   
 //                $rootScope.$apply( function(){
-                    player.currentScope.wait( true );
+//                    player.currentScope.wait( true );
 //                }
 //                );
             });
             
-
+            audioItem.addEventListener('durationchange', function() {
+                  alert( "durationchange" );
+            });
+            
             audioItem.addEventListener('progress', function() {
 //                $rootScope.$apply( function(){
                     player.currentScope.buffered = player.buffered();
+                    alert(player.audioList[player.currentSongIndex].src);
+                	alert("progress1");
 //                });
             });
 
             audioItem.addEventListener('canplay', function() {
-//                $rootScope.$apply( function(){
-                    player.currentScope.wait( false );
-                    player.currentScope.duration = player.currentDuration();
-                    player.currentScope.currentSong = player.currentSong;
-                    player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
-//                });
-            });
-            
-            audioItem.addEventListener('canplaythrough', function() {
+            	  alert("canplay");
 //                $rootScope.$apply( function(){
                     player.currentScope.wait( false );
                     player.currentScope.duration = player.currentDuration();
@@ -385,7 +386,8 @@ aliceBoxApp.factory('player', ['$document', '$rootScope', '$log' , function( $do
                       break;
                  }
             });
-  
+            //Return after add all event;
+  			return audioItem;
         }
         
     };
