@@ -130,7 +130,7 @@ aliceBoxApp.factory('audio', ['$document', function($document) {
   return audio;
 }]);
 
-aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , '$document' , function(audio , $rootScope , $log, $document) {
+aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio , $rootScope) {
     var player = {
         playing: false,
         current: null,
@@ -139,7 +139,7 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , '$document' , fu
         ready: false,
         progress:0,
         duration:0,
-        sourceList:[],
+        
         playlist: null,
         currentScope: null,
 
@@ -153,11 +153,6 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , '$document' , fu
                 player.currentSong = player.playlist.songs[0];
                 player.currentSongIndex = 0;
             }
-            
-            for( var i = 0 ; i < player.playlist.songs.length; i++ ){
-               var source = $document[0].createElement('source');
-               player.sourceList.push( source );
-            }
 
         },
         
@@ -167,29 +162,13 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , '$document' , fu
         },
         
         play: function() {
-//            try{
-//                audio.removeChild( player.sourceList[player.currentSongIndex] );
-//            }catch( e ){
-//                alert(e);
-//            }
-//             
-            if( player.sourceList[player.currentSongIndex].src || player.sourceList[player.currentSongIndex].src != player.currentSong.url ){
-                player.sourceList[player.currentSongIndex].src = player.currentSong.url;
+            if( !audio.src || audio.src != player.currentSong.url){
+                audio.src = player.currentSong.url ;
             }
             
-//            if( !audio.src || audio.src != player.currentSong.url){
-//                audio.src = player.currentSong.url ;
-//            }
-            if( audio.childNodes.length > 0 ){
-                audio.childNodes = [];
-                
-            }
-            
-            audio.appendChild( player.sourceList[player.currentSongIndex] );
-            audio.load();
             audio.play(); // Start playback of the url
             player.playing = true
-            console.log(audio.childNodes);
+
         },
 
         stop: function() {
