@@ -44,6 +44,10 @@ module.exports.routes = {
                     action: 'authGoogle'
                 },
                 
+                '/auth/google2/callback':{
+                    controller: 'googleAuth2',
+                    action: 'authGoogle'
+                },
                 //AUTHENTICATE FACEBOOK  
                 '/auth/facebook/callback':{
                     controller: 'facebookAuth',

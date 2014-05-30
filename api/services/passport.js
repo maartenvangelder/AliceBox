@@ -1,5 +1,6 @@
-var passport = require('passport')
-  , GoogleStrategy = require('passport-google').Strategy,
+var passport = require('passport'), 
+  GoogleStrategy = require('passport-google').Strategy,
+  GoogleStrategy2 = require('passport-google-oauth').OAuth2Strategy,
   YahooStrategy = require('passport-yahoo').Strategy,
   DropboxStrategy = require('passport-dropbox').Strategy,
   DropboxOAuth2Strategy = require('passport-dropbox-oauth2').Strategy,
@@ -43,6 +44,20 @@ passport.use(new GoogleStrategy({
   }
 ));
 
+//GOOGLE
+passport.use(new GoogleStrategy2({
+    clientID: "147716273425-39stf1pqdv21hci3v68g2cvnmgaatvn5.apps.googleusercontent.com",
+    clientSecret: "Y-Xc9E1TAEpQSCfXtIqflsU2",
+    callbackURL: SERVER_HOST + "/auth/google2/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log("---> used");
+        
+    console.log( profile );
+    var user = profile;
+    done(null, user);
+  }
+));
 
 passport.use(new DropboxOAuth2Strategy({
     clientID: "h6zidp1y35hwif0",

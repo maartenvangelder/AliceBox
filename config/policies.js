@@ -26,7 +26,9 @@ module.exports.policies = {
         GoogleAuthController: {
             '*': 'googleAuthenticated'
         },
-        
+        GoogleAuth2Controller: {
+            '*': 'google2Authenticated'
+        },
         FacebookAuthController: {
             '*': 'facebookAuthenticated'
         },
