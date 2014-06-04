@@ -35,8 +35,8 @@ module.exports = function(req, res, next){
                 if( !users || users.length == 0 ){
                     Member.create( { name :  user.name , memberAuthenType : "twitter" , loginUser : user }, function( err , model ){
                       if( err ){ 
-                          sails.log( "ERROR:" + err );
-                          sails.log( model ) 
+                          sails.log( "ERROR:" );
+                          sails.log( err ); 
                       };
 //                      sails.log( "---> CREATE USER SUCCESS" + model );
                       callback(null, model );
