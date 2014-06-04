@@ -108,7 +108,7 @@ passport.use(new YahooStrategy({
 passport.use(new TwitterStrategy({
     consumerKey: "XKYGDgq03Gq3taigw3SjwQ",
     consumerSecret: "l8HVMjazzXaCMcO5rToKP6RCVnq7ZCGtesHMXrcCWg",
-    callbackURL: SERVER_HOST + 'auth/twitter/callback'
+    callbackURL: SERVER_HOST + '/auth/twitter/callback'
   },
   function(token, tokenSecret, profile, done) {
     console.log("---> used");
