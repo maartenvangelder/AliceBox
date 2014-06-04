@@ -16,42 +16,42 @@ module.exports = function(req, res, next){
    console.log("---> authenticate twitter");
    
    if (user) {
-      console.log("=====> user");
-      sails.log(user);
+//      console.log("=====> user");
+//      sails.log(user);
       
-      req.session.user = user;
-      return res.redirect('/home');
+//      req.session.user = user;
+//      return res.redirect('/home');
       
-//      async.waterfall([
-//            function(callback){
-//                Member.find()
-//                    .where( { "loginUser.username" : user.username } )
-//                    .exec( function( err, users ){
-//                        if( err ){ console.log(err); }
-//                        callback(null, users);
-//                 } );
-//            },
-//            function( users, callback){
-//                if( !users || users.length == 0 ){
-//                    Member.create( { name :  user.name , memberAuthenType : "twitter" , loginUser : user }, function( err , model ){
-//                      if( err ){ 
-//                          sails.log( "ERROR:" + err );
-//                          sails.log( model ) 
-//                      };
+      async.waterfall([
+            function(callback){
+                Member.find()
+                    .where( { "loginUser.id" : user.id , memberAuthenType : "twitter" } )
+                    .exec( function( err, users ){
+                        if( err ){ console.log(err); }
+                        callback(null, users);
+                 } );
+            },
+            function( users, callback){
+                if( !users || users.length == 0 ){
+                    Member.create( { name :  user.name , memberAuthenType : "twitter" , loginUser : user }, function( err , model ){
+                      if( err ){ 
+                          sails.log( "ERROR:" + err );
+                          sails.log( model ) 
+                      };
 //                      sails.log( "---> CREATE USER SUCCESS" + model );
-//                      callback(null, model );
-//                    });
-//                }else{
-//                    callback(null, users );
-//                }
-//            }
-//        ], 
-//        function (err, user) {
+                      callback(null, model );
+                    });
+                }else{
+                    callback(null, users );
+                }
+            }
+        ], 
+        function (err, user) {
 //            sails.log( "=====> USER: " + user );
-//            //Authenticate OK go to home
-//            req.session.user = user;
-//            return res.redirect('/home');  
-//        });
+            //Authenticate OK go to home
+            req.session.user = user;
+            return res.redirect('/home');
+        });
         
    }
    else{
@@ -60,4 +60,4 @@ module.exports = function(req, res, next){
    }
    
    })(req, res, next);
-}
+};
