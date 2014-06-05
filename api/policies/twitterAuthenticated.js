@@ -49,7 +49,14 @@ module.exports = function(req, res, next){
         function (err, user) {
 //            sails.log( "=====> USER: " + user );
             //Authenticate OK go to home
-            req.session.user = user;
+            //Authenticate OK go to home
+            if( user instanceof Array ){
+                req.session.user = user[0];
+            }
+            else{
+                req.session.user = user;
+            }
+            
             return res.redirect('/home');
         });
         
