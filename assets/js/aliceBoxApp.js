@@ -8,6 +8,9 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
 ]).run( function( $rootScope, $location, $http ,$window , localize ) {
     $rootScope.location = '';
     
+  
+    $rootScope.test="NAM";
+
     $http.post('/getUserInfo', {} ).success(function( user , status, headers, config){
         $rootScope.userInfo = user; 
         
