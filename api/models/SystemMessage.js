@@ -11,13 +11,13 @@ module.exports = {
 	attributes: {
             
             content: {
-	      type : 'string',
-              required : true
-	    },
+		      type : 'json',// { jp : "Japanese" , vn : "Vietnamese", en : "English" }
+	          required : true
+		    },
             
             type: {
-	      type : 'integer' //SystemMessage = 1, Notification = 2 ( In future maybe have Advertising Msg )
-	    }
+		      type : 'integer' //SystemMessage = 1, Notification = 2 ( In future maybe have Advertising Msg )
+		    }
 	  }
 
 };
