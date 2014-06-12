@@ -10,15 +10,15 @@ module.exports = {
 
 	attributes: {
             
-	    name: {
-	      type: 'string',
-	      required: true
-	    },
-	
-	    dropBoxUserId: {
-	      type: 'integer',
-              index: true
-	    },
+      	    name: {
+      	      type: 'string',
+      	      required: true
+      	    },
+      	
+      	    dropBoxUserId: {
+      	      type: 'integer',
+                    index: true
+      	    },
             
             dropBoxToken: {
               type: 'string'  
@@ -48,6 +48,10 @@ module.exports = {
             
             myLocale:{
               type: "string"
+            },
+
+            readMessageTime: {
+              type: "datetime"
             }
             
 	  }

@@ -32,10 +32,10 @@ module.exports.routes = {
   // located at `views/home/index.ejs`
   // 
   // (This would also work if you had a file at: `/views/home.ejs`)
-		'/': {
+            		'/': {
                     controller: 'Home',
                     action: 'index'
-		},
+            		},
                 
                 /**** AUTHENTICATE ACTION ********************/
                 //AUTHENTICATE GOOGLE  
@@ -79,36 +79,36 @@ module.exports.routes = {
                     action: 'authDropbox2'
                 },
                 
-		'post /login': {
-		    controller: 'auth',
-		    action: 'process'
-		},
-		
-		'/logout' :{
+            		'post /login': {
+            		    controller: 'auth',
+            		    action: 'process'
+            		},
+            		
+            		'/logout' :{
                     controller: 'auth',
                     action: 'logout'
-		},
-                
+            		},
+                            
                 '/isHasDropboxId' :{
                     controller: 'auth',
                     action: 'isHasDropboxId'
-		},
-                
+            		},
+                            
                 /******* HOME CONTROLLER ACTIONS ****************/
                 'post /searchSong': {
                     controller: 'Home',
                     action: 'searchSong'
-		},
-                        
+            		},
+                                    
                 'get /main': {
                     controller: 'auth',
-		    action: 'process'
-		},          
-		// Custom routes for login:
-		'get /login': {
-		    controller: 'auth',
-		    action: 'login'
-		},
+            		    action: 'process'
+            		},          
+            		// Custom routes for login:
+            		'get /login': {
+            		    controller: 'auth',
+            		    action: 'login'
+            		},
                 
                 '/home':{
                     controller: 'Home',
@@ -239,9 +239,20 @@ module.exports.routes = {
                 '/countMyPlaylist' : {
                     controller: 'MyProfile',
                     action: 'countMyPlaylist'
+                },
+
+                /******** SYSTEM MESSAGE CONTROOLER ACTIONS *************/
+                '/systemMessage/dailySystemMessage' : {
+                    controller: 'SystemMessage',
+                    action: 'dailySystemMessage'
+                },
+
+                /******** SYSTEM MEMBER CONTROOLER ACTIONS *************/
+                '/member/updateReadSystemMessage' : {
+                    controller: 'Member',
+                    action: 'updateReadSystemMessage'
                 }
-                
-                
+
                 
                 
                                

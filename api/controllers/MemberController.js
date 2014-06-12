@@ -16,7 +16,21 @@
  */
 
 module.exports = {
-    
+  
+  updateReadSystemMessage : function( req, res ){
+      Member.find().where( { id :  req.session.user.id } ).exec( function( err, users ){
+            users[0].readMessageTime = new Date(req.body.readMessageTime) ;
+            users[0].save( function( err, model ){
+                        if( err ){ 
+                            sails.log( "ERROR:" + err );
+                        };
+                sails.log.debug( "====> Update readMessageTime: " + model );
+                req.session.user = model;
+                
+                res.json( model );
+            });
+        });
+  },
   
   /**
    * Action blueprints:

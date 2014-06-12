@@ -72,6 +72,9 @@ module.exports.policies = {
         },
         MemberController: {
             '*': 'authenticated'
+        },
+        SystemMessageController: {
+            '*': 'authenticated'
         }
             
             

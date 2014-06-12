@@ -9,7 +9,7 @@
 module.exports = {
 
 	attributes: {
-            
+
             content: {
 		      type : 'json',// { jp : "Japanese" , vn : "Vietnamese", en : "English" }
 	          required : true

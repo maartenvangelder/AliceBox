@@ -8,12 +8,22 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
 ]).run( function( $rootScope, $location, $http ,$window , localize ) {
     $rootScope.location = '';
     
-  
-    $rootScope.test="NAM";
+    
+    $rootScope.unreadCnt = 0 ;
 
     $http.post('/getUserInfo', {} ).success(function( user , status, headers, config){
-        $rootScope.userInfo = user; 
-        
+        $rootScope.userInfo = user;
+
+        //Set last time read message
+        if( !$rootScope.userInfo.readMessageTime ){
+          var yesterday = new Date();
+          $rootScope.readMessageTime = yesterday.setDate( yesterday.getDate() - 1 );
+          alert( $rootScope.readMessageTime );
+        }
+        else{
+          $rootScope.readMessageTime = new Date( $rootScope.userInfo.readMessageTime );
+        }
+
         //SET LOCALE
         if( user.myLocale ){
             localize.setLanguage( user.myLocale );
@@ -41,6 +51,16 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
         }
         
     });
+
+    $http.post('/systemMessage/dailySystemMessage', {} ).success(function( msgs , status, headers, config){
+        $rootScope.sysemMessage = msgs;
+        msgs.forEach( function(item) {
+          var dateInt =  new Date(item.updatedAt);
+          if( $rootScope.readMessageTime < dateInt ){
+            $rootScope.unreadCnt++;
+          }
+        });
+    });
     
     $rootScope.mstUpdateTheme = function( themesName ){
         $http.post('/updateThemes', { themesName : themesName } ).success(function( user , status, headers, config){
@@ -56,7 +76,15 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
             $rootScope.userInfo = user;
         });
     };
-   
+    
+    /***** UPDATE READMESSAGE TIME *****/
+    $rootScope.updateReadMessageTime = function(){
+        var nowInt = new Date().getTime();
+         $http.post('/member/updateReadSystemMessage', { readMessageTime : nowInt } ).success(function( user , status, headers, config){
+            $rootScope.userInfo = user;
+            $rootScope.unreadCnt = 0;
+        });
+    }
 });
 
 aliceBoxApp.config(['$routeProvider',
