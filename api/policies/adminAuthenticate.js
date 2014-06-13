@@ -1,8 +1,6 @@
 /**
 * Allow any authenticated user.
 */
-var passport = require('passport');
-
 module.exports = function(req, res, next){
    
    if (req.session.user){

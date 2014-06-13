@@ -161,7 +161,7 @@ aliceBoxApp.factory('audio', ['$document', function($document) {
   return audio;
 }]);
 
-aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio , $rootScope) {
+aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio , $rootScope , $http ) {
     var player = {
         playing: false,
         current: null,
@@ -271,11 +271,18 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         },
         
         buffered: function(){
-            if( audio.buffered.end(0) && audio.duration >= 0 ){
+            if( audio.buffered.length > 0 && audio.buffered.end(0) && audio.duration >= 0 ){
                 return parseInt( (audio.buffered.end(0)/audio.duration) * 100 );
             }
             return 0;
+        },
+
+        updateSongListenCnt : function(){
+            console.log("==========> Play : ");
+            $http.post('/songLifeInfo/updateListenCnt',{ songId : player.currentSong.id }).success( function( data, status, headers, config ){
+            } );
         }
+
     };
 
     audio.addEventListener('timeupdate', function(evt) {
@@ -302,6 +309,13 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
         }
         );
     });
+
+    audio.addEventListener('play', function() {
+        $rootScope.$apply( function(){
+            player.updateSongListenCnt();
+        });
+        
+    });
     
     audio.addEventListener('canplay', function() {
         $rootScope.$apply( function(){
@@ -310,6 +324,10 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$log' , function(audio ,
             player.currentScope.currentSong = player.currentSong;
             player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
         });
+
+        // $http.post('/songLifeInfo/updateAddCnt',{ songId : songsToPlayList.id }).success( function( data, status, headers, config ){
+
+        // } );
     });
     
     audio.addEventListener('ended', function() {

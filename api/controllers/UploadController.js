@@ -122,6 +122,9 @@ module.exports = {
                                     sails.log( err ) 
                                 };
                                 
+                                SongLifeInfo.create( { songId : model.id , listenCnt : 0 , addCnt : 1  } , function( err , songInfo ){
+                                    sails.log.debug( songInfo );
+                                });
 //                              sails.log( "---> CREATE SONG SUCCESS" + model );
 
                                 if( req.body.playlist ){

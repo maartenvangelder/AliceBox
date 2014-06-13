@@ -247,11 +247,22 @@ module.exports.routes = {
                     action: 'dailySystemMessage'
                 },
 
-                /******** SYSTEM MEMBER CONTROOLER ACTIONS *************/
+                /******** MEMBER CONTROOLER ACTIONS *************/
                 '/member/updateReadSystemMessage' : {
                     controller: 'Member',
                     action: 'updateReadSystemMessage'
-                }
+                },
+
+                /******** SONGLIFEINFO CONTROOLER ACTIONS *************/
+                '/songLifeInfo/updateListenCnt' : {
+                    controller: 'SongLifeInfo',
+                    action: 'updateListenCnt'
+                },
+                '/songLifeInfo/updateAddCnt' : {
+                    controller: 'SongLifeInfo',
+                    action: 'updateAddCnt'
+                },
+
 
                 
                 

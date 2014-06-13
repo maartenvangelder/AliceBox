@@ -106,6 +106,9 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
                     $scope.currentPlaylist = data;
                     player.init( $scope );
                     $('#loading_modal').modal('hide');
+            $http.post('/songLifeInfo/updateAddCnt',{ songId : songsToPlayList.id }).success( function( data, status, headers, config ){
+
+            } );
         });
     };
     

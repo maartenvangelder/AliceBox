@@ -75,6 +75,9 @@ module.exports.policies = {
         },
         SystemMessageController: {
             '*': 'authenticated'
+        },
+        SongLifeInfoController: {
+            '*': 'authenticated'
         }
             
             
