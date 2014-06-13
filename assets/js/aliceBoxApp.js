@@ -18,7 +18,6 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
         if( !$rootScope.userInfo.readMessageTime ){
           var yesterday = new Date();
           $rootScope.readMessageTime = yesterday.setDate( yesterday.getDate() - 1 );
-          alert( $rootScope.readMessageTime );
         }
         else{
           $rootScope.readMessageTime = new Date( $rootScope.userInfo.readMessageTime );
