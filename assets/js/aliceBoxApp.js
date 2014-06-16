@@ -78,7 +78,7 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
     
     /***** UPDATE READMESSAGE TIME *****/
     $rootScope.updateReadMessageTime = function(){
-        var nowInt = new Date().getTime();
+        var nowInt = new Date( $rootScope.sysemMessage[0].updatedAt ).getTime();
          $http.post('/member/updateReadSystemMessage', { readMessageTime : nowInt } ).success(function( user , status, headers, config){
             $rootScope.userInfo = user;
             $rootScope.unreadCnt = 0;
