@@ -17,7 +17,8 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
         //Set last time read message
         if( !$rootScope.userInfo.readMessageTime ){
           var yesterday = new Date();
-          $rootScope.readMessageTime = yesterday.setDate( yesterday.getDate() - 1 );
+          $rootScope.showWelcome = true;
+          $rootScope.readMessageTime = yesterday.setDate( yesterday.getDate() - 365 );
         }
         else{
           $rootScope.readMessageTime = new Date( $rootScope.userInfo.readMessageTime );
