@@ -39,7 +39,7 @@ module.exports = {
         }
         
         if(req.body.word != ""){
-            Song.find( { title : { contains : req.body.word.trim() } , permission : { contains: req.body.permission } } ).limit(25).done( function( err, songs ){
+            Song.find( { title : { contains : req.body.word.trim() } , permission : { contains: req.body.permission } , deleted : false } ).limit(25).done( function( err, songs ){
                   if( err ){
                       sails.log(err); 
                   }

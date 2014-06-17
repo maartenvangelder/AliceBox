@@ -61,6 +61,10 @@ module.exports = {
 
             shareWith: {
                type: 'array'
+            },
+
+            deleted : {
+              type: 'boolean'
             }
 
           }

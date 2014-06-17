@@ -116,14 +116,14 @@ module.exports = {
                             Song.create( { userId : req.session.user.id , name : req.files.file.name , 
                                            size : req.files.file.size , title: tags.title , album : tags.album  ,
                                            artist : tags.artist , year : tags.year ,fileType : req.files.file.headers , 
-                                           url : url.url , permission : req.body.shareTo , shareWith : [] }, function( err , model ){
+                                           url : url.url , permission : req.body.shareTo , shareWith : [] , deleted : false }, function( err , model ){
                                 if( err ){ 
                                     sails.log( "ERROR:" + err );
                                     sails.log( err ) 
                                 };
                                 
                                 SongLifeInfo.create( { songId : model.id , listenCnt : 0 , addCnt : 1  } , function( err , songInfo ){
-                                    sails.log.debug( songInfo );
+                                    //sails.log.debug( songInfo );
                                 });
 //                              sails.log( "---> CREATE SONG SUCCESS" + model );
 

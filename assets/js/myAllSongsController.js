@@ -20,6 +20,15 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
        /****INIT PLAYER*******/
        player.init( $scope );
     });
+
+    $scope.removeMySong = function( song, index ){
+        
+        $http.post('/myAllSongs/removeMySong', { song : song } ).success(function(data, status, headers, config){
+             $http.post('/getMyAllSongs', {} ).success(function(songs, status, headers, config){
+                $scope.currentPlaylist.songs = songs;
+             });
+        });   
+    }
   
   
 

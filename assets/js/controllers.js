@@ -30,7 +30,7 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
         //Find the currentPlaylist
         data.forEach( function( playlist ){ 
             if( playlist.isSelected ){
-                $http.post('/getSelectPlaylist', { playlistId : playlist.id } ).success(function(data, status, headers, config){
+                $http.post('/Playlist/getSelectPlaylist', { playlistId : playlist.id } ).success(function(data, status, headers, config){
                     $scope.currentPlaylist = data;
                     /****INIT PLAYER*******/
                     player.init( $scope );

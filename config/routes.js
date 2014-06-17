@@ -170,7 +170,7 @@ module.exports.routes = {
                     action: 'changeSelectPlaylist'
                 },
                         
-                '/getSelectPlaylist' : {
+                '/Playlist/getSelectPlaylist' : {
                     controller: 'Playlist',
                     action: 'getSelectPlaylist'
                 },
@@ -183,6 +183,10 @@ module.exports.routes = {
                 '/updateMySong' : {
                     controller: 'MyAllSongs',
                     action: 'updateMySong'
+                },
+                '/myAllSongs/removeMySong' : {
+                    controller: 'MyAllSongs',
+                    action: 'removeMySong'
                 },
                 
                 

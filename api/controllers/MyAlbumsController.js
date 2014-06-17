@@ -3,7 +3,7 @@ module.exports = {
     getMyAlbums : function ( req, res )
     {
         sails.log("======> searchSongAdvance");
-        Song.find().where( { or : [ { userId : req.session.user.id } , { 'shareWith.userId' : req.session.user.id }  ] } )
+        Song.find().where( { deleted : false , or : [ { userId : req.session.user.id } , { 'shareWith.userId' : req.session.user.id }  ] } )
                    .groupBy('album').sum('album').sort({ album : 'asc' }).exec( function( err, albums ){
             if( err ){
                 sails.log( err );
@@ -19,7 +19,7 @@ module.exports = {
     {
         sails.log(req.body);
         sails.log("======> searchSongAdvance");
-        Song.find().where( { or : [ { userId : req.session.user.id , album : req.body.album } , 
+        Song.find().where( {  deleted : false , or : [ { userId : req.session.user.id , album : req.body.album } , 
                                     { 'shareWith.userId' : req.session.user.id , album : req.body.album }  
                                   ] } )
                    .exec( function( err, songs ){

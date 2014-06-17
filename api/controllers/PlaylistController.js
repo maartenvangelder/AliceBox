@@ -43,7 +43,7 @@ module.exports = {
        
        if( req.body.songsToPlayList.userId != req.session.user.id ){
            sails.log("=======> shareWith");
-           Song.findOne( { id : req.body.songsToPlayList.id }  )
+           Song.findOne( { id : req.body.songsToPlayList.id , deleted : false }  )
                .exec( function( err, song ){
                    
                    if(err){ sails.log(err); }
@@ -64,9 +64,11 @@ module.exports = {
 //                playlist.songs.push( req.body.songsToPlayList );
                    playlist.songs.push( req.body.songsToPlayList.id );
                    playlist.save( function( err, rs ){
-                       Song.find( { id : rs.songs } , function( err, songs ){
+                       Song.find( { id : rs.songs , deleted : false } , function( err, songs ){
                                     if( songs && songs.length > 0){
                                        rs.songs = songs;
+                                    }else{
+                                       rs[0].songs = [];
                                     }
                                     res.json( rs );
                                 });
@@ -83,9 +85,11 @@ module.exports = {
                 playlist.songs.splice( index ,1);
                 
                 playlist.save( function( err, rs ){
-                    Song.find( { id : rs.songs } , function( err, songs ){
+                    Song.find( { id : rs.songs , deleted : false  } , function( err, songs ){
                                     if( songs && songs.length > 0){
                                        rs.songs = songs;
+                                    }else{
+                                       rs[0].songs = [];
                                     }
                                     res.json( rs );
                     });
@@ -97,9 +101,11 @@ module.exports = {
        Playlist.update( { id : req.body.playlistId } , { playingMethod : req.body.playingMethod } 
                         , function( err, rs ){
                             if( err ){ sails.log( err ); }
-                            Song.find( { id : rs[0].songs } , function( err, songs ){
+                            Song.find( { id : rs[0].songs , deleted : false } , function( err, songs ){
                                     if( songs && songs.length > 0){
                                        rs[0].songs = songs;
+                                    }else{
+                                       rs[0].songs = [];
                                     }
                                     res.json( rs[0] );
                             });
@@ -112,9 +118,11 @@ module.exports = {
                             if( err ){ sails.log( err ); }
                             Playlist.update( { id : req.body.changedPlaylistId }, { isSelected : true } , function( err, rs ){ //Update new to true
 //                                sails.log(rs[0]);
-                                Song.find( { id : rs[0].songs } , function( err, songs ){
+                                Song.find( { id : rs[0].songs , deleted : false } , function( err, songs ){
                                     if( songs && songs.length > 0){
                                        rs[0].songs = songs;
+                                    }else{
+                                       rs[0].songs = [];
                                     }
                                     res.json( rs[0] );
                                 });
@@ -125,9 +133,11 @@ module.exports = {
    getSelectPlaylist: function ( req , res ){
        Playlist.find().where( { id : req.body.playlistId } ).exec( function( err, rs ){ 
                       if(err){ sails.log(err); }
-                      Song.find( { id : rs[0].songs } , function( err, songs ){
+                      Song.find( { id : rs[0].songs , deleted : false } , function( err, songs ){
                                     if( songs && songs.length > 0){
                                        rs[0].songs = songs;
+                                    }else{
+                                       rs[0].songs = [];
                                     }
                                     res.json( rs[0] );
                                 });
