@@ -36,8 +36,10 @@ module.exports = {
 
         //var server = new Dropbox.AuthDriver.NodeServer(8191);
         var server = sails.config.AliceBox.DROPBOX_AUTH_DRIVER ;
-        
+        sails.log("=====>BEFORE AUTHENTICATE");
         client.authDriver( server );
+        sails.log("=====>AFTER DROPBOX AUTHENTICATE");
+
         client.authenticate( false ,function(error, clientA) {
             if (error) {
              sails.log("=====>DROPBOX AUTHENTICATE ERROR");
