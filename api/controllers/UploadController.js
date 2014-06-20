@@ -45,7 +45,8 @@ module.exports = {
             }
 
             //sails.log("===============");
-            //sails.log( clientA );
+            sails.log( clientA );
+
 
             id3js({ file: req.files.file.path , type: id3js.OPEN_LOCAL }, function(err, tags) {
                 if(err){ 
@@ -57,12 +58,14 @@ module.exports = {
                 fs.readFile( req.files.file.path , function read( err, data ){
                     if( err )console.log( err );
 
+                    sails.log("=====> READFILE ....");
+
                     //Write fiel
                     client.writeFile( req.files.file.name , data , function(error, status ) {
 
                         if(error) console.log(error);
 
-                        //console.log(stat);
+                        console.log( "---> WRITTING FILE :...." );
 
                         client.makeUrl( req.files.file.name , { downloadHack : true, longUrl : true }, function( err, url ){
                             if(err) console.log(err);
