@@ -25,7 +25,7 @@ module.exports = {
 //        sails.log( req.body );
 //        sails.log("====> ALL");
 //        sails.log( req.files );
-        
+        sails.log("=====>BEFORE AUTHENTICATE");
         // Server-side applications use both the API key and secret.
         var client = new Dropbox.Client({
             key: sails.config.AliceBox.DROPBOX_KEY ,
