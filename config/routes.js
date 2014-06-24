@@ -79,15 +79,15 @@ module.exports.routes = {
                     action: 'authDropbox2'
                 },
                 
-            		'post /login': {
-            		    controller: 'auth',
-            		    action: 'process'
-            		},
-            		
-            		'/logout' :{
-                    controller: 'auth',
-                    action: 'logout'
-            		},
+        		'post /login': {
+        		    controller: 'auth',
+        		    action: 'process'
+        		},
+        		
+        		'/logout' :{
+                controller: 'auth',
+                action: 'logout'
+        		},
                             
                 '/isHasDropboxId' :{
                     controller: 'auth',
@@ -139,7 +139,7 @@ module.exports.routes = {
                     controller: 'Upload',
                     action: 'upload_files'
                 },
-                '/flowUpload':{
+                'post /flowUpload':{
                     controller: 'Upload',
                     action: 'flowUpload'
                 },
