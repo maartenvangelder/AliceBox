@@ -2,7 +2,7 @@ var async = require("async");
 /**
  * Playlist Controller
  */
-module.exports = {
+var PlaylistController = {
     
    addPlaylist: function (req, res) {
        if( req.body.playlistName != "" ){
@@ -65,6 +65,7 @@ module.exports = {
                    playlist.songs.push( req.body.songsToPlayList.id );
                    playlist.save( function( err, rs ){
                        Song.find( { id : rs.songs , deleted : false } , function( err, songs ){
+                                    songs = PlaylistController.orderSongInPlaylist( songs , rs.songs );
                                     if( songs && songs.length > 0){
                                        rs.songs = songs;
                                     }else{
@@ -86,6 +87,7 @@ module.exports = {
                 
                 playlist.save( function( err, rs ){
                     Song.find( { id : rs.songs , deleted : false  } , function( err, songs ){
+                                    songs = PlaylistController.orderSongInPlaylist( songs , rs.songs );
                                     if( songs && songs.length > 0){
                                        rs.songs = songs;
                                     }else{
@@ -102,6 +104,7 @@ module.exports = {
                         , function( err, rs ){
                             if( err ){ sails.log( err ); }
                             Song.find( { id : rs[0].songs , deleted : false } , function( err, songs ){
+                                    songs = PlaylistController.orderSongInPlaylist( songs , rs[0].songs );
                                     if( songs && songs.length > 0){
                                        rs[0].songs = songs;
                                     }else{
@@ -119,6 +122,7 @@ module.exports = {
                             Playlist.update( { id : req.body.changedPlaylistId }, { isSelected : true } , function( err, rs ){ //Update new to true
 //                                sails.log(rs[0]);
                                 Song.find( { id : rs[0].songs , deleted : false } , function( err, songs ){
+                                    songs = PlaylistController.orderSongInPlaylist( songs , rs[0].songs );
                                     if( songs && songs.length > 0){
                                        rs[0].songs = songs;
                                     }else{
@@ -134,6 +138,7 @@ module.exports = {
        Playlist.find().where( { id : req.body.playlistId } ).exec( function( err, rs ){ 
                       if(err){ sails.log(err); }
                       Song.find( { id : rs[0].songs , deleted : false } , function( err, songs ){
+                                    songs = PlaylistController.orderSongInPlaylist( songs , rs[0].songs );
                                     if( songs && songs.length > 0){
                                        rs[0].songs = songs;
                                     }else{
@@ -142,6 +147,25 @@ module.exports = {
                                     res.json( rs[0] );
                                 });
                });//End Find
-   }
+   },
    
+   /*** private function for reorder the songs list with songId list of playlist ***/
+   orderSongInPlaylist: function( songs , songIds ){
+      var reorderList = [];
+      if( songIds && songIds.length > 0 ){
+          for( var i = 0 ; i < songIds.length ; i++ ){
+              for( var j= 0 ; j < songIds.length ; j++ ){
+                if( songIds[i] == songs[j].id ){
+                  reorderList.push( songs[j] );
+                  break;
+                }
+              }
+          }
+          songs = reorderList;
+      }
+      return songs;
+   }
+
 };
+
+module.exports = PlaylistController;
