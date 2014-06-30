@@ -259,7 +259,7 @@
 
                         <div class="alert alert-success alert-dismissable" >
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <small><em>NamVu</em></small><br>
+                            <small><em>{{userInfo.name}}</em></small><br>
                             <!-- <small><a href="page_special_user_profile.html">Claire</a>, {{msg.content.en}}</small><br>
                             {{msg.content.en}} <a href="page_special_message_center.html">more</a> -->
                             Welcome to Alicebox, I hope you will enjoin your music with our service everywhere on any devices !!
@@ -271,14 +271,14 @@
                     <div class="sidebar-section">
                         <h2 class="sidebar-header"><div data-i18n="_Messages_"></div></h2>
 
-                        <div class="alert alert-info alert-dismissable" ng-repeat="msg in sysemMessage">
+                        <div class="alert alert-info alert-dismissable" ng-repeat="msg in sysemMessage" ng-switch="userInfo.myLocale">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <small><em>2 hours ago</em></small><br>
-                            <!-- <small><a href="page_special_user_profile.html">Claire</a>, {{msg.content.en}}</small><br>
-                            {{msg.content.en}} <a href="page_special_message_center.html">more</a> -->
-                            THIS IS THE MESSAGE VERRY LONG CAME FROM A VERRY BIG COMPANY IN WORLD WE CAN NOT STOP THIS MESSAGE COMING COMING COMING COMING COMING COMINGCOMING COMING COMING COMING COMING COMINGCOMING COMING COMING
-                            COMING COMING COMINGCOMING COMING COMINGCOMING COMING COMING
-                            COMING COMING COMING
+                            <!-- <small><em>{{userInfo.name}}</em></small><br>{{userInfo.myLocale}}
+                            <small><a href="page_special_user_profile.html">Claire</a>, {{msg.content.en}}</small><br> -->
+                            <div ng-switch-when="en-US">{{msg.content.en}}</div>
+                            <div ng-switch-when="ja-JP">{{msg.content.jp}}</div>
+                            <div ng-switch-when="vi-VN">{{msg.content.vn}}</div>
+                            <!-- <a href="page_special_message_center.html">more</a> -->
                         </div>
 
                     </div>
