@@ -250,6 +250,12 @@ module.exports.routes = {
                     controller: 'SystemMessage',
                     action: 'dailySystemMessage'
                 },
+                
+                '/systemMessage/dailyNotifyMessage' : {
+                    controller: 'SystemMessage',
+                    action: 'dailyNotifyMessage'
+                },
+                
 
                 /******** MEMBER CONTROOLER ACTIONS *************/
                 '/member/updateReadSystemMessage' : {

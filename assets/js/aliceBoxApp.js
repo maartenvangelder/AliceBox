@@ -53,7 +53,17 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
     });
 
     $http.post('/systemMessage/dailySystemMessage', {} ).success(function( msgs , status, headers, config){
-        $rootScope.sysemMessage = msgs;
+        $rootScope.sysemMessage = msgs; 
+        msgs.forEach( function(item) {
+          var dateInt =  new Date(item.updatedAt);
+          if( $rootScope.readMessageTime < dateInt ){
+            $rootScope.unreadCnt++;
+          }
+        });
+    });
+
+    $http.post('/systemMessage/dailyNotifyMessage', {} ).success(function( msgs , status, headers, config){
+        $rootScope.notifyMessage = msgs;
         msgs.forEach( function(item) {
           var dateInt =  new Date(item.updatedAt);
           if( $rootScope.readMessageTime < dateInt ){
@@ -79,11 +89,20 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
     
     /***** UPDATE READMESSAGE TIME *****/
     $rootScope.updateReadMessageTime = function(){
-        var nowInt = new Date( $rootScope.sysemMessage[0].updatedAt ).getTime();
-         $http.post('/member/updateReadSystemMessage', { readMessageTime : nowInt } ).success(function( user , status, headers, config){
+        
+        var lastMsg  = new Date( $rootScope.sysemMessage[0].updatedAt ).getTime();
+        var lastNotify = new Date( $rootScope.notifyMessage[0].updatedAt ).getTime();
+        var nowInt = ( lastMsg >  lastNotify ) ? lastMsg : lastNotify ;
+
+        $http.post('/member/updateReadSystemMessage', { readMessageTime : nowInt } ).success(function( user , status, headers, config){
             $rootScope.userInfo = user;
             $rootScope.unreadCnt = 0;
         });
+    }
+
+    /******* OPEN ADVERTISEMENT LINK ******/
+    $rootScope.openAdwindown = function( link ){
+        $window.open( link );
     }
 });
 
