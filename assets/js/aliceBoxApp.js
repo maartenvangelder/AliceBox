@@ -101,8 +101,8 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
     }
 
     /******* OPEN ADVERTISEMENT LINK ******/
-    $rootScope.openAdwindown = function( link ){
-        $window.open( link );
+    $rootScope.openAdwindown = function( ){
+        $window.open( 'https://alicebox.mobi' );
     }
 });
 

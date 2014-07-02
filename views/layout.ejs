@@ -158,15 +158,15 @@
                         <li>
                             <h2 class="sidebar-header"><div data-i18n="_Personal_"></div></h2>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="page_special_timeline.html"><i class="fa fa-clock-o"></i><b data-i18n="_Timeline_"></b></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#myProfile" ng-class="{ active : location == 'myProfile' }" ><i class="fa fa-pencil-square"></i><b data-i18n="_User_Profile_"></b></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="page_special_message_center.html"><i class="fa fa-envelope-o"></i><b data-i18n="_Message_Center_"></b></a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="/logout"><i class="fa fa-power-off"></i><b data-i18n="_Logout_"></b></a>
                         </li>
@@ -318,7 +318,7 @@
                         <div class="alert alert-warning alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <small><em>5 hours ago</em></small><br>
-                            <a href="www.google.com">FTP Server</a> went down for maintenance!
+                            <a ng-click="openAdwindown( 'http://google.com' )">FTP Server</a> went down for maintenance!
                         </div>
                     </div>
                     <!-- END Notifications -->

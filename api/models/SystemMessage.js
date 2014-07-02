@@ -14,6 +14,14 @@ module.exports = {
 		      type : 'json',// { jp : "Japanese" , vn : "Vietnamese", en : "English" }
 	          required : true
 		    },
+
+		    title: {
+		      type : 'string' //The url to other page
+		    },
+
+		    link: {
+		      type : 'string' //The url to other page
+		    },
             
             type: {
 		      type : 'integer' //SystemMessage = 1, Notification = 2 ( In future maybe have Advertising Msg )
