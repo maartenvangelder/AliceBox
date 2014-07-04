@@ -17,7 +17,7 @@ module.exports = {
       	
       	    dropBoxUserId: {
       	      type: 'integer',
-                    index: true
+              index: true
       	    },
             
             dropBoxToken: {

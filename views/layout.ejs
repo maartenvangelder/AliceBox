@@ -294,10 +294,15 @@
                         </div> -->
                         <div class="alert alert-warning alert-dismissable" ng-repeat="msg in notifyMessage" ng-switch="userInfo.myLocale">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <div ng-switch-when="en-US">{{msg.content.en}}</div>
-                            <div ng-switch-when="ja-JP">{{msg.content.jp}}</div>
-                            <div ng-switch-when="vi-VN">{{msg.content.vn}}</div>
-                            <div ng-switch-default >{{msg.content.en}}</div>
+                            <small ng-if="msg.title && msg.title!=''" >
+                                <a ng-click="openAdwindown( msg.link )" ng-if="msg.link && msg.link != ''" ><em>{{msg.title}}</em></a>
+                                <em ng-if="!msg.link || msg.link==''">{{msg.title}}</em>
+                            </small>
+                            <br ng-if="msg.title && msg.title!=''">
+                            <div ng-switch-when="en-US" ng-bind-html="msg.content.en" ></div>
+                            <div ng-switch-when="ja-JP" ng-bind-html="msg.content.jp"></div>
+                            <div ng-switch-when="vi-VN" ng-bind-html="msg.content.vn"></div>
+                            <div ng-switch-default ng-bind-html="msg.content.en"></div>
                         </div>
                     </div>
                     <!-- END Notifications -->
@@ -491,6 +496,7 @@
         <script src="js/lib/angular/angular-slider.js"></script>
         <script src="js/lib/angular/angular-resource.js"></script>
         <script src="js/lib/angular/angular-touch.js"></script>
+        <script src="js/lib/angular/angular-sanitize.js"></script>
         <script src="js/lib/angular/es5-shim.js"></script>
         <script src="js/lib/angular/angular-file-upload.js"></script>
         <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>

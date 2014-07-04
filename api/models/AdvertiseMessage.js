@@ -1,5 +1,5 @@
 /**
- * SystemMessage
+ * Advertise Message
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -16,17 +16,38 @@ module.exports = {
 		    },
 
 		    title: {
-		      type : 'string' //The url to other page
+		      type : 'string'
 		    },
 
 		    link: {
 		      type : 'string' //The url to other page
 		    },
+
+		    imgSource: {
+		      type : 'string'
+		    },
             
-            type: {
+            clickCount: {
+		      type : 'integer' //Count when user click
+		    },
+
+		    type: {
 		      type : 'integer' //SystemMessage = 1, Notification = 2 ( In future maybe have Advertising Msg )
 		      ,index : true
+		    },
+
+		    startDate: {
+		      type : 'datetime' //Count when user click
+		      ,required : true
+		      ,index : true
+		    },
+
+		    endDate: {
+		      type : 'datetime' //Count when user click
+		      ,required : true
+		      ,index : true
 		    }
+
 	  }
 
 };

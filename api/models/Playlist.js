@@ -10,19 +10,18 @@ module.exports = {
 
 	attributes: {
             
-	    name: {
-	      type: 'string',
-	      required: true
-	    },
-	
-	    userId: {
-	      type: 'string',
+      	    name: {
+      	      type: 'string',
+      	      required: true
+      	    },
+      	
+      	    userId: {
+      	      type: 'string',
               index : true
-	    },
+      	    },
             
             songs:{
-              type: 'array',
-              index : true
+              type: 'array'
             },
             
             playingMethod:{
@@ -36,6 +35,7 @@ module.exports = {
             permission: {
               type: 'json'
             },
+            
             //Check new song exists in list
             hasThisSong : function( thisSong ) {
                 var value;
