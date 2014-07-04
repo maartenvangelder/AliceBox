@@ -3,7 +3,20 @@ module.exports = {
     searchSongAdvance: function ( req, res )
     {
         sails.log("======> searchSongAdvance");
-        Song.find( { deleted : false, or : [ { name : { contains : req.body.songName } } , { album : { contains : req.body.albumName } } , { artist : { contains : req.body.artistName }  } ] } ,  function( err, songs ){
+        
+        var query = { deleted : false };
+        if( req.body.songName && req.body.songName.trim() != "" ){
+            query.name = { contains : req.body.songName } ;
+        }
+        if( req.body.albumName && req.body.albumName.trim() != "" ){
+            query.album = { contains : req.body.albumName } ;
+        }
+        if( req.body.artistName && req.body.artistName.trim() != "" ){
+            query.artist = { contains : req.body.artistName } ;
+        }
+
+        // Song.find( { deleted : false, or : [ { name : { contains : req.body.songName } } , { album : { contains : req.body.albumName } } , { artist : { contains : req.body.artistName }  } ] } ,  function( err, songs ){
+        Song.find( query ,  function( err, songs ){
             res.json( songs );
         });
     },

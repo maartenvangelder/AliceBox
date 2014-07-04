@@ -97,9 +97,13 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
     
     //NEED BEST VALIDATIONs
     $scope.searchSong = function(){
-        $http.post('/searchSongAdvance', $scope.searchParam ).success(function(data, status, headers, config){
-           $scope.searchedSongs = data;
-        });
+        if( ( $scope.searchParam.songName && $scope.searchParam.songName.trim() != "" )
+            || ( $scope.searchParam.albumName && $scope.searchParam.albumName.trim() != "" )
+            || ( $scope.searchParam.artistName && $scope.searchParam.artistName.trim() != ""  ){
+            $http.post('/searchSongAdvance', $scope.searchParam ).success(function(data, status, headers, config){
+               $scope.searchedSongs = data;
+            });
+        }
     };
     
     $scope.goEditPlaylist = function( playlist ){
