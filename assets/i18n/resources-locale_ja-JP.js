@@ -76,7 +76,7 @@
     },
     {
         "key":"_User_Profile_",
-        "value":"User Profile",
+        "value":"\u30e6\u30fc\u30b6\u30fc\u60c5\u5831",
         "description":"User Profile"
     },
     {
@@ -378,6 +378,26 @@
         "key":"_LOADING_",
         "value":"\u30ed\u30fc\u30c9\u4e2d",
         "description":"LOADING"
+    },
+    {
+        "key":"_******M_PROFILE********_",
+        "value":"MY PROFILE",
+        "description":"MY PROFILE"
+    },
+    {
+        "key":"_Used_",
+        "value":"\u4f7f\u7528",
+        "description":"Used"
+    },
+    {
+        "key":"_Remaining_",
+        "value":"\u6b8b\u308a",
+        "description":"Remaining"
+    },
+    {
+        "key":"_Total_Space_",
+        "value":"\u5408\u8a08",
+        "description":"Total"
     }
     
 ]

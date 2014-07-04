@@ -377,6 +377,26 @@
         "key":"_LOADING_",
         "value":"LOADING",
         "description":"LOADING"
+    },
+    {
+        "key":"_******M_PROFILE********_",
+        "value":"MY PROFILE",
+        "description":"MY PROFILE"
+    },
+    {
+        "key":"_Used_",
+        "value":"Used",
+        "description":"Used"
+    },
+    {
+        "key":"_Remaining_",
+        "value":"Remaining",
+        "description":"Remaining"
+    },
+    {
+        "key":"_Total_Space_",
+        "value":"Total",
+        "description":"Total"
     }
     
 ]

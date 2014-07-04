@@ -14,7 +14,7 @@
                         <i class="fa social-twitter animation-expandUp" ng-show="User.memberAuthenType == 'twitter'"></i>
                         <i class="fa social-yahoo animation-expandUp" ng-show="User.memberAuthenType == 'yahoo'"></i>
                         <i class="fa social-dropbox animation-expandUp" ng-show="User.memberAuthenType == 'dropbox'"></i>
-                        {{User.name}} <br><small>My AliceBox info</small>
+                        {{User.name}} <br><small>My AliceBox</small>
                     </h1>
                 </a>
             </div>
@@ -29,12 +29,12 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <a href="#myAllSongs" class="header-link">
-                                    <h1 class="animation-pullDown">{{countSongs}}<br><small>Songs</small></h1>
+                                    <h1 class="animation-pullDown">{{countSongs}}<br><small data-i18n="_Song_"></small></h1>
                                 </a>
                             </div>
                             <div class="col-xs-6">
                                 <a href="#myPlaylist" class="header-link">
-                                    <h1 class="animation-pullDown">{{countMyPlaylist}}<br><small>Playlist</small></h1>
+                                    <h1 class="animation-pullDown">{{countMyPlaylist}}<br><small data-i18n="_Playlist_"></small></h1>
                                 </a>
                             </div>
                         </div>
@@ -45,12 +45,12 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <a href="#myAlbum" class="header-link">
-                                    <h1 class="animation-pullDown">{{countAlbum}}<br><small>Albums</small></h1>
+                                    <h1 class="animation-pullDown">{{countAlbum}}<br><small data-i18n="_Album_"></small></h1>
                                 </a>
                             </div>
                             <div class="col-xs-6">
                                 <a href="#myArtist" class="header-link">
-                                    <h1 class="animation-pullDown">{{countMyArtist}}<br><small>Artist</small></h1>
+                                    <h1 class="animation-pullDown">{{countMyArtist}}<br><small data-i18n="_Artist_"></small></h1>
                                 </a>
                             </div>
                         </div>
@@ -78,9 +78,9 @@
         <!-- Actions Content -->
         <div class="row">
             <div class="col-xs-4">
-                Used: {{normal | number:2 }}%<p></p>
-                Remaining: {{left | number:2 }}%<p></p>
-                Total: {{dropBoxQuota | number:2 }}GB
+                <b data-i18n="_Used_"></b>: {{normal | number:2 }}%<p></p>
+                <b data-i18n="_Remaining_"></b>: {{left | number:2 }}%<p></p>
+                <b data-i18n="_Total_Space_"></b>: {{dropBoxQuota | number:2 }}GB
             </div>
             <div class="col-xs4">
                 <canvas ng-show="User.dropBoxUserId > 0" tc-chartjs-doughnut chart-data="myData" chart-options="myOptions" width="150" height="150"></canvas>

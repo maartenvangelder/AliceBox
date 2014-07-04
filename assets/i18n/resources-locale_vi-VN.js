@@ -375,5 +375,25 @@
         "key":"_LOADING_",
         "value":"\u0110\u0061\u006e\u0067 \u0074\u1ea3\u0069",
         "description":"LOADING"
+    },
+    {
+        "key":"_******M_PROFILE********_",
+        "value":"MY PROFILE",
+        "description":"MY PROFILE"
+    },
+    {
+        "key":"_Used_",
+        "value":"\u0053\u1eed \u0064\u1ee5\u006e\u0067",
+        "description":"Used"
+    },
+    {
+        "key":"_Remaining_",
+        "value":"\u0043\u00f2\u006e",
+        "description":"Remaining"
+    },
+    {
+        "key":"_Total_Space_",
+        "value":"\u0044\u0075\u006e\u0067 \u006c\u01b0\u1ee3\u006e\u0067",
+        "description":"Total"
     }
 ]
