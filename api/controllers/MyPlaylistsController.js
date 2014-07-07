@@ -2,7 +2,7 @@ module.exports = {
 
     searchSongAdvance: function ( req, res )
     {
-        sails.log("======> searchSongAdvance");
+        // sails.log("======> searchSongAdvance");
         
         var query = { deleted : false };
         if( req.body.songName && req.body.songName.trim() != "" ){

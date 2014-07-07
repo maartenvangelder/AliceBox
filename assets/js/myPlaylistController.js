@@ -99,10 +99,12 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
     $scope.searchSong = function(){
         if( ( $scope.searchParam.songName && $scope.searchParam.songName.trim() != "" )
             || ( $scope.searchParam.albumName && $scope.searchParam.albumName.trim() != "" )
-            || ( $scope.searchParam.artistName && $scope.searchParam.artistName.trim() != ""  ){
+            || ( $scope.searchParam.artistName && $scope.searchParam.artistName.trim() != "" ) ) {
             $http.post('/searchSongAdvance', $scope.searchParam ).success(function(data, status, headers, config){
                $scope.searchedSongs = data;
             });
+        }else{
+            $scope.searchedSongs = [];
         }
     };
     

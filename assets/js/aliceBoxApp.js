@@ -328,7 +328,8 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
         }
         );
     });
-
+    
+    //Update the songs Listen Count when play
     audio.addEventListener('play', function() {
         $rootScope.$apply( function(){
             player.updateSongListenCnt();
