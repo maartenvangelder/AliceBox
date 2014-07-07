@@ -101,7 +101,11 @@
     },
     
     
-    
+    {
+        "key":"_For_advertisement_",
+        "value":"\u0051\u0075\u1ea3\u006e\u0067 \u0063\u00e1\u006f",
+        "description":"For advertisement"
+    },
     
     {
         "key":"_Now_you_can_play_your_music_every_where_",

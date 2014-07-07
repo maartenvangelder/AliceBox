@@ -100,7 +100,11 @@
         "description":"Notifications"
     },
     
-    
+    {
+        "key":"_For_advertisement_",
+        "value":"\u5e83\u544a\u60c5\u5831",
+        "description":"For advertisement"
+    },
     
     {
         "key":"_Now_you_can_play_your_music_every_where_",

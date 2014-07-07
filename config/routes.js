@@ -255,6 +255,16 @@ module.exports.routes = {
                     controller: 'SystemMessage',
                     action: 'dailyNotifyMessage'
                 },
+
+                '/systemMessage/dailyAdvertiseMessage' : {
+                    controller: 'SystemMessage',
+                    action: 'dailyAdvertiseMessage'
+                },
+                
+                '/systemMessage/insertAdvertiseMessage' : {
+                    controller: 'SystemMessage',
+                    action: 'insertAdvertiseMessage'
+                },
                 
 
                 /******** MEMBER CONTROOLER ACTIONS *************/

@@ -100,9 +100,12 @@
         "description":"Notifications"
     },
     
-    
-    
-    
+    {
+        "key":"_For_advertisement_",
+        "value":"For advertisement",
+        "description":"For advertisement"
+    },
+
     {
         "key":"_Now_you_can_play_your_music_every_where_",
         "value":"Now, you can play your music every where.",

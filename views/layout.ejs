@@ -309,8 +309,8 @@
                     
                     <!-- Advertisment -->
                     <div class="sidebar-section">
-                        <h2 class="sidebar-header">For advertisement</h2>
-                        <div class="alert alert-success alert-dismissable">
+                        <h2 class="sidebar-header"><div data-i18n="_For_advertisement_"></div></h2>
+                        <!-- <div class="alert alert-success alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <small><em>2 hours ago</em></small><br>
                             For advertisement <a href="javascript:void(0)">Server #5</a>
@@ -319,11 +319,11 @@
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <small><em>3 hours ago</em></small><br>
                             <a href="javascript:void(0)">AliceBox</a> Music Application
-                        </div>
-                        <div class="alert alert-warning alert-dismissable">
+                        </div> -->
+                        <div class="alert alert-success alert-dismissable" ng-repeat="msg in advertiseMsg" >
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <small><em>5 hours ago</em></small><br>
-                            <a ng-click="openAdwindown( 'http://google.com' )">Google</a> For advertisement
+                            <small><em>{{msg.title}}</em></small><br>
+                            <a ng-click="openAdwindown( 'http://google.com' )">{{msg.content.en}}</a>
                         </div>
                     </div>
                     <!-- END Notifications -->

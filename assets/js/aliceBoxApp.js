@@ -71,7 +71,11 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
           }
         });
     });
-    
+
+    $http.post('/systemMessage/dailyAdvertiseMessage', {} ).success(function( msgs , status, headers, config){
+        $rootScope.advertiseMsg = msgs;
+    });
+
     $rootScope.mstUpdateTheme = function( themesName ){
         $http.post('/updateThemes', { themesName : themesName } ).success(function( user , status, headers, config){
             $rootScope.userInfo = user;
