@@ -3,7 +3,7 @@
 /* App Module */
 
 var aliceBoxApp = angular.module('aliceBoxApp', [
-  'ngRoute', 'localization', 'ngSanitize',
+  'ngRoute', 'localization', 'ngSanitize', 'ui.bootstrap',
   'mainPageController','flowUploadPageController','myAllSongsController' , 'myPlaylistController' , 'myAlbumController' , 'myArtistController' ,  'myProfileController'
 ]).run( function( $rootScope, $location, $http ,$window , localize ) {
     $rootScope.location = '';
