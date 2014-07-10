@@ -261,10 +261,10 @@ module.exports.routes = {
                     action: 'dailyAdvertiseMessage'
                 },
                 
-                '/systemMessage/insertAdvertiseMessage' : {
-                    controller: 'SystemMessage',
-                    action: 'insertAdvertiseMessage'
-                },
+                // '/systemMessage/insertAdvertiseMessage' : {
+                //     controller: 'SystemMessage',
+                //     action: 'insertAdvertiseMessage'
+                // },
                 
 
                 /******** MEMBER CONTROOLER ACTIONS *************/

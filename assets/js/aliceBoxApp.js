@@ -290,7 +290,11 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
             }
         },
         currentDuration: function() {
-            return parseInt(audio.duration);
+            if( audio.duration && audio.duration > 0){
+              return parseInt(audio.duration);  
+            }else{
+              return 0;
+            }
         },
         
         buffered: function(){
@@ -301,17 +305,17 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
         },
 
         updateSongListenCnt : function(){
-            console.log("==========> Play : ");
             $http.post('/songLifeInfo/updateListenCnt',{ songId : player.currentSong.id }).success( function( data, status, headers, config ){
             } );
         }
 
     };
 
-    audio.addEventListener('timeupdate', function(evt) {
+    audio.addEventListener('timeupdate', function() { 
+        player.currentScope.progress = player.currentTime();
         $rootScope.$apply(function() {            
             player.currentScope.progress = player.currentTime();
-            if( player.currentScope.duration <= 0 ){
+            if( player.currentScope.duration >= 0 ){
                 player.currentScope.duration = player.currentDuration();
                 player.currentScope.currentSong = player.currentSong;
                 player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );

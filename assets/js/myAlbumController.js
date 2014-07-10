@@ -92,9 +92,17 @@ myAlbumController.controller('myAlbumController', ['$rootScope', '$scope', '$loc
     };
     
     $scope.convertToMinute = function( seconds ){
-        var minutes = Math.floor( seconds/60 );
-        var leftSeconds = seconds - ( minutes * 60 );
-        return minutes + ":" + leftSeconds;
+        if( seconds && seconds > 0 ){ 
+            var minutes = Math.floor( seconds/60 );
+            var leftSeconds = seconds - ( minutes * 60 );
+            
+            if( minutes < 10 ){ minutes = "0" + minutes.toString() }
+            if( leftSeconds < 10 ){ leftSeconds = "0" + leftSeconds.toString() }
+
+            return minutes + ":" + leftSeconds ;
+        }else{
+            return "00:00";
+        }
     };
     
     $scope.viewSongDetails = function( Song ){
