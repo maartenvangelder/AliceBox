@@ -21,11 +21,22 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
        player.init( $scope );
     });
 
-    $scope.removeMySong = function( song, index ){
-        
+    $scope.removeMySong = function( song , index ){
+        $('#loading_modal').modal('show');
         $http.post('/myAllSongs/removeMySong', { song : song } ).success(function(data, status, headers, config){
              $http.post('/getMyAllSongs', {} ).success(function(songs, status, headers, config){
                 $scope.currentPlaylist.songs = songs;
+                
+                player.currentScope = $scope;
+                player.playlist = $scope.currentPlaylist;
+                //Default currentSong is first in the list;
+                if( player.currentSongIndex > index && player.currentSongIndex > 0 ){
+                        player.currentSongIndex--;
+                        player.currentSong = player.playlist.songs[ player.currentSongIndex ];
+                }
+
+                $('#loading_modal').modal('hide');
+                
              });
         });   
     }

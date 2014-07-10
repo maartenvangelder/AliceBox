@@ -130,13 +130,21 @@ myPlaylistController.controller('myPlaylistController', ['$rootScope', '$scope',
         });
     };
     
-    $scope.removeASongFromPlaylist = function( songId ){
+    $scope.removeASongFromPlaylist = function( songId , index ){
         $('#loading_modal').modal('show');
         $http.post('/removeASongFromPlaylist', { songId : songId , playlistId : $scope.currentPlaylist.id } )
              .success(function(data, status, headers, config){
                     $scope.currentPlaylist = data;
-                    player.init( $scope );
-                    $('#loading_modal').modal('hide');
+                    
+                    player.currentScope = $scope;
+                    player.playlist = $scope.currentPlaylist;
+                    //Default currentSong is first in the list;
+                    if( player.currentSongIndex > index && player.currentSongIndex > 0 ){
+                            player.currentSongIndex--;
+                            player.currentSong = player.playlist.songs[ player.currentSongIndex ];
+                    }
+
+            $('#loading_modal').modal('hide');
         });
     };
     

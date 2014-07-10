@@ -121,7 +121,7 @@
                 <a class="list-group-item" ng-repeat="Song in currentPlaylist.songs" ng-class="isActive($index)">
                     <span class="pull-right" ng-show="!Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-down"></div></span>
                     <span class="pull-right" ng-show="Song.showDetails" ng-click="viewSongDetails(Song)" ><div class="halfling-chevron-up"></div></span>
-                    <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions" ng-click="removeASongFromPlaylist(Song.id)" >Delete</div>
+                    <h4 class="list-group-item-heading" ng-click="viewSongDetails(Song)" ng-swipe-left="showActions = true" ng-swipe-right="showActions = false">{{Song.title}}</h4><div class="btn btn-xs btn-danger" ng-show="showActions && !isActive($index) " ng-click="removeASongFromPlaylist(Song.id , $index )" >Delete</div>
                     <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Artist_"></m> : {{Song.artist}}</p>
                 <p class="list-group-item-text" ng-show="Song.showDetails" ><m data-i18n="_Album_"></m> : {{Song.album}} <div ng-click="playThisSong($index)" class="pull-right glyphicon-play_button"></div></p> 
                 </a>

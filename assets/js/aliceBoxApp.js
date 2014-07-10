@@ -223,7 +223,7 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
         
         playlist: null,
         currentScope: null,
-
+        
         init: function( scope ) {
             
             player.currentScope = scope;
