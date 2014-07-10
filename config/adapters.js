@@ -41,12 +41,21 @@ module.exports.adapters = {
   
   //MONGO DB
   mongo: {
+    //MongoHQ
+    // module   : 'sails-mongo',
+    // host     : 'troup.mongohq.com',
+    // port     : 10053,
+    // user     : 'namvu80ap',
+    // password : 'thanhcong',
+    // database : 'ALICE_BOX'
+
+    //MongoLab
     module   : 'sails-mongo',
-    host     : 'troup.mongohq.com',
-    port     : 10053,
+    host     : 'ds037597.mongolab.com',
+    port     : 37597,
     user     : 'namvu80ap',
-    password : 'thanhcong',
-    database : 'ALICE_BOX'
+    password : 'Alice1124',
+    database : 'aliceboxdb'
 
     // OR
 //    module   : 'sails-mongo',
