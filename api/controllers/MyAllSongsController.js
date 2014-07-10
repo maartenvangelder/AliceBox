@@ -26,7 +26,25 @@ module.exports = {
     },
 
     removeMySong: function( req, res ){
-        sails.log.debug( "======> removeMySong" );
+        sails.log.debug( "======>first: removeSong in playlists" );
+        Playlist.find().where( { userId : req.session.user.id } ).exec( function( err, playlists ){
+            for( var i=0 ; i < playlists.length ; i++ ){
+              var index = playlists[i].songs.indexOf( req.body.song.id );
+              if( index >= 0 ){
+                //Remove the song in playlist
+                playlists[i].songs.splice( index ,1);
+                
+                playlists[i].save( function( err, rs ){
+                  if( err ){
+                    sails.log.error( err );
+                  }    
+                });
+              }
+            }
+       }); 
+
+        sails.log.debug( "======>second: removeSong " );
+
         Song.findOne({ id : req.body.song.id , deleted : false } ).done( function(err, song){
            if( song ){
                 if( song.userId == req.session.user.id ){

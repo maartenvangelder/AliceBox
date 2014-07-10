@@ -96,7 +96,7 @@ var PlaylistController = {
                                     res.json( rs );
                     });
                 });
-       }); //End Update Songs
+       });
    },
    
    updatePlayingMethod: function ( req , res ){
