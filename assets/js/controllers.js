@@ -177,7 +177,7 @@ mainPageController.controller('mainController', ['$rootScope' ,'$scope', '$log',
             return $scope.convertToMinute( $scope.progress );
         }
         else{ 
-            return "";
+            return "00:00";
         }
     };
     

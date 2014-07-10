@@ -87,7 +87,7 @@ myAlbumController.controller('myAlbumController', ['$rootScope', '$scope', '$loc
             return $scope.convertToMinute( $scope.progress );
         }
         else{ 
-            return "";
+            return "00:00";
         }
     };
     

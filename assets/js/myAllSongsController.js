@@ -99,7 +99,7 @@ myAllSongsController.controller('myAllSongsController', ['$rootScope', '$scope',
             return $scope.convertToMinute( $scope.progress );
         }
         else{ 
-            return "";
+            return "00:00";
         }
     };
     

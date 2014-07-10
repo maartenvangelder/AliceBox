@@ -87,7 +87,7 @@ myArtistController.controller('myArtistController', ['$rootScope', '$scope', '$l
             return $scope.convertToMinute( $scope.progress );
         }
         else{ 
-            return "";
+            return "00:00";
         }
     };
     
