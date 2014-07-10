@@ -108,6 +108,33 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
     $rootScope.openAdwindown = function( ){
         $window.open( 'https://alicebox.mobi' );
     }
+
+    $rootScope.goChangePage = function( ){
+        // console.log( $rootScope.location );  
+        // switch( $rootScope.location ){
+            // case 'home' :
+            // if( angular.element('#mainController').scope() ){
+            //   angular.element('#mainController').scope().stop();
+            // }
+            // break;
+    //     if( angular.element('#myAllSongsController').scope() ){
+    //       angular.element('#myAllSongsController').scope().stop();
+    //     }
+        
+    //     if( angular.element('#myAlbumController').scope() ){
+    //       angular.element('#myAlbumController').scope().stop();
+    //     }
+        
+    //     if( angular.element('#myArtistController').scope() ){ 
+    //       angular.element('#myArtistController').scope().stop();
+    //     }
+        
+    //     if( angular.element('#myPlaylistController').scope() ){
+    //       angular.element('#myPlaylistController').scope().stop();
+    //     }
+        // }
+        
+    }
 });
 
 aliceBoxApp.config(['$routeProvider',

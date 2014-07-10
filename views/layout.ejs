@@ -121,14 +121,14 @@
                             <h2 class="sidebar-header"><div data-i18n="_Welcome_"></div></h2>
                         </li>
                         <li>
-                            <a href="#" ng-class="{ active : location == 'home' }" ><i class="fa fa-coffee"></i><b data-i18n="_Home_"></b></a>
+                            <a href="#" ng-class="{ active : location == 'home' }" ng-click="goChangePage()" ><i class="fa fa-coffee"></i><b data-i18n="_Home_"></b></a>
                         </li>
                         <li >
                             <h2 class="sidebar-header"><div data-i18n="_Upload_Songs_"></div></h2>
                         </li>
                         <% if(req.session.user.dropBoxUserId ) { %>
                         <li>
-                            <a href="#upload" ng-class="{ active : location == 'upload' }" ><i class="fa fa-dropbox"></i><b data-i18n="_To_My_Dropbox_"></b></a>
+                            <a href="#upload" ng-class="{ active : location == 'upload' }" ng-click="goChangePage()"><i class="fa fa-dropbox"></i><b data-i18n="_To_My_Dropbox_"></b></a>
                         </li>
                         <% } else { %>
                         <li ng-show="!$root.isIPhone" >
@@ -142,27 +142,27 @@
                             <a href="#" class="menu-link"><i class="fa fa-headphones"></i><b data-i18n="_Listen_"></b></a>
                             <ul>
                                 <li>
-                                    <a href="#myAllSongs" ng-class="{ active : location == 'myAllSongs' }" ><div data-i18n="_All_Songs_"></div></a>
+                                    <a href="#myAllSongs" ng-class="{ active : location == 'myAllSongs' }" ng-click="goChangePage()" ><div data-i18n="_All_Songs_"></div></a>
                                 </li>
                                 <li>
-                                    <a href="#myPlaylist" ng-class="{ active : location == 'myPlaylist' }" ><div data-i18n="_Playlist_"></div></a>
+                                    <a href="#myPlaylist" ng-class="{ active : location == 'myPlaylist' }" ng-click="goChangePage()"><div data-i18n="_Playlist_"></div></a>
                                 </li>
                                 <li>
-                                    <a href="#myArtist" ng-class="{ active : location == 'myArtist' }" ><div data-i18n="_Artist_"></div></a>
+                                    <a href="#myArtist" ng-class="{ active : location == 'myArtist' }" ng-click="goChangePage()"><div data-i18n="_Artist_"></div></a>
                                 </li>
                                 <li>
-                                    <a href="#myAlbum" ng-class="{ active : location == 'myAlbum' }"><div data-i18n="_Album_"></div></a>
+                                    <a href="#myAlbum" ng-class="{ active : location == 'myAlbum' }" ng-click="goChangePage()"><div data-i18n="_Album_"></div></a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <h2 class="sidebar-header"><div data-i18n="_Personal_"></div></h2>
+                            <h2 class="sidebar-header"><div data-i18n="_Personal_" ></div></h2>
                         </li>
                         <!-- <li>
                             <a href="page_special_timeline.html"><i class="fa fa-clock-o"></i><b data-i18n="_Timeline_"></b></a>
                         </li> -->
                         <li>
-                            <a href="#myProfile" ng-class="{ active : location == 'myProfile' }" ><i class="fa fa-pencil-square"></i><b data-i18n="_User_Profile_"></b></a>
+                            <a href="#myProfile" ng-class="{ active : location == 'myProfile' }" ng-click="goChangePage()" ><i class="fa fa-pencil-square"></i><b data-i18n="_User_Profile_"></b></a>
                         </li>
                         <!-- <li>
                             <a href="page_special_message_center.html"><i class="fa fa-envelope-o"></i><b data-i18n="_Message_Center_"></b></a>
