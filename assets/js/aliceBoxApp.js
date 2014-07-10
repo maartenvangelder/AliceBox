@@ -228,10 +228,11 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
         stop: function() {
             if (player.playing) {
                 audio.pause(); // stop playback
+                audio.currentTime = 0;
                 // Clear the state of the player
                 player.playing = false;
                 player.ready = false;
-                audio.src = player.currentSong.url;
+                //audio.src = player.currentSong.url;
                 player.current = null;
             }
         },
