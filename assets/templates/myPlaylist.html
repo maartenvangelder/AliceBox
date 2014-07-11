@@ -1,5 +1,5 @@
 <!-- Page content -->
-<div id="page-content" class="block" ng-controller="myPlaylistController" >
+<div id="myPlaylistController" class="block" ng-controller="myPlaylistController" >
     <!-- Blank Header -->
     <div class="block-header">
         <!-- If you do not want a link in the header, instead of .header-title-link you can use a div with the class .header-section -->
@@ -87,7 +87,7 @@
         <!-- PLAYING INFO -->
         <div class="text-left">
             <div class="label label-default" ng-show="buffered > 0 && buffered < 100" ><m data-i18n="_Loaded_"></m>: {{buffered}}%</div>
-            <div class="label label-warning" ><m data-i18n="_Time_"></m> : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{durationMinutes}}</strong></div> 
+            <div class="label label-warning" ><m data-i18n="_Time_"></m> : <strong >{{curentPlayingMinutes()}}</strong> <div class="fa fa-long-arrow-right" ng-show="duration > 0" ></div> <strong>{{curentDurationMinutes()}}</strong></div> 
             <div class="label label-info" ><m data-i18n="_Playing_"></m> : <strong class="animation-pulse">{{currentSong.title}}</strong></div> 
         </div>
         <p></p>

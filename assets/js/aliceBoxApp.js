@@ -110,29 +110,34 @@ var aliceBoxApp = angular.module('aliceBoxApp', [
     }
 
     $rootScope.goChangePage = function( ){
-        // console.log( $rootScope.location );  
-        // switch( $rootScope.location ){
-            // case 'home' :
-            // if( angular.element('#mainController').scope() ){
-            //   angular.element('#mainController').scope().stop();
-            // }
-            // break;
-    //     if( angular.element('#myAllSongsController').scope() ){
-    //       angular.element('#myAllSongsController').scope().stop();
-    //     }
-        
-    //     if( angular.element('#myAlbumController').scope() ){
-    //       angular.element('#myAlbumController').scope().stop();
-    //     }
-        
-    //     if( angular.element('#myArtistController').scope() ){ 
-    //       angular.element('#myArtistController').scope().stop();
-    //     }
-        
-    //     if( angular.element('#myPlaylistController').scope() ){
-    //       angular.element('#myPlaylistController').scope().stop();
-    //     }
-        // }
+        console.log( $rootScope.location );  
+        switch( $rootScope.location ){
+            case 'home' :
+              if( angular.element('#mainController').scope() ){
+                angular.element('#mainController').scope().stop();
+              }
+              break;
+            case 'myAllSongs' :
+              if( angular.element('#myAllSongsController').scope() ){
+                angular.element('#myAllSongsController').scope().stop();
+              }
+              break;
+            case 'myAlbum' :
+              if( angular.element('#myAlbumController').scope() ){
+                angular.element('#myAlbumController').scope().stop();
+              }
+              break;
+            case 'myArtist' :
+              if( angular.element('#myArtistController').scope() ){
+                angular.element('#myArtistController').scope().stop();
+              }
+              break;
+            case 'myPlaylist' :
+              if( angular.element('#myPlaylistController').scope() ){
+                angular.element('#myPlaylistController').scope().stop();
+              }
+              break;
+        }
         
     }
 });
@@ -223,7 +228,7 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
         
         playlist: null,
         currentScope: null,
-        
+
         init: function( scope ) {
             
             player.currentScope = scope;
@@ -339,14 +344,14 @@ aliceBoxApp.factory('player', ['audio' , '$rootScope', '$http' , function(audio 
 
     };
 
-    audio.addEventListener('timeupdate', function() { 
-        player.currentScope.progress = player.currentTime();
+    audio.addEventListener('timeupdate', function() {
         $rootScope.$apply(function() {            
             player.currentScope.progress = player.currentTime();
-            if( player.currentScope.duration >= 0 ){
+            // console.log( "==> : " + player.currentDuration() );
+            if( player.currentScope.duration <= 0 ){
                 player.currentScope.duration = player.currentDuration();
                 player.currentScope.currentSong = player.currentSong;
-                player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
+                // player.currentScope.durationMinutes = player.currentScope.convertToMinute( player.currentScope.duration );
             }
         });
     });

@@ -82,9 +82,17 @@ myAlbumController.controller('myAlbumController', ['$rootScope', '$scope', '$loc
         aliceBootbox.dialog( text , "Loading error !!" );
     }
     
-    $scope.curentPlayingMinutes = function(){
-        if( $scope.progress > 0 ){
-            return $scope.convertToMinute( $scope.progress );
+     $scope.curentPlayingMinutes = function(){
+        if( player.currentScope.progress > 0 ){
+            return $scope.convertToMinute( parseInt(player.currentScope.progress) );
+        }
+        else{ 
+            return "00:00";
+        }
+    };
+    $scope.curentDurationMinutes = function(){
+        if( player.currentDuration() > 0 ){
+            return $scope.convertToMinute( player.currentDuration() );
         }
         else{ 
             return "00:00";

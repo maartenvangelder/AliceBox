@@ -83,13 +83,22 @@ myArtistController.controller('myArtistController', ['$rootScope', '$scope', '$l
     }
     
     $scope.curentPlayingMinutes = function(){
-        if( $scope.progress > 0 ){
-            return $scope.convertToMinute( $scope.progress );
+        if( player.currentScope.progress > 0 ){
+            return $scope.convertToMinute( parseInt(player.currentScope.progress) );
         }
         else{ 
             return "00:00";
         }
     };
+    $scope.curentDurationMinutes = function(){
+        if( player.currentDuration() > 0 ){
+            return $scope.convertToMinute( player.currentDuration() );
+        }
+        else{ 
+            return "00:00";
+        }
+    };
+
     
     $scope.convertToMinute = function( seconds ){
         if( seconds && seconds > 0 ){ 
